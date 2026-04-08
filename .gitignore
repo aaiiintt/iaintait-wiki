@@ -3,8 +3,7 @@
 Thumbs.db
 
 # Editor
-.obsidian/workspace*
-.obsidian/cache
+.obsidian/
 
 # Compiled wiki dump (regenerable via compress.py)
 iaintait.md
