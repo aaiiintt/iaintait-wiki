@@ -75,13 +75,15 @@ Copywriter Heather Ryder confirmed: *"my partner and I digitally 'puppeted' the 
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Global Interactive Executive Creative Director, W+K Portland
-- **Mark Fitzloff** — Executive Creative Director, W+K Portland
-- **Susan Hoffman** — Executive Creative Director, W+K Portland
+- **[Mark Fitzloff](../collaborators/mark_fitzloff.md)** — Executive Creative Director, W+K Portland
+- **[Susan Hoffman](../collaborators/susan_hoffman.md)** — Executive Creative Director, W+K Portland
 - **Hal Curtis** — Creative Director
 - **Jeff Gillette** — Creative Director
 - **Heather Ryder** — Copywriter (puppeted the bears live on game day)
 - **Chris Thurman** — Art Director
 - **Ben Grylewicz** — Executive Producer, W+K Portland
+- **[Igor Clark](../collaborators/igor_clark.md)** — Creative Technology Director, W+K Portland *(evidence: campaignlive.co.uk)*
+- **[Nilesh Ashra](../collaborators/nilesh_ashra.md)** — Creative Technology, W+K Portland
 - **[Framestore](../collaborators/framestore.md)** — CGI + real-time puppeting technology (NY + London); key figure: Mike Woods (Head of Studio / ECD Digital)
 - **Animal Logic** — Broadcast TV spot animation (Sydney)
 - **MLB Advanced Media** — Streaming infrastructure + control room

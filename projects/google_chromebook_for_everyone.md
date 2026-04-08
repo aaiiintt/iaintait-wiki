@@ -65,6 +65,7 @@ Key campaign messages: extreme simplicity, instant boot, zero viruses, cloud per
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, Google Creative Lab
+- **[Ben Malbon](../collaborators/ben_malbon.md)** — Managing Director, Google Creative Lab NYC *(evidence: The Guardian 2025 profile; Mesh career data; user testimony 2026-04-08)*
 - **[Jeff Baxter](../collaborators/jeff_baxter.md)** — Creative, Google Creative Lab
 - **Tristan Smith** — Creative, Google Creative Lab
 - **Charles Hodges** — Creative, Google Creative Lab

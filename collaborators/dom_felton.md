@@ -31,5 +31,3 @@ Prior to W+K: Ogilvy Interactive (Interactive Producer, Nokia projects), Holler 
 - **[Harry Potter: Wizards Unite](../projects/wk_harry_potter_wizards_unite.md)** — Producer, W+K London (2019)
 
 ## References
-
-- [The Org: Dom Felton at W+K London](https://theorg.com/org/wieden-kennedy/org-chart/dom-felton)

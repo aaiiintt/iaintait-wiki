@@ -36,7 +36,7 @@ Rather than a conventional gameplay trailer, W+K London treated the game's premi
 **Teaser phase (from January 2019):**
 "Traces of magic" appearing on CCTV footage; "The Trace Report" — a found-footage style teaser that generated massive fan speculation about what the project was.
 - **Directors:** William McGregor + Jorge Montiel
-- **Creatives:** Sophie Bodoh, Scott Dungate, Adam Newby, Will Wells
+- **Creatives:** [Sophie Bodoh](../collaborators/sophie_bodoh.md), [Scott Dungate](../collaborators/scott_dungate.md), [Adam Newby](../collaborators/adam_newby.md), [Will Wells](../collaborators/will_wells.md)
 
 **Launch film (June 19, 2019):**
 A cinematic piece giving a grounded, chaotic perspective on being a wizard-in-training in the real world, culminating in players battling Dementors.
@@ -52,12 +52,13 @@ A cinematic piece giving a grounded, chaotic perspective on being a wizard-in-tr
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Dom Felton](../collaborators/dom_felton.md)** — Executive Producer, W+K London
-- **Scott Dungate** — Creative Director
-- **Sophie Bodoh** — Creative Director
+- **[Indiana Matine](../collaborators/indiana_matine.md)** — Strategist / Planning, W+K London *(evidence: user testimony 2026-04-08)*
+- **[Scott Dungate](../collaborators/scott_dungate.md)** — Creative Director
+- **[Sophie Bodoh](../collaborators/sophie_bodoh.md)** — Creative Director
 - **Abdou Cisse** — Creative (launch film)
 - **Akwasi Poku** — Creative (launch film)
-- **Adam Newby** — Creative (teaser)
-- **Will Wells** — Creative (teaser)
+- **[Adam Newby](../collaborators/adam_newby.md)** — Creative (teaser)
+- **[Will Wells](../collaborators/will_wells.md)** — Creative (teaser)
 - **Tom Green** — Director, launch film (Stink Films)
 - **William McGregor** — Director, teaser (co-director)
 - **Jorge Montiel** — Director, teaser (co-director)

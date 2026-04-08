@@ -97,7 +97,7 @@ Please review this table of notable work produced by your agencies during your t
 | [x] | Listen & Believe | KEF | Apr 2023 | Brand activation campaign for flagship experience center, including premium films and a cultural strategy. |
 | [ ] | Finiliar | Finiliar | May 2023 | Visual identity and brand kit for a character-driven crypto portfolio tracking app. |
 | [x] | "AI Consultancy" | Google | Sep 2023 | High-velocity creative sprint moving AI into mainstream culture via celebrity partnerships and format disruption. |
-| [x] | Dior Addict / Gaia | Dior | Oct 2024 | Multi-sensory campaign connecting heritage with Gen Z through "joyful chaos" and AI-assisted content. |
+| [x] | LVMH / Gaia / Dior | LVMH / Dior | Oct 2024 | A paid exploration into new ways to engage Gen-Z audiences. |
 | [x] | Mayhaven | Mayhaven | Jan 2026 | Strategic "Pre-Application" phase defining the core proposition and vision for a new development project. |
 | [x] | Nano Banana / Gemini R&D | Google / Gemini | Jan 2026 | Sprints to grow Nano Banana into a cultural phenomenon and demonstrate Gemini's creative potential for brands like LEGO and IKEA. |
 | [ ] | Content Engine | Hinge | Mar 2026 | Scalable, hypothesis-led social creative targeting Gen Z women. |

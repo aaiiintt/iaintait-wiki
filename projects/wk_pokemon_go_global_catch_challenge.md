@@ -86,6 +86,7 @@ The Tottori event generated an estimated **US$16 million in tourism revenue in 3
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Pete Browse](../collaborators/pete_browse.md)** — Creative, W+K London (confirmed: uploaded the case study film to his Vimeo; Computer Science background with scriptwriting and digital production expertise)
 - **[Joe Koprowski](../collaborators/joe_koprowski.md)** — Creative, W+K London
+- **[Indiana Matine](../collaborators/indiana_matine.md)** — Strategist / Planning, W+K London *(evidence: user testimony 2026-04-08)*
 - **IHasCupquake (Tiffany Garcia)** — Influencer talent
 - **Coisa de Nerd (Leon)** — Influencer talent
 - **Rachel Quirico** — Influencer talent

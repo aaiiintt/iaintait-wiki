@@ -1,19 +1,20 @@
 ---
 title: "Framestore"
 type: collaborator
-tags: [VFX, production-company, post-production]
+tags: [vfx, post-production, immersive, london, new-york]
 aliases: []
 source_urls:
-  - https://framestore.com
+  - https://www.framestore.com
 ---
 
 # Framestore
 
-**Type:** VFX / Post-Production Studio
-**Role on collaborations:** VFX production on Coca-Cola Polar Bowl campaign.
+London and New York-headquartered VFX and creative studio working across advertising, film, episodic and immersive. Multi-Oscar and BAFTA-winning post and visual effects company.
 
-London/New York-based VFX and production company. Works across advertising, film, and interactive.
+## Worked With Iain On
 
-## Projects
+- **[Coca-Cola: Polar Bowl](../projects/wk_coca_cola_polar_bowl.md)** — VFX on the 2012 Super Bowl live Coca-Cola Polar Bears broadcast campaign (W+K Portland). *(evidence: projects/wk_coca_cola_polar_bowl.md)*
 
-- [Coca-Cola: Polar Bowl (2012)](../projects/wk_coca_cola_polar_bowl.md)
+## References
+
+- [Framestore — studio site](https://www.framestore.com)

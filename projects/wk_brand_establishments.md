@@ -36,6 +36,7 @@ See sub-campaign sections below for full collaborator details.
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London (both campaigns)
 - **Tony Davidson** — Executive Creative Director, W+K London (both campaigns)
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 
 ---
 
@@ -52,8 +53,8 @@ A parody lifestyle ad — Bud Light playing with the conventions of premium beer
 ### Collaborators — Bud Light
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **Tony Davidson** — Executive Creative Director
-- **Ray Shaughnessy** — Creative Director
-- **Dan Norris** — Creative Director
+- **[Ray Shaughnessy](../collaborators/ray_shaughnessy.md)** — Creative Director
+- **[Dan Norris](../collaborators/dan_norris.md)** — Creative Director
 - **Ali Ali** — Director (Sonny London)
 
 ---
@@ -72,10 +73,10 @@ Voiceover by **Peter Serafinowicz**. Maintained Tyrrells' distinctly eccentric, 
 ### Collaborators — Tyrrells
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **Tony Davidson** — Executive Creative Director
-- **Dan Norris** — Creative Director
-- **Ray Shaughnessy** — Creative Director
-- **Adam Newby** — Creative
-- **Will Wells** — Creative
+- **[Dan Norris](../collaborators/dan_norris.md)** — Creative Director
+- **[Ray Shaughnessy](../collaborators/ray_shaughnessy.md)** — Creative Director
+- **[Adam Newby](../collaborators/adam_newby.md)** — Creative
+- **[Will Wells](../collaborators/will_wells.md)** — Creative
 - **Greg Kouts** — Creative
 - **Dog & Rabbit** — Production company / Directors
 - **Peter Serafinowicz** — Voiceover

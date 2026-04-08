@@ -24,3 +24,4 @@ Philippa Beaumont is a creative and copywriter at W+K London. She works as a lon
 - **[Angry Birds 2: Bigger. Badder. Birdier.](../projects/wk_rovio_angry_birds_2.md)** (2015) — Copywriter
 - **[Sainsbury's: Food Dancing](../projects/wk_sainsburys_food_dancing.md)** (2017) — Creative
 - **[Sainsbury's: The Big Night](../projects/wk_sainsburys_the_big_night.md)** (2018) — Creative
+- **[Sainsbury's: Helping Everyone Eat Better](../projects/wk_helping_everyone_eat_better.md)** — Senior Creative. *(evidence: projects/wk_helping_everyone_eat_better.md)*

@@ -1,12 +1,19 @@
+---
+title: "Tim Healy"
+type: collaborator
+tags: [music, composer, london]
+aliases: []
+source_urls: []
+---
+
 # Tim Healy
 
-**Role Focus:** Sound Design
-**Key Agencies:** Independent
+Composer credited with original music on Google Roll It (Google Creative Lab, 2013). London-based.
 
-## Associated Projects
+## Worked With Iain On
 
-* [Roll It](../projects/google_roll_it.md)
+- **[Roll It](../projects/google_roll_it.md)** — Original music. *(evidence: projects/google_roll_it.md)*
 
-## Background & Forensics
+## References
 
-Provided the dynamic sound design for the interactive Chrome Experiment "Roll It", collaborating with Google Creative Lab and developers Mode Set and Legwork Studio.
+*No external sources confirmed. Profile created from project credits.*

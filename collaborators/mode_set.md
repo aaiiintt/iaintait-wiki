@@ -1,12 +1,20 @@
+---
+title: "Mode Set"
+type: collaborator
+tags: [creative-tech, development, studio, denver]
+aliases: [ModeSet]
+source_urls:
+  - https://modeset.com
+---
+
 # Mode Set
 
-**Role Focus:** Technical Development
-**Key Agencies:** Independent Studio (Partnered with Google Creative Lab)
+Denver-based development studio that partnered with Google Creative Lab on Chrome Experiments. Engineered WebSockets and physics systems for cross-device browser experiences.
 
-## Associated Projects
+## Worked With Iain On
 
-* [Roll It](../projects/google_roll_it.md)
+- **[Roll It (Google Creative Lab)](../projects/google_roll_it.md)** — Technical build partner on the WebGL + WebSockets Chrome Experiment (with Legwork Studio). *(evidence: projects/google_roll_it.md)*
 
-## Background & Forensics
+## References
 
-A development studio (featuring Justin Gitlin) that partnered with Google Creative Lab to engineer the complex WebSockets and physics engine necessary to make the cross-device Chrome Experiment "Roll It" a reality.
+- [Mode Set — studio site](https://modeset.com)

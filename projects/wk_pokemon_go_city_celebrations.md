@@ -73,6 +73,7 @@ The campaign fused brand advertising with live gameplay mechanics at a scale tha
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Dom Felton](../collaborators/dom_felton.md)** — Producer, W+K London
+- **[Indiana Matine](../collaborators/indiana_matine.md)** — Strategist / Planning, W+K London *(evidence: user testimony 2026-04-08)*
 
 *No below-ECD creative credits (CD, AD, writer) confirmed in available public sources. Full credits may exist in the paywalled Campaign Live article (Omar Oakes, June 8, 2017) or Ad Age Creativity entry (Alexandra Jardine, June 8, 2017).*
 

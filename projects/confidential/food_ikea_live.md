@@ -17,23 +17,19 @@ agency: FOOD
 client: IKEA
 year: 2023
 primary_role: Strategic & Creative Partner
+confidential: true
 ---
 
 # IKEA LIVE
 
 ## Overview
 
-IKEA LIVE represents an ambitious foray into retail innovation at IKEA's flagship Oxford Street location.
-
-## Project Summary
-
-Developed by FOOD, the project focused on designing an operational framework and creative strategy for "The Stage" at the Oxford Street flagship store.
-
-The primary goal of this initiative was to seamlessly bridge physical, in-store retail experiences with modern digital engagement methodologies. By reimagining brick-and-mortar retail as a broadcast platform and interactive venue, FOOD helped IKEA establish new parameters for how physical spaces can function as dynamic, digitally integrated hubs for communities and customers.
+Retail innovation strategy for IKEA's flagship Oxford Street location, exploring how physical retail spaces can function as digital-first broadcast venues.
 
 ## Collaborators
 
 - **[Iain Tait](../../collaborators/iain_tait.md)** — Strategic & Creative Partner, FOOD
+- **[Steve Wyles](../../collaborators/steve_wyles.md)** — Executive Producer, FOOD *(evidence: user testimony 2026-04-08)*
 
 ## References & Media
 

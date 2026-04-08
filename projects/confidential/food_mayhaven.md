@@ -16,17 +16,14 @@ agency: FOOD
 client: Mayhaven
 year: 2026
 primary_role: Strategic Partner
+confidential: true
 ---
 
 # Mayhaven
 
 ## Overview
 
-A strategic "Pre-Application" phase defining the core proposition and brand vision for a new real estate development project.
-
-## Project Summary
-
-This project highlights FOOD's capability to apply creative strategy to massive physical infrastructure and placemaking. The work involved establishing the foundational narrative, target demographics, and experiential vision for the Mayhaven site prior to planning applications, ensuring the physical space was designed with a cohesive cultural identity from the ground up.
+Brand vision and strategic proposition for a new real estate development — creative strategy applied to placemaking at the pre-application stage.
 
 ## Collaborators
 

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Cosmograph, type CosmographRef } from '@cosmograph/react';
 import { COLORS, EDGE_COLORS, fetchGraph, sizeForRichness, type EdgeDatum, type Graph, type NodeDatum, type NodeKind } from './graph';
 import { PopCard } from './PopCard';
+import { ConfidentialRings } from './ConfidentialRings';
 import { TelemetryLog } from './components/TelemetryLog';
 import { useTelemetry } from './telemetry';
 
@@ -29,7 +30,12 @@ export function Patchbay() {
 
     // Iain is the centre of the universe — always present, never filtered.
     const visible = new Set<string>();
-    for (const n of graph.nodes) if (enabled[n.kind]) visible.add(n.id);
+    for (const n of graph.nodes) {
+      if (!enabled[n.kind]) continue;
+      // For people, only include those with a real profile file.
+      if (n.kind === 'person' && !n.hasProfile) continue;
+      visible.add(n.id);
+    }
     visible.add(IAIN_ID);
 
     const nodes = graph.nodes.filter((n) => visible.has(n.id));
@@ -105,16 +111,14 @@ export function Patchbay() {
   useEffect(() => {
     const cg = ref.current;
     if (!cg || !view) return;
-    const refit = () => {
-      try {
-        cg.fitView(500);
-        const z = cg.getZoomLevel?.();
-        if (z) cg.setZoomLevel(z * 0.7, 500);
-      } catch { /* noop */ }
-    };
-    const t1 = setTimeout(refit, 350);
-    const t2 = setTimeout(refit, 1600);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    const refit = () => { try { cg.fitView(600); } catch { /* noop */ } };
+    // Early fit so the user sees something centred immediately, then a late
+    // fit after the simulation has actually settled.
+    const t1 = setTimeout(refit, 400);
+    const t2 = setTimeout(refit, 1800);
+    const t3 = setTimeout(refit, 3500);
+    const t4 = setTimeout(refit, 6000);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
   }, [view]);
 
   useEffect(() => {
@@ -134,6 +138,8 @@ export function Patchbay() {
   }, [query, graph]);
 
   const [pendingNavigate, setPendingNavigate] = useState<NodeDatum | null>(null);
+  // Incremented to trigger ring position refresh after sim ticks or resizes.
+  const [ringVersion, setRingVersion] = useState(0);
 
   const selectNode = (node: NodeDatum | undefined) => {
     const cg = ref.current;
@@ -195,9 +201,13 @@ export function Patchbay() {
           nodeLabelAccessor={(n) => n.title}
           hoveredNodeLabelClassName="cg-label"
           nodeLabelClassName="cg-label"
-          nodeColor={(n) => (n.id === IAIN_ID ? '#000' : COLORS[n.kind])}
+          nodeColor={(n) => {
+            if (n.id === IAIN_ID) return '#000';
+            if (n.confidential) return '#ffffff';
+            return COLORS[n.kind];
+          }}
           nodeSize={(n) =>
-            n.id === IAIN_ID ? 14 : sizeForRichness(n.richness ?? 0, n.kind)
+            n.id === IAIN_ID ? 7 : sizeForRichness(n.richness ?? 0, n.kind)
           }
           linkColor={(e) => EDGE_COLORS[e.kind] ?? '#888'}
           linkWidth={1.4}
@@ -218,6 +228,12 @@ export function Patchbay() {
           onNodeMouseOver={(node) => {
             if (node) telemetry.log('HOVER', node.title);
           }}
+          onSimulationEnd={() => setRingVersion((v) => v + 1)}
+        />
+        <ConfidentialRings
+          cosmographRef={ref}
+          nodes={view.nodes}
+          version={ringVersion}
         />
         </div>
         <div className="toolbar">

@@ -55,6 +55,7 @@ The campaign centred on a bespoke track commissioned for the spot: **"Food Danci
 **W+K London:**
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **[Scott Dungate](../collaborators/scott_dungate.md)** — Creative Director
 - **[Sophie Bodoh](../collaborators/sophie_bodoh.md)** — Creative Director
 - **[Freddy Taylor](../collaborators/freddy_taylor.md)** — Creative

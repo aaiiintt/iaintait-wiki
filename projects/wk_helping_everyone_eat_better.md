@@ -42,9 +42,10 @@ A 60-second TV spot using **match-cut cinematography** to frame raw produce and 
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **Tony Davidson** — Executive Creative Director, W+K London
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **Darren Simpson** — Creative Director
-- **Freddy Taylor** — Senior Creative
-- **Philippa Beaumont** — Senior Creative
+- **[Freddy Taylor](../collaborators/freddy_taylor.md)** — Senior Creative
+- **[Philippa Beaumont](../collaborators/philippa_beaumont.md)** — Senior Creative
 - **Filip Nilsson** — Director (Object & Animal)
 - **Stephen Keith-Roach** — Director of Photography
 - **Stephen Fry** — Narrator

@@ -4,14 +4,25 @@ A master record of the key humans, technologists, artists, and production compan
 
 ## Directors & Production
 
+* **[Suz Chambers](./collaborators/suz_chambers.md)**
+    *Executive Producer → Director, Google Creative Lab (2012–present). Produced Racer, Roll It, and Photowall for Chromecast. Previously Crispin Porter and Sid Lee.*
+* **[Asa Block](./collaborators/asa_block.md)**
+    *Producer, Google Creative Lab. Credited on Photowall for Chromecast and Google OnHub Makers (2014). Now VP Product, Near Space Labs.*
 * **[Chris Boyle / Private Island](./collaborators/chris_boyle.md)**
     *Director and Founder of Private Island. Pushed boundaries with early generative AI and deepfaking.*
 * **[Helen Power](./collaborators/helen_power.md)**
     *Executive Producer and Co-Founder at Private Island.*
 * **[Rose Fairley](./collaborators/rose_fairley.md)**
     *Producer, notable for work at Wieden+Kennedy and Private Island collaborations.*
+* **[Steve Wyles](./collaborators/steve_wyles.md)**
+    *Executive Producer; W+K London (2018–2020), FOOD (2022–2023), now SKEWED. Headmaster, KEF, IKEA Live.*
+* **[James Guy](./collaborators/james_guy.md)**
+    *Head of Integrated Production, W+K London (~14–15 years). Led big TV productions including Nothing Beats a Londoner and Honda Dream Makers. Now CPO, Uncommon Creative Studio.*
 
 ## Agency Founders & Leadership
+
+* **[Ben Malbon](./collaborators/ben_malbon.md)**
+    *Managing Director, Google Creative Lab NYC (2011–2013). Led Racer, Roll It, Chrome campaign, Chromebook at Google with Iain. Co-founder BBH Labs. Now VP Brand, Creative & Accelerating AI, Google EMEA.*
 
 * **[Nik Roope](./collaborators/nik_roope.md)**
     *Co-founder & Co-Creative Director at POKE London. Brainchild of BakerTweet. Also founded Hulger/Plumen. Lovie Awards Jury Chairman.*
@@ -27,6 +38,10 @@ A master record of the key humans, technologists, artists, and production compan
     *Creative Director and Partner, W+K Portland. Credited on Old Spice Responses.*
 * **[Mark Fitzloff](./collaborators/mark_fitzloff.md)**
     *Creative Director and Partner, W+K Portland. Named W+K Partner alongside Iain Tait in December 2011.*
+* **[Tom Hostler](./collaborators/tom_hostler.md)**
+    *POKE London co-founder (2001). MD / "Boss Hoss". Part of the original founding partnership with Iain Tait, Nick Farnhill, Nik Roope, Simon Waterfall, and Peter Beech.*
+* **[Peter Beech](./collaborators/peter_beech.md)**
+    *POKE London co-founder (2001). Ex-Deepend MD. One of four founding shareholders through the 2013 Publicis acquisition.*
 
 ## Creative Directors & Copywriters
 
@@ -69,9 +84,29 @@ A master record of the key humans, technologists, artists, and production compan
     *Copywriter, W+K London. One half of "Jason and Joris" — wrote WWF Endangered Emojis.*
 * **[Joris Philippart](./collaborators/joris_philippart.md)**
     *Art Director, W+K London. One half of "Jason and Joris" — art directed WWF Endangered Emojis.*
+* **[Joe De Souza](./collaborators/joe_de_souza.md)**
+    *ECD, W+K London. Creative on Coca-Cola "The Letter" (2020). Long-running partner of Juan Sevilla.*
+* **[Tomas Coleman](./collaborators/tomas_coleman.md)**
+    *Creative, W+K London → Droga5 NY → Mother London (ECD). Credited on Coca-Cola "The Letter" and Sainsbury's "Nicholas the Sweep". Partner at Derek + Tomas studio.*
+* **[Freddie Powell](./collaborators/freddie_powell.md)**
+    *Creative Director, W+K London. Long-standing creative partner of Hollie Walker (met at Central Saint Martins). CD on TK Maxx: Ridiculous Possibilities.*
+* **[Dan Norris](./collaborators/dan_norris.md)**
+    *Creative Director, W+K London. One half of "Dan and Ray" team with Ray Shaughnessy. CD on F1 Neeeum, Sainsbury's Nicholas the Sweep, Bud Light / Tyrrells. Later ECD at McCann London.*
+* **[Ray Shaughnessy](./collaborators/ray_shaughnessy.md)**
+    *Creative Director, W+K London (~13 years). One half of "Dan and Ray" with Dan Norris. CD on F1 Neeeum, Nicholas the Sweep, Bud Light / Tyrrells. Later ECD at McCann London.*
+* **[Will Wells](./collaborators/will_wells.md)**
+    *Creative, W+K London. Art director paired with Adam Newby across Bud Light / Tyrrells, Three Real 5G, and Harry Potter Wizards Unite.*
 
 ## Designers & Technologists
 
+* **[Igor Clark](./collaborators/igor_clark.md)**
+    *Technical Director, POKE London (2005–2008); Creative Technology Director, W+K Portland (2010–2012); Creative Tech Lead, Google Creative Lab NYC (2013–2015). Now freelance and tech director at ArtRabbit.*
+* **[Justin Windle](./collaborators/justin_windle.md)**
+    *Creative Technologist, Google Creative Lab (2012–2015). Known as "soulwire". Open-source author (sketch.js, 4.1k stars). Now CTO, TORTUS AI.*
+* **[George Michael Brower](./collaborators/george_michael_brower.md)**
+    *Interaction designer and creative technologist, Google Creative Lab (2010–2015). Co-built Wilderness Downtown (Cannes Grand Prix). Currently Staff UX Engineer, Google.*
+* **[Nilesh Ashra](./collaborators/nilesh_ashra.md)**
+    *Creative technologist. Lead Developer at POKE London; founded W+K Portland's emerging-tech incubator The Lodge (2013–2018); co-founded Two Things; founder of OK Tomorrow. Long-running collaborator with Iain across POKE, W+K Portland, and FOOD.*
 * **[Nicky Gibson](./collaborators/nicky_gibson.md)**
     *Senior Art Director / Designer, POKE London. MoMA and Design Museum exhibited. Orange Unlimited and Balloonacy.*
 * **[Simon Källgård](./collaborators/simon_kallgard.md)**
@@ -116,11 +151,21 @@ A master record of the key humans, technologists, artists, and production compan
     *Interaction designer, W+K Portland. Co-created the parallax scrolling effect on Nike Better World. Co-founder of King/Coyle.*
 * **[Seth Weisfeld](./collaborators/seth_weisfeld.md)**
     *Interactive Creative Director, W+K Portland. Led direct production of Nike Better World.*
+* **[Derek Man Lui](./collaborators/derek_man_lui.md)**
+    *Senior Creative, W+K London. Creative on Headmaster (2019) and National Trust #EveryoneNeedsNature (2020). Now partner at Derek + Tomas studio with Tomas Coleman.*
+* **[Marc Winklhofer](./collaborators/marc_winklhofer.md)**
+    *"Reality architect" at DPTNR (Department of New Realities), W+K Amsterdam. Team on Headmaster.*
+* **[Jonathan Plackett](./collaborators/jonathan_plackett.md)**
+    *Senior Creative / Creative Technologist, W+K London. Team on Headmaster. Founder of I Think And Do (Face Juggler). Co-author of Gender Swapped Fairy Tales and Terms & Conditions Apply.*
+* **[Joel Gethin Lewis](./collaborators/joel_gethin_lewis.md)**
+    *Creative technologist and generative artist. Co-founder of Hellicar & Lewis and YesYesNo. Built the openFrameworks projection-mapped interactive sculpture on Coca-Cola Maroon 5 24hr Session.*
 
 ## Media & Strategy Partners
 
 * **[Naked Communications](./collaborators/naked_communications.md)**
     *Media strategy agency. Partner on The Warholiser for Tate Modern (2002).*
+* **[Indiana Matine](./collaborators/indiana_matine.md)**
+    *Strategist, W+K London (joined Jan 2014, ex-Naked). Planning credit on Facebook "Still Going Strong" (2020). Niantic planning per Iain's testimony.*
 
 ## Production, Interactive & Development Partners
 

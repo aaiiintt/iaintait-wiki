@@ -71,7 +71,8 @@ The Malice Box Quest is an early and sophisticated example of a commercial ARG i
 
 - **[Iain Tait](../collaborators/)** — Creative Director / ECD at POKE London (not the puzzle designer)
 - **[Nik Roope](../collaborators/nik_roope.md)** — Co-Creative Director, POKE London
-- **[Tim Wright](../collaborators/tim_wright.md)** — Freelance contributor (confirmed from crackunit.com blog)
+- **[Tim Wright](../collaborators/tim_wright.md)** — Scriptwriter (per crackunit.com blog archive)
+- **[Simon Cook (Cookie)](../collaborators/cookie.md)** — POKE team contributor (per crackunit.com blog archive)
 - **Martin Langfield** — Author of *The Malice Box* (Reuters East Coast Bureau Chief; first novel)
 - **Penguin Books / Michael Joseph** — Client / Publisher
 - *Puzzle designer: unconfirmed — role may overlap with Tim Wright, requires verification*

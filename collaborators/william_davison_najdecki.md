@@ -5,7 +5,7 @@
 
 ## Associated Projects
 
-* [Google Ad-Tech Research](../projects/google_ad_tech_research.md)
+* [Google Ad-Tech Research](../projects/confidential/google_ad_tech_research.md)
 
 ## Background & Forensics
 

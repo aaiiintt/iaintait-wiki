@@ -45,6 +45,7 @@ This is the curated index of all major entities and projects in the wiki, archiv
 - [TK Maxx: Ridiculous Possibilities](projects/wk_tk_maxx_ridiculous_possibilities.md)
 - [Nothing Beats a Londoner](projects/wk_nothing_beats_a_londoner.md)
 - [Wearing Gillian / Gillian Wearing Masks](projects/wk_gillian_wearing_deepfake.md)
+- [Headmaster (W+K London holographic arcade, 2019)](projects/wk_headmaster.md)
 - [Three: Phones Are Good](projects/wk_three_phones_are_good.md)
 - [Niantic Ingress Prime: ADA vs. JARVIS](projects/wk_niantic_ingress_prime.md)
 - [Honda Dream Makers](projects/wk_honda_dream_makers.md)
@@ -76,19 +77,21 @@ This is the curated index of all major entities and projects in the wiki, archiv
 - [Coder](projects/google_coder.md)
 - [An Awesome Book (Chrome Web Store)](projects/google_an_awesome_book.md)
 - [Chrome Campaign](projects/google_chrome_campaign.md)
+- [Photowall for Chromecast](projects/google_photowall_chromecast.md)
+- [Google Ad-Tech Research / Keeper Application](projects/confidential/google_ad_tech_research.md) *(confidential)*
 
 ### FOOD
 
 - [JR Reality (Superblue)](projects/food_superblue_jr_reality.md)
 - [Chemical Brothers: Music Response](projects/food_chemical_brothers_music_response.md)
-- [Dior Addict / Gaia](projects/food_dior_addict_gaia.md)
-- [Google AI Consultancy](projects/food_google_ai_consultancy.md)
-- [Nano Banana / Gemini R&D](projects/food_nano_banana_gemini.md)
-- [Mayhaven](projects/food_mayhaven.md)
-- [IKEA LIVE](projects/food_ikea_live.md)
+- [LVMH / Gaia / Dior](projects/confidential/food_gaia_dior.md) *(confidential)*
+- [Google AI Consultancy](projects/confidential/food_google_ai_consultancy.md) *(confidential)*
+- [Nano Banana / Gemini R&D](projects/confidential/food_nano_banana_gemini.md) *(confidential)*
+- [Mayhaven](projects/confidential/food_mayhaven.md) *(confidential)*
+- [IKEA LIVE](projects/confidential/food_ikea_live.md) *(confidential)*
 - [KEF: Listen & Believe](projects/food_kef_listen_and_believe.md)
 - [RockCorps Unlimited](projects/food_rockcorps_unlimited.md)
-- [Hinge: AI Dating Coach](projects/confidential/food_hinge_ai_dating_coach.md)
+- [Hinge: AI Dating Coach](projects/confidential/food_hinge_ai_dating_coach.md) *(confidential)*
 
 ---
 

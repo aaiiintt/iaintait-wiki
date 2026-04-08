@@ -73,7 +73,7 @@ type: index
 | 2023 | project | JR Reality public launch — NYC, May 2023 (FOOD) |
 | 2023 | podcast | Creative Review: Creativity Sucks! — AI Discussion |
 | 2023 | project | Chemical Brothers: Music Response (FOOD) |
-| 2023 | project | Dior Addict / Gaia (FOOD) |
+| 2024 | project | LVMH / Gaia / Dior (FOOD) |
 | 2023 | project | Google AI Consultancy (FOOD) |
 | 2024 | project | Nano Banana / Gemini R&D (FOOD) |
 | 2024 | project | IKEA LIVE (FOOD) |

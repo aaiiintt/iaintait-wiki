@@ -18,15 +18,14 @@ agency: google_creative_lab
 client: Google Internal R&D
 year: 2014
 primary_role: Inventor / Creative Director
+confidential: true
 ---
 
 # Google Ad-Tech Research (Keeper Application)
 
-## Project Summary
+## Overview
 
-An internal Google research project focused on advertising UX and the personalization of secondary content. The initiative explored how users might save, customize, and personalize online advertisements.
-
-At the core of the research was the concept of a "Keeper application"—a system designed to allow users to save compelling ad content ("primary online content") without leaving their current web context. Once an ad was saved, the system would use "concierge rules" to serve relevant follow-up content ("secondary online content"). For example, if a user saved a ticket advertisement for a baseball game, the system might later push a weather report for game day.
+Internal Google Creative Lab R&D exploring advertising UX and content personalisation, resulting in US Patent US20170337584A1.
 
 ## Patents & Intellectual Property
 

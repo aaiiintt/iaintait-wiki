@@ -10,9 +10,7 @@ source_urls:
 
 # Joe Koprowski
 
-**Creative, Wieden+Kennedy London**
-
-RCA graduate. Career spanning AD → copywriter → CD. Website: joekoprowski.com.
+Creative, Wieden+Kennedy London. RCA graduate. Career spanning AD → copywriter → CD. Website: joekoprowski.com.
 
 ## W+K London Projects
 

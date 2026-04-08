@@ -15,21 +15,19 @@ source_urls:
 
 ## Overview
 
-There is a moment, early in the life of any new technology, when its possibilities are more interesting than its applications. Iain Tait has spent 25 years finding that moment and making something in it.
+Iain Tait has spent a quarter of a century making things that didn't quite exist before — and doing it with enough consistency that it stopped being luck a long time ago.
 
-Not to predict the future — more to hold something up and say: *look what this can do*. A glimpse. A question asked in public. What if a website never ended? What if a bakery oven could tell you when the bread was ready? What if two AIs went to war for your loyalty?
+He co-founded POKE London in 2001, at a moment when "digital agency" was still a phrase that needed explaining. In the years that followed, POKE became one of the most original and influential interactive studios in Britain: making participatory art installations for Tate Modern, building one of the first viral social good campaigns in *Global Rich List*, and developing playful experiments in AR and connected hardware long before either of those things had mainstream names. The work didn't follow trends — it tended to arrive before them.
 
-He co-founded POKE London in 2001, when the web was still new enough that almost everything was a first. The studio became known for work that treated the internet as a creative medium rather than a delivery mechanism: *The Warholiser* invited visitors to Tate Modern to remake themselves in Warhol's image before anyone had a word for participatory digital art; *Global Rich List* used a single data point to reframe how people understood their place in the world; *Baker Tweet* wired up a bakery oven to send a message every time fresh bread came out — connected hardware, years before the Internet of Things had a name; *Rubberduckzilla* put an AR giant rubber duck on a rampage through the streets before AR had gone mainstream. *Orange Unlimited* — a webpage that literally never ended — asked the simplest possible question about the medium and turned it into a campaign.
+In 2010 he joined Wieden+Kennedy Portland as Executive Creative Director, inheriting accounts that demanded the highest standard and finding ways to push further. The *Old Spice Responses* campaign, which his team helped shape into a real-time social phenomenon, redefined what interactive advertising could be. *Coke Polar Bowl* used live puppeteering technology to turn the Super Bowl into a shared second-screen experience — a format that had never existed before and hasn't quite been replicated since. Even *Dodge Invisible Monkey*, a crisis turned on its head, became a case study in how to convert a PR problem into a cultural moment. He was named Partner at W+K in December 2011.
 
-In 2010 he joined Wieden+Kennedy Portland, where the same instinct played out at a different scale. Social media was finding its feet as a creative tool, and *Old Spice Responses* asked what would happen if advertising replied — personally, immediately, to real people. The answer turned a deodorant brand into a live cultural event. *Coke Polar Bowl* asked what the second screen could be if you actually designed for it: two animated bears, puppeted live via game controllers from a control room in New York, reacting to every play of Super Bowl XLVI in real time. He was named Partner at W+K in December 2011.
+From Portland he moved to Google Creative Lab, where he led work including *Google Racer* and *Roll It* — multi-device browser experiences that used the then-novel idea of phones as controllers, making Chrome feel magical rather than functional. These were technical experiments that millions of people chose to play with.
 
-From Portland he moved to Google Creative Lab, where browser technology was quietly becoming capable of things it had never done before. *Racer* and *Roll It* asked what would happen if multiple phones and laptops could share the same experience simultaneously — using Chrome not as software but as a playground. Millions of people played.
+In 2013 he returned to Wieden+Kennedy London as ECD, beginning what would be an eight-year run. The work here was consistently surprising in its range: an iconic city-scale celebration of London through Nike; a global rebrand that gave Formula 1 its visual identity back; deepfake technology used to honour the legacy of an artist, not exploit it. And then, starting with Niantic, a run of work that was genuinely unlike anything else in the industry. The first-ever above-the-line campaign for Pokémon GO used real-time game data and turned billboards into PokéStops. *Global Catch Challenge* sent influencers across Japan and inspired a global community to catch 3.36 billion Pokémon in a week. *Ingress Prime* deployed two living AI characters — propaganda-generating, community-trained, personality-evolving — in what is now recognised as a template for AI-driven brand storytelling that the industry is only beginning to catch up with. He left W+K in 2021.
 
-In 2013 he returned to Wieden+Kennedy London as ECD. Eight years of wide-ranging work — a city-wide Nike celebration, a global rebrand for Formula 1, deepfake technology used thoughtfully to honour an artist's practice. And then Niantic: a run of work that kept arriving at the same question in different forms. What if a billboard was also a portal into the game, displaying live data and doubling as a PokéStop? What if you mobilised a global community around a single shared goal — 3.36 billion Pokémon caught in a week? And with *Ingress Prime*, what if two AI characters could learn from their communities, evolve their personalities through real interactions, generate their own propaganda, and run an ongoing information war across social platforms? That campaign, in 2018, looked different to anything else being made. It still does.
+FOOD, which he co-founded that same year, has continued in the same spirit. *JR Reality* — built on Niantic's ARdk 2.0 as the first app to use it — gave anyone with a phone the ability to permanently anchor a portrait and a voice message to a physical location, turning the world into a living mural. AI work with Google has explored territory that few agencies are positioned to even understand, let alone do well.
 
-FOOD, which he co-founded in 2021, continues from the same place. *JR Reality* — the first app to use Niantic's ARdk 2.0 — asked what would happen if anyone could permanently fix a portrait and a voice message to a point in the real world. The answer was a living, growing mural that exists in physical space, contributed to by people who will never meet. Work with Google is exploring what becomes possible at the frontier of AI — the same question it has always been, asked in a new place.
-
-The through-line is not technology for its own sake. It is curiosity about what becomes possible, and an instinct to make something at the earliest opportunity — before the answer is obvious, while the question is still interesting.
+What runs through all of it is a particular quality of curiosity: genuinely interested in what technology can do, not just what it can be seen to do. The best of the work tends to arrive at a question — *what if the billboard was also a game?* *What if the chimp just wasn't there?* *What if two AIs went to war for your loyalty?* — and then answer it with something fun.
 
 ---
 
@@ -99,13 +97,13 @@ The through-line is not technology for its own sake. It is curiosity about what 
 
 - **[JR Reality](../projects/food_superblue_jr_reality.md)** — Global AR art project; first app on Niantic ARdk 2.0 (2022–2023)
 - **[Chemical Brothers: Music Response](../projects/food_chemical_brothers_music_response.md)**
-- **[Dior Addict / Gaia](../projects/food_dior_addict_gaia.md)**
-- **[Google AI Consultancy](../projects/food_google_ai_consultancy.md)**
-- **[Nano Banana / Gemini R&D](../projects/food_nano_banana_gemini.md)**
-- **[IKEA LIVE](../projects/food_ikea_live.md)**
+- **[LVMH / Gaia / Dior](../projects/confidential/food_gaia_dior.md)**
+- **[Google AI Consultancy](../projects/confidential/food_google_ai_consultancy.md)**
+- **[Nano Banana / Gemini R&D](../projects/confidential/food_nano_banana_gemini.md)**
+- **[IKEA LIVE](../projects/confidential/food_ikea_live.md)**
 - **[KEF: Listen & Believe](../projects/food_kef_listen_and_believe.md)**
 - **[RockCorps Unlimited](../projects/food_rockcorps_unlimited.md)**
-- **[Mayhaven](../projects/food_mayhaven.md)**
+- **[Mayhaven](../projects/confidential/food_mayhaven.md)**
 
 ---
 

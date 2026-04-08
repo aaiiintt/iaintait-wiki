@@ -69,8 +69,9 @@ NEEEUM was part of a multi-year account transformation commissioned by Liberty M
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director, W+K London
-- **Dan Norris** — Creative Director, W+K London
-- **Ray Shaughnessy** — Creative Director, W+K London
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
+- **[Dan Norris](../collaborators/dan_norris.md)** — Creative Director, W+K London
+- **[Ray Shaughnessy](../collaborators/ray_shaughnessy.md)** — Creative Director, W+K London
 - **Tom Reas** — Creative, W+K London
 - **Liam Riddler** — Creative, W+K London
 - **Chris Gray** — Creative, W+K London

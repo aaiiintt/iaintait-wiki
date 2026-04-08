@@ -21,6 +21,19 @@ function trimBody(md: string): string {
     .trim();
 }
 
+const GH_BASE = 'https://github.com/aaiiintt/iaintait-wiki/blob/main';
+const DIR_FOR_KIND: Record<string, string> = {
+  project: 'projects',
+  agency: 'agencies',
+  person: 'collaborators',
+  industry: 'industry',
+};
+function githubUrl(node: NodeDatum): string {
+  const slug = node.id.split(':')[1];
+  const dir = DIR_FOR_KIND[node.kind] ?? 'projects';
+  return `${GH_BASE}/${dir}/${slug}.md`;
+}
+
 export function PopCard({ node, graph, onClose, onSelect }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -50,7 +63,9 @@ export function PopCard({ node, graph, onClose, onSelect }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         <header className="popcard-head">
-          <div className={`popcard-kind kind-${node.kind}`}>{node.kind}</div>
+          <div className={`popcard-kind ${node.confidential ? 'kind-confidential' : `kind-${node.kind}`}`}>
+            {node.confidential ? 'confidential' : node.kind}
+          </div>
           <h2 className="popcard-title">{node.title}</h2>
           {(node.year || node.client || node.role) && (
             <div className="popcard-meta">
@@ -68,6 +83,9 @@ export function PopCard({ node, graph, onClose, onSelect }: Props) {
           ) : node.desc ? (
             <p className="popcard-desc">{node.desc}</p>
           ) : null}
+          {node.confidential && (
+            <p className="popcard-confidential-notice">Details available under NDA.</p>
+          )}
 
           {chips.length > 0 && (
             <>
@@ -77,7 +95,7 @@ export function PopCard({ node, graph, onClose, onSelect }: Props) {
                   <button
                     key={c.id}
                     type="button"
-                    className={`chip chip-${c.kind}`}
+                    className={`chip ${c.confidential ? 'chip-confidential' : `chip-${c.kind}`}`}
                     onClick={() => onSelect(c)}
                   >
                     {c.title}
@@ -91,9 +109,9 @@ export function PopCard({ node, graph, onClose, onSelect }: Props) {
           )}
         </div>
 
-        {node.sourceUrls && node.sourceUrls.length > 0 && (
+        {!node.confidential && (
           <footer className="popcard-foot">
-            <a className="popcard-link" href={node.sourceUrls[0]} target="_blank" rel="noreferrer">
+            <a className="popcard-link" href={githubUrl(node)} target="_blank" rel="noreferrer">
               open source ↗
             </a>
           </footer>

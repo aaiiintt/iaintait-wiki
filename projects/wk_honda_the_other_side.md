@@ -59,8 +59,9 @@ The two stories were filmed simultaneously with the same cast on the same locati
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London (lightly involved)
 - **Kim Papworth** — Executive Creative Director, W+K London (credited on award entry)
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director, W+K London (credited on award entry)
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **Graeme Douglas** — Creative Director, W+K London
-- **Scott Dungate** — Creative Director, W+K London
+- **[Scott Dungate](../collaborators/scott_dungate.md)** — Creative Director, W+K London
 - **Daniel Wolfe** — Director (Somesuch & Co.)
 - **Somesuch & Co.** — Production company
 - **Stink Digital / Stink Studios** — Interactive production

@@ -1,24 +1,22 @@
 ---
-title: "Unit 9"
+title: "Unit9"
 type: collaborator
-tags: [production-studio, interactive, POKE-London, Spot-the-Bull]
-aliases: [Unit 9, Unit9]
+tags: [production-studio, interactive, digital, london]
+aliases: [Unit 9, UNIT9]
 source_urls:
+  - https://www.unit9.com
   - https://ifonlyblog.wordpress.com/2009/06/16/orange-spot-the-bull-digital-campaign/
 ---
 
-# Unit 9
+# Unit9
 
-**Type:** Interactive Production Studio
+London-based interactive production studio specialising in digital experiences, interactive film and technology-driven creative work.
 
-## Overview
+## Worked With Iain On
 
-Unit 9 is a London-based interactive production studio specialising in digital experiences, interactive film, and technology-driven creative work. They co-produced the 2008–2009 iterations of Orange Spot the Bull with POKE London.
-
-## Key Projects
-
-- **[Orange Spot the Bull](../projects/poke_spot_the_bull.md)** — Production partner (2008–2009). Built the Papervision3D / Flash AS3 interactive ad unit with live GPS data feed alongside POKE.
+- **[Orange: Spot the Bull](../projects/poke_spot_the_bull.md)** — Production partner alongside POKE London (2008–2009). Built the Papervision3D / Flash AS3 interactive ad unit with a live GPS data feed. *(evidence: projects/poke_spot_the_bull.md)*
 
 ## References
 
-- [If Only We'd Thought of That blog, 2009 — credits Poke and Unit 9 as the production team on Spot the Bull](https://ifonlyblog.wordpress.com/2009/06/16/orange-spot-the-bull-digital-campaign/)
+- [Unit9 — studio site](https://www.unit9.com)
+- [If Only We'd Thought of That — Orange Spot the Bull credits (2009)](https://ifonlyblog.wordpress.com/2009/06/16/orange-spot-the-bull-digital-campaign/)

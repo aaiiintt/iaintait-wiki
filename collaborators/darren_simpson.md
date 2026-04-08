@@ -9,11 +9,12 @@ source_urls:
 
 # Darren Simpson
 
-**Creative Director, Wieden+Kennedy London**
+Creative Director at Wieden+Kennedy London; personal portfolio at darrensimpson.com documents his work on the Niantic Ingress Prime launch campaign. *(Source: darrensimpson.com/ingress-prime.)*
 
-## W+K London Projects
+## Worked With Iain On
 
-- **[Ingress Prime: ADA vs. JARVIS](../projects/wk_niantic_ingress_prime.md)** — Creative Director
+- **[Ingress Prime: ADA vs. JARVIS](../projects/wk_niantic_ingress_prime.md)** — Creative Director (with Iain Tait and Tony Davidson as ECDs; creatives Adam Newby & Pete Browse). *(evidence: projects/wk_niantic_ingress_prime.md; raw/research/ingress_prime_ada_vs_jarvis_2026-04-07.md)*
+- **[Helping Everyone Eat Better (Sainsbury's)](../projects/wk_helping_everyone_eat_better.md)** — Creative Director. *(evidence: projects/wk_helping_everyone_eat_better.md)*
 
 ## References
 

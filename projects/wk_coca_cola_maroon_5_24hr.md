@@ -57,7 +57,7 @@ Fans globally could influence the creative process as it happened — their cont
 - **[Iain Tait](../collaborators/iain_tait.md)** — Global Interactive Creative Director, W+K (authored the Campaign magazine first-person piece about the project; quoted in The Drum)
 - **[Dom Felton](../collaborators/dom_felton.md)** — Producer, W+K London
 - **[Nexus Studios](../collaborators/nexus_studios.md)** (then Nexus Interactive Arts) — Production / technology company
-- **Hellicar & Lewis** (Pete Hellicar + Joel Gethin Lewis) — Directing duo (on Nexus Interactive Arts roster); built gestural openFrameworks system
+- **Hellicar & Lewis** (Pete Hellicar + **[Joel Gethin Lewis](../collaborators/joel_gethin_lewis.md)**) — Directing duo (on Nexus Interactive Arts roster); built gestural openFrameworks system
 - **Chris Sugrue, James George, Josh Nimoy, Joshua Noble, Marek Bereza, Todd Vanderlin** — Hellicar & Lewis collaborators
 - **PJ Morton** — Featured artist on the track
 - **[Jackie Jantos](../collaborators/jackie_jantos.md)** — Client, Coca-Cola (per Iain Tait)

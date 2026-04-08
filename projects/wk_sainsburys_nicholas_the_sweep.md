@@ -64,11 +64,12 @@ Shot in Romania on a pre-existing Victorian London studio lot (September 2019). 
 **W+K London:**
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
-- **Dan Norris** — Creative Director
-- **Ray Shaughnessy** — Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
+- **[Dan Norris](../collaborators/dan_norris.md)** — Creative Director
+- **[Ray Shaughnessy](../collaborators/ray_shaughnessy.md)** — Creative Director
 - **[Tom Bender](../collaborators/tom_bender.md)** — Creative
 - **[Tom Corcoran](../collaborators/tom_corcoran.md)** — Creative
-- **Tomas Coleman** — Creative
+- **[Tomas Coleman](../collaborators/tomas_coleman.md)** — Creative
 - **Mat Kramer** — Creative
 
 **Production:**

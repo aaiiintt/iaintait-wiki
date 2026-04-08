@@ -58,10 +58,10 @@ D&AD's case study described the practice that followed as "a go-to practice for 
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Creative Director / Global Interactive ECD
-- **Jason Bagley** — Creative Director, Art Director, Director, Writer
-- **Eric Baldwin** — Creative Director, Art Director, Director, Writer
-- **Mark Fitzloff** — Creative Director
-- **Susan Hoffman** — Creative Director
+- **[Jason Bagley](../collaborators/jason_bagley.md)** — Creative Director, Art Director, Director, Writer
+- **[Eric Baldwin](../collaborators/eric_baldwin.md)** — Creative Director, Art Director, Director, Writer
+- **[Mark Fitzloff](../collaborators/mark_fitzloff.md)** — Creative Director
+- **[Susan Hoffman](../collaborators/susan_hoffman.md)** — Creative Director
 - **Craig Allen** — Art Director, Director, Writer
 - **Eric Kallman** — Art Director, Director, Writer
 - **Matthew Carroll** — Designer

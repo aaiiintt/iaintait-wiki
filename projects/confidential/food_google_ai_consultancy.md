@@ -17,21 +17,19 @@ agency: FOOD
 client: Google
 year: 2023
 primary_role: Strategic / Creative Partner
+confidential: true
 ---
 
 # Google AI Consultancy
 
 ## Overview
 
-This initiative represented a high-level creative and strategic consultancy partnership with Google to explore the edge cases of cultural integration for artificial intelligence.
-
-## Project Summary
-
-Functioning as a specialized, high-velocity creative sprint, the project was aimed at moving Google's AI technologies beyond pure utility and into mainstream culture. By exploring format disruption and hypothesizing celebrity partnerships, the FOOD team helped define how AI could be authentically embedded into cultural entertainment streams, creating a playbook for more organic engagement with emerging tech.
+A creative and strategic consultancy for Google exploring how AI technologies could be embedded into mainstream culture.
 
 ## Collaborators
 
 - **[Iain Tait](../../collaborators/iain_tait.md)** — Strategic / Creative Partner, FOOD
+- **[Ben Malbon](../../collaborators/ben_malbon.md)** — Client / Google stakeholder *(evidence: user testimony 2026-04-08)*
 
 ## References & Media
 

@@ -1,43 +1,26 @@
 ---
-title: Wearing Gillian
+title: "Wearing Gillian"
 type: project
-tags:
-  - W+K-London
-  - deepfake
-  - AI
-  - art
-  - Gillian-Wearing
-  - Private-Island
-  - MoMA
-  - Guggenheim
-  - 2018
-aliases:
-  - Wearing Gillian
-  - Gillian Wearing deepfake
-  - Wearing Gillian W+K
+tags: [W+K-London, deepfake, AI, art, Gillian-Wearing, Private-Island, MoMA, Guggenheim, 2018]
+aliases: [Wearing Gillian, Gillian Wearing deepfake, Wearing Gillian W+K]
 source_urls:
-  - >-
-    https://www.wk.com/news/wearing-gillian-explores-the-lines-between-real-and-fake-art-and-ad/
-  - 'https://vimeo.com/306770925'
-  - >-
-    https://www.fastcompany.com/90279597/this-new-deep-fake-video-is-both-advertising-and-a-piece-of-art
-  - 'https://brooklynrail.org/2018/11/artseen/GILLIAN-WEARING-Life'
-  - >-
-    https://www.guggenheim.org/press-release/guggenheim-museum-presents-gillian-wearing-wearing-masks
-  - 'https://www.acmi.net.au/works/120108--wearing-gillian'
-  - >-
-    https://shots.net/news/view/the-craft-code-and-controlled-chaos-of-chris-boyle
-  - >-
-    https://amt-lab.org/blog/2021/8/positive-implications-of-deepfake-technology-in-the-arts-and-culture
-agency: wieden_and_kennedy_london
-year: 2018
-primary_role: Executive Creative Director
-client: Gillian Wearing
+  - https://www.wk.com/news/wearing-gillian-explores-the-lines-between-real-and-fake-art-and-ad/
+  - https://vimeo.com/306770925
+  - https://www.fastcompany.com/90279597/this-new-deep-fake-video-is-both-advertising-and-a-piece-of-art
+  - https://brooklynrail.org/2018/11/artseen/GILLIAN-WEARING-Life
+  - https://www.guggenheim.org/press-release/guggenheim-museum-presents-gillian-wearing-wearing-masks
+  - https://www.acmi.net.au/works/120108--wearing-gillian
+  - https://shots.net/news/view/the-craft-code-and-controlled-chaos-of-chris-boyle
+  - https://amt-lab.org/blog/2021/8/positive-implications-of-deepfake-technology-in-the-arts-and-culture
 ---
 
 # Wearing Gillian
 
+**Agency:** [Wieden+Kennedy London](../agencies/wieden_and_kennedy_london.md)
 **Artist:** Gillian Wearing
+**Year:** 2018 (premiered Cincinnati Art Museum, Oct–Dec 2018)
+**Iain's role:** Executive Creative Director
+**Client:** Gillian Wearing
 
 > *"I loved it [Nothing Beats A Londoner] because it felt very in the moment, and it felt like a short film as well as an ad. So I looked up who made it, and it was Wieden+Kennedy. And it turns out they're located just a few streets away from where I live."* — Gillian Wearing, Fast Company, December 2018
 
@@ -51,9 +34,9 @@ Gillian Wearing is one of Britain's most celebrated contemporary artists — kno
 
 The catalyst was *Nothing Beats a Londoner* (2018). Wearing saw the Nike film, loved it, researched who made it, and found W+K London was around the corner from where she lives. She contacted them and they had a meeting immediately. From the Fast Company article: the idea for a deepfake film *"came out of a conversation with Cincinnati Art Museum curator Nathaniel Stein about how the museum might market the exhibition."* Wearing then researched contemporary advertising, found Nothing Beats A Londoner, and made the connection.
 
-Iain showed her deepfake technology at their meeting. She was immediately interested — it resonated profoundly with her practice. Her entire career had been about masking, persona, and the performed self. Deepfakes were the digital-native evolution of exactly those themes.
+Coincidentally? Iain showed her deepfake technology at their meeting. She was immediately interested — it resonated profoundly with her practice. Her entire career had been about masking, persona, and the performed self. Deepfakes were the digital-native evolution of exactly those themes.
 
-Iain's approach: he gave Wearing *"the most classic advertising brief template to fill out, as if she was the product or brand, making the process as much like they would go through with any other client."* This application of ad agency methodology to fine art was Iain's distinctive creative contribution.
+Iain's approach: he gave Wearing *"the most classic advertising brief template to fill out, as if she was the product or brand, making the process as much like they would go through with any other client."* This application of ad agency methodology to fine art was Iain's creative contribution.
 
 The result was directed by Chris Boyle at Private Island — a production company founded in 2015 that would go on to become one of the leading studios in AI/generative filmmaking, in part because of what they learned on this project.
 
@@ -91,7 +74,7 @@ Per Chris Boyle (Private Island), director: *"That ended up in MoMA, which reall
 ## Cultural Legacy
 
 - One of the first significant artistic uses of deepfake technology, debuted December 2018 — predating widespread public awareness of deepfakes' creative applications
-- Conceptually perfect: Wearing's entire career had been about identity performance, masking, and the mediated self — deepfakes were the inevitable digital evolution
+- Wearing's entire career had been about identity performance, masking, and the mediated self — deepfakes were the inevitable digital evolution
 - Cited by the New York Times (April 2020) as a foundational example when writing about advertising's deepfake future
 - Used as a case study in academic analysis of deepfakes in arts/culture (AMT Lab, Carnegie Mellon, 2021) alongside Dalí Lives at the Dalí Museum
 - The work traveled from a regional US art museum to the Guggenheim to MoMA — the canonical escalation path for significant contemporary art
@@ -105,7 +88,7 @@ Per Chris Boyle (Private Island), director: *"That ended up in MoMA, which reall
 - **[Iain Tait](../collaborators/)** — ECD, W+K London; initiated and led the collaboration; quoted in Fast Company
 - **Gillian Wearing** — Artist, subject, creative director of her own image
 - **Nathaniel Stein** — Curator, Cincinnati Art Museum; his conversation with Wearing sparked the project
-- **[Chris Boyle](../collaborators/chris_boyle.md)** — Director, [Private Island](../collaborators/private_island.md)
+- **[Chris Boyle](../collaborators/chris_boyle.md)** — Director, [Private Island](../collaborators/)
 - **[Helen Power](../collaborators/helen_power.md)** — Executive Producer / Co-founder, Private Island
 - **[Rose Fairley](../collaborators/rose_fairley.md)** — Producer, W+K London
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Co-ECD, W+K London
@@ -113,16 +96,6 @@ Per Chris Boyle (Private Island), director: *"That ended up in MoMA, which reall
 ---
 
 ## References & Media
-
-### Assets
-![wk_gillian_wearing_deepfake animated](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake.gif)
-
-![wk_gillian_wearing_deepfake frame 01](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake_frame_01.jpg)
-![wk_gillian_wearing_deepfake frame 02](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake_frame_02.jpg)
-![wk_gillian_wearing_deepfake frame 03](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake_frame_03.jpg)
-![wk_gillian_wearing_deepfake frame 04](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake_frame_04.jpg)
-![wk_gillian_wearing_deepfake frame 05](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake_frame_05.jpg)
-![wk_gillian_wearing_deepfake frame 06](../raw/media/wk_gillian_wearing_deepfake/2019_wk_gillian_wearing_deepfake_frame_06.jpg)
 
 ### Primary
 - [W+K London blog: "Wearing Gillian Explores The Space Between Real And Fake, Art And Ad" (Dec 14, 2018)](https://www.wk.com/news/wearing-gillian-explores-the-lines-between-real-and-fake-art-and-ad/)

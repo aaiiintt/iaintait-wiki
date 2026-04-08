@@ -39,9 +39,10 @@ The 90-second version aired during ITV's Ant & Dec's Saturday Night Takeaway on 
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director, W+K London
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **[Hollie Walker](../collaborators/hollie_walker.md)** — Creative Director, W+K London
 - **[Adam Newby](../collaborators/adam_newby.md)** — Creative, W+K London
-- **Will Wells** — Creative, W+K London
+- **[Will Wells](../collaborators/will_wells.md)** — Creative, W+K London
 - **Ryan Teixeira** — Design Director, W+K London
 - **Alex Thursby-Pelham** — Lead Designer, W+K London
 - **James Laughton** — TV Producer, W+K London

@@ -65,7 +65,7 @@ Nike's original YouTube upload was pulled in March 2018 after London activewear 
 - **Ryan Fisher** — Group Account Director
 - **Sophy Woltman** — Account Director
 - **Holly Baker-Cliff** — Account Manager
-- **James Guy** — Head of Production / Executive Producer
+- **[James Guy](../collaborators/james_guy.md)** — Head of Production / Executive Producer
 - **Michelle Brough** — TV Producer
 - **[Rose Fairley](../collaborators/rose_fairley.md)** — TV Production Assistant
 - **Tom Dean** — Social Producer

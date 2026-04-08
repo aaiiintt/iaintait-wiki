@@ -37,6 +37,7 @@ The film was created entirely during COVID-19 lockdown and made using authentic 
 **W+K London:**
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **[David Dao](../collaborators/david_dao.md)** — Creative Director
 - **Katy Edelsten** — Creative
 - **Rachel Clancy** — Creative

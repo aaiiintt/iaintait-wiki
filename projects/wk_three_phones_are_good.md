@@ -104,7 +104,8 @@ This was a full brand platform, not just a single film:
 **Agency: Wieden+Kennedy London**
 - **[Iain Tait](../collaborators/)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
-- **Hollie Walker** — Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
+- **[Hollie Walker](../collaborators/hollie_walker.md)** — Creative Director
 - **[Tom Bender](../collaborators/tom_bender.md)** — Art Director
 - **[Tom Corcoran](../collaborators/tom_corcoran.md)** — Copywriter
 - **Richard Adkins** — TV Producer

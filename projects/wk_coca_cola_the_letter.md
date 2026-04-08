@@ -43,10 +43,11 @@ Directed by **Taika Waititi** (*Jojo Rabbit*, *Thor: Ragnarok*) — whose home c
 **W+K London:**
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
-- **Joe De Souza** — Executive Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
+- **[Joe De Souza](../collaborators/joe_de_souza.md)** — Executive Creative Director
 - **[Juan Sevilla](../collaborators/juan_sevilla.md)** — Creative Director
 - **Ben Shaffery** — Creative
-- **Tomas Coleman** — Creative
+- **[Tomas Coleman](../collaborators/tomas_coleman.md)** — Creative
 - **Michelle Brough** — Agency Producer
 - **Gemma Humphries** — Executive Producer
 

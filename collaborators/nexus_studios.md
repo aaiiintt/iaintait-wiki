@@ -1,26 +1,23 @@
 ---
 title: "Nexus Studios"
 type: collaborator
-tags: [production, animation, interactive, Emmy, BAFTA, Coca-Cola]
+tags: [production, animation, interactive, ar, emmy, bafta, london]
 aliases: [Nexus Studios, Nexus Interactive Arts, Nexus Productions]
 source_urls:
   - https://nexusstudios.com
+  - https://nexusstudios.com/work/jr-reality/
 ---
 
 # Nexus Studios
 
-**Formerly known as:** Nexus Interactive Arts / Nexus Productions
-**Current name:** Nexus Studios (nexusstudios.com)
-**Type:** Emmy and BAFTA-winning global animation and interactive production studio
+London-based Emmy and BAFTA-winning global animation and interactive production studio (formerly Nexus Productions / Nexus Interactive Arts). Works across animated film, immersive and AR experiences.
 
-## Overview
+## Worked With Iain On
 
-Nexus Studios (formerly Nexus Interactive Arts / Nexus Productions) is a London-based global production studio. On the Coca-Cola / Maroon 5 "24hr Recording Session" (2011), Nexus Interactive Arts was the production/technology company, with **Hellicar & Lewis** (Pete Hellicar + Joel Gethin Lewis) operating as the directing duo on their roster. The Drum described it as: *"The real-time visuals will be entrusted to Nexus Interactive Arts directing duo Hellicar & Lewis."*
-
-## Key Projects
-
-- **[Coca-Cola / Maroon 5: 24hr Recording Session](../projects/wk_coca_cola_maroon_5_24hr.md)** — Production / technology company (with Hellicar & Lewis directing) (2011)
+- **[Coca-Cola / Maroon 5: 24hr Recording Session](../projects/wk_coca_cola_maroon_5_24hr.md)** — Production / technology company (Nexus Interactive Arts), with directing duo Hellicar & Lewis on their roster handling real-time visuals (W+K, 2011). *(evidence: projects/wk_coca_cola_maroon_5_24hr.md)*
+- **[Superblue / JR Reality](../projects/food_superblue_jr_reality.md)** — Experience design and technical build on both beta and public launch versions of JR's global AR art project, commissioned via FOOD (2022–2023). *(evidence: projects/food_superblue_jr_reality.md)*
 
 ## References
 
-- [Nexus Studios website](https://nexusstudios.com)
+- [Nexus Studios — studio site](https://nexusstudios.com)
+- [Nexus Studios — JR Reality case study](https://nexusstudios.com/work/jr-reality/)

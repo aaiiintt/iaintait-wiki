@@ -19,8 +19,14 @@
   top: 80px;
   bottom: 24px;
   width: 440px;
+  max-width: calc(100vw - 48px);
+  min-height: 0;
   z-index: 51;
   animation: popcard-slide 320ms cubic-bezier(.34, 1.2, .64, 1);
+}
+.popcard-docked .popcard-scroll { min-height: 0; }
+@media (max-height: 640px) {
+  .popcard-docked { top: 64px; bottom: 12px; }
 }
 @keyframes popcard-slide {
   0%   { transform: translateX(-32px); opacity: 0; }
@@ -126,9 +132,10 @@
   border: 1px solid #000;
   margin-bottom: 8px;
 }
-.kind-project { background: #ff2a00; color: #fff; }
-.kind-agency  { background: #0044ff; color: #fff; }
-.kind-person  { background: #00c853; color: #000; }
+.kind-project      { background: #ff2a00; color: #fff; }
+.kind-agency       { background: #0044ff; color: #fff; }
+.kind-person       { background: #00c853; color: #000; }
+.kind-confidential { background: #fff; color: #ff2a00; border: 1px dashed #ff2a00; }
 .popcard-title {
   font-size: 18px;
   line-height: 1.2;
@@ -168,16 +175,28 @@
 button.chip { line-height: 1.4; }
 button.chip:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 #000; }
 button.chip:active { transform: translate(0, 0); box-shadow: none; }
-.chip-project { background: #ff2a00; color: #fff; }
-.chip-agency  { background: #0044ff; color: #fff; }
-.chip-person  { background: #fff; }
-.chip-more    { background: #000; color: #fff; }
+.chip-project      { background: #ff2a00; color: #fff; }
+.chip-agency       { background: #0044ff; color: #fff; }
+.chip-person       { background: #fff; }
+.chip-more         { background: #000; color: #fff; }
+.chip-confidential { background: #fff; color: #ff2a00; border: 1px dashed #ff2a00; }
 .popcard-link {
   display: inline-block;
   font-size: 11px;
   text-decoration: underline;
   color: #000;
 }
+.popcard-confidential-notice {
+  font-size: 10px;
+  color: #ff2a00;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 10px 0 0;
+  padding-top: 8px;
+  border-top: 1px dashed #ff2a00;
+  opacity: 0.7;
+}
+
 .popcard-close {
   position: absolute;
   top: 6px;

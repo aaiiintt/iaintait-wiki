@@ -25,3 +25,4 @@ Freddy Taylor is a creative and art director at W+K London with an idiosyncratic
 
 - **[Sainsbury's: Food Dancing](../projects/wk_sainsburys_food_dancing.md)** (2017) — Creative
 - **[Sainsbury's: The Big Night](../projects/wk_sainsburys_the_big_night.md)** (2018) — Creative
+- **[Sainsbury's: Helping Everyone Eat Better](../projects/wk_helping_everyone_eat_better.md)** — Senior Creative. *(evidence: projects/wk_helping_everyone_eat_better.md)*

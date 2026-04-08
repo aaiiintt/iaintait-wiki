@@ -12,6 +12,8 @@ export interface NodeDatum {
   slug?: string;
   sourceUrls?: string[];
   body?: string;
+  hasProfile?: boolean;
+  confidential?: boolean;
   [k: string]: unknown;
 }
 
@@ -40,8 +42,8 @@ export const EDGE_COLORS: Record<EdgeDatum['kind'], string> = {
 };
 
 export function sizeForRichness(r: number, kind: NodeKind): number {
-  const base = { project: 6, agency: 5, person: 3, industry: 5 }[kind];
-  return base + Math.sqrt((r ?? 0) / 60);
+  const base = { project: 3, agency: 3, person: 2, industry: 3 }[kind];
+  return base + Math.sqrt((r ?? 0) / 180);
 }
 
 export async function fetchGraph(): Promise<Graph> {

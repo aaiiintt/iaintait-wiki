@@ -78,12 +78,13 @@ From Justin Gitlin (Mode Set): *"Roll It was a Google Chrome Experiment, commiss
 ## Collaborators
 
 - **[Iain Tait](../collaborators/)** — ECD, Google Creative Lab NYC
+- **[Ben Malbon](../collaborators/ben_malbon.md)** — Managing Director, Google Creative Lab NYC *(evidence: The Guardian 2025 profile; Mesh career data; user testimony 2026-04-08)*
 - **[James Cooper](../collaborators/james_cooper.md)** — Creative Director, Google Creative Lab
 - **[Stewart Smith](../collaborators/stewart_smith.md)** — Creative technologist / software engineer, Google Creative Lab (internal)
 - **[Legwork Studio](../collaborators/legwork_studio.md)** — UX, art direction, design, 3D modeling, animation (Denver)
 - **Mode Set (Justin Gitlin / Cacheflowe)** — Primary development partner (Denver); author of the HTML5 Rocks case study
 - **[Tim Healy](../collaborators/tim_healy.md)** — Original music (London)
-- **Suzanne Chambers** — Listed on Awwwards entry alongside Legwork Studio
+- **[Suz Chambers](../collaborators/suz_chambers.md)** — Executive Producer, Google Creative Lab *(evidence: Awwwards Roll It entry, SOTD June 20, 2013)*
 
 *Note: PA Consulting, listed in an earlier version of this file, has been confirmed absent from all credible sources — removed.*
 

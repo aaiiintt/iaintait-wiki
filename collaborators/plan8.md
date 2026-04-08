@@ -1,13 +1,20 @@
 ---
-primary_role: Sound Design & Engineering
+title: "Plan8"
+type: collaborator
+tags: [sound-design, interactive-audio, music, studio, stockholm]
+aliases: [Plan 8, Plan8 Studio]
+source_urls:
+  - https://plan8.co
 ---
+
 # Plan8
 
-## Overview
+Stockholm-based music and sound design studio specialising in interactive audio for digital and branded experiences.
 
-Plan8 is a music and sound design agency specializing in interactive audio and sophisticated sound engineering for digital experiences.
+## Worked With Iain On
 
-## Key Projects
+- **[Racer (Google Creative Lab)](../projects/google_racer.md)** — Interactive sound design and audio engineering, synchronising Giorgio Moroder's score and SFX across multiple phones in real time (Cannes Gold Lion, 2013). *(evidence: projects/google_racer.md)*
 
-* **[Racer (Google Creative Lab)](../projects/google_racer.md)** (2013)
-    Plan8 handled the complex interactive sound design and engineering for Racer, ensuring that Giorgio Moroder's soundtrack and the game's sound effects were perfectly synchronized across multiple physical devices playing different audio stems.
+## References
+
+- [Plan8 — studio site](https://plan8.co)

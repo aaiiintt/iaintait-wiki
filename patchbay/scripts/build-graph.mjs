@@ -11,13 +11,28 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const WIKI = path.resolve(__dirname, '../..');
 const OUT = path.resolve(__dirname, '../public/graph.json');
 
-const PROJECT_SLUGS = [
-  'wk_nothing_beats_a_londoner',
-  'wk_gillian_wearing_deepfake',
-  'wk_three_phones_are_good',
-  'wk_niantic_ingress_prime',
-  'wk_sainsburys_nicholas_the_sweep',
-];
+// Auto-discover every project markdown file under wiki/projects/ (recursively).
+// Slug = path relative to projects/, without .md extension. Subdirs (e.g.
+// "confidential/foo") become part of the slug.
+function discoverProjectSlugs() {
+  const root = path.join(WIKI, 'projects');
+  const out = [];
+  const walk = (dir, prefix) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('.')) continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(full, prefix ? `${prefix}/${entry.name}` : entry.name);
+      } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        const base = entry.name.slice(0, -3);
+        out.push(prefix ? `${prefix}/${base}` : base);
+      }
+    }
+  };
+  walk(root, '');
+  return out.sort();
+}
+const PROJECT_SLUGS = discoverProjectSlugs();
 
 const slugify = (s) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
@@ -29,9 +44,15 @@ const readMd = (p) => {
 
 const wordCount = (s) => (s.match(/\b\w+\b/g) || []).length;
 
+// For confidential projects, only expose the ## Overview section body.
+const extractOverview = (body) => {
+  const m = body.match(/##\s+Overview\s*\n([\s\S]*?)(?=\n##\s+|$)/);
+  return m ? `## Overview\n\n${m[1].trim()}` : '';
+};
+
 const extractCollabLinks = (body) => {
   // [Name](../collaborators/slug.md) — Role
-  const re = /\[([^\]]+)\]\(\.\.\/collaborators\/([^)]+)\.md\)\s*(?:[—-]\s*([^\n]+))?/g;
+  const re = /\[([^\]]+)\]\((?:\.\.\/)+collaborators\/([^)]+)\.md\)\s*(?:[—-]\s*([^\n]+))?/g;
   const out = [];
   let m;
   while ((m = re.exec(body)) !== null) {
@@ -70,6 +91,9 @@ const addNode = (n) => {
   const existing = nodes.get(n.id);
   if (existing) {
     if ((n.richness ?? 0) > (existing.richness ?? 0)) existing.richness = n.richness;
+    if (n.hasProfile && !existing.hasProfile) existing.hasProfile = true;
+    if (n.body && (!existing.body || n.body.length > (existing.body?.length ?? 0))) existing.body = n.body;
+    if (n.title && (!existing.title || n.title.length > existing.title.length)) existing.title = n.title;
     return existing;
   }
   nodes.set(n.id, n);
@@ -89,33 +113,40 @@ for (const slug of PROJECT_SLUGS) {
   }
   const fm = parsed.data || {};
   const body = parsed.content;
-  const words = wordCount(body);
-  const { assets, refs } = countAssetsAndRefs(body);
-  const richness = words + 50 * refs + 30 * assets;
-
-  // Project description: first paragraph after first H2.
-  const firstPara =
-    body.split(/\n##\s+/).slice(1).join('\n##  ').match(/\n\n([^\n][^\n]+)/)?.[1] ||
-    body.split('\n').find((l) => l.trim().length > 60) ||
-    '';
+  const isConfidential = slug.startsWith('confidential/') || !!fm.confidential;
+  const safeBody = isConfidential ? extractOverview(body) : body;
+  const words = wordCount(safeBody);
+  const { assets, refs } = countAssetsAndRefs(safeBody);
+  // Confidential projects get a fixed baseline richness so they don't render tiny.
+  const richness = isConfidential ? 30 : words + 50 * refs + 30 * assets;
 
   const projectId = `project:${slug}`;
+  // Project description: first paragraph after first H2.
+  const firstParaSource = isConfidential ? safeBody : body;
+  const firstPara =
+    firstParaSource.split(/\n##\s+/).slice(1).join('\n##  ').match(/\n\n([^\n][^\n]+)/)?.[1] ||
+    firstParaSource.split('\n').find((l) => l.trim().length > 60) ||
+    '';
+
   addNode({
     id: projectId,
     kind: 'project',
     title: fm.title || slug,
     year: fm.year ?? null,
     desc: firstPara.trim().slice(0, 320),
-    body,
+    body: safeBody,
     richness,
     sourceUrls: fm.source_urls || [],
     client: fm.client || null,
     slug,
+    ...(isConfidential && { confidential: true }),
   });
 
-  // Agency from frontmatter
+  // Agency from frontmatter — normalize free-text labels to canonical slugs
+  // so e.g. "Google Creative Lab, New York" and "google_creative_lab" collapse
+  // to one node.
   if (fm.agency) {
-    const agSlug = fm.agency;
+    const agSlug = canonicalAgencySlug(fm.agency);
     const agencyFile = path.join(WIKI, 'agencies', `${agSlug}.md`);
     const ag = readMd(agencyFile);
     const agId = `agency:${agSlug}`;
@@ -142,6 +173,7 @@ for (const slug of PROJECT_SLUGS) {
       role: c.role || null,
       body: cMd?.content || '',
       richness: cMd ? wordCount(cMd.content) : 60,
+      hasProfile: !!cMd,
     });
     addEdge(projectId, cId, 'collab');
   }
@@ -156,9 +188,22 @@ for (const slug of PROJECT_SLUGS) {
       title: c.name,
       role: c.role || null,
       richness: 40,
+      hasProfile: false,
     });
     addEdge(projectId, cId, 'collab');
   }
+}
+
+function canonicalAgencySlug(raw) {
+  const s = String(raw).toLowerCase();
+  if (s.includes('google')) return 'google_creative_lab';
+  if (s.includes('portland')) return 'wieden_and_kennedy_portland';
+  if (s.includes('wieden') && s.includes('london')) return 'wieden_and_kennedy_london';
+  if (s.includes('wieden')) return 'wieden_and_kennedy_london';
+  if (s.includes('poke')) return 'poke_london';
+  if (s.includes('food')) return 'food';
+  // Already a slug-like string — pass through.
+  return slugify(s);
 }
 
 function extractH1(s) {
@@ -182,6 +227,7 @@ function prettify(slug) {
       role: md.data?.role || 'ECD',
       body: md.content,
       richness: wordCount(md.content),
+      hasProfile: true,
     });
   }
 }

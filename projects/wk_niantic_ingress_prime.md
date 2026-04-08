@@ -1,31 +1,20 @@
 ---
-title: 'Ingress Prime: ADA vs. JARVIS'
+title: "Ingress Prime: ADA vs. JARVIS"
 type: project
-tags:
-  - W+K-London
-  - Niantic
-  - Ingress-Prime
-  - AI
-  - ARG
-  - Tool-of-North-America
-  - Private-Island
-  - 2018
-aliases:
-  - ADA vs JARVIS
-  - Ingress Prime campaign
-  - Meet the AIs
+tags: [W+K-London, Niantic, Ingress-Prime, AI, ARG, Tool-of-North-America, Private-Island, 2018]
+aliases: [ADA vs JARVIS, Ingress Prime campaign, Meet the AIs]
 source_urls:
-  - 'https://toolofna.com/work/ai/ingress-prime-ada-vs-jarvis/'
-  - 'https://chrisboyle.co.uk/Ingress-Prime'
-  - 'https://darrensimpson.com/ingress-prime'
-  - 'https://vimeo.com/315856482'
-agency: wieden_and_kennedy_london
-client: Niantic
-year: 2018
-primary_role: Executive Creative Director
+  - https://toolofna.com/work/ai/ingress-prime-ada-vs-jarvis/
+  - https://chrisboyle.co.uk/Ingress-Prime
+  - https://darrensimpson.com/ingress-prime
 ---
 
 # Ingress Prime: ADA vs. JARVIS
+
+**Agency:** [Wieden+Kennedy London](../agencies/wieden_and_kennedy_london.md)
+**Client:** Niantic
+**Year:** 2018 (Ingress Prime launched November 5, 2018)
+**Iain's role:** Executive Creative Director
 
 ## The Campaign
 
@@ -77,7 +66,7 @@ A short film launched the campaign, framing ADA and JARVIS as a real-world infor
 
 | Role | Name |
 |---|---|
-| ECDs | Tony Davidson & Iain Tait |
+| ECDs | Iain Tait |
 | CD | Darren Simpson |
 | Creatives | Adam Newby & Peter Browse |
 | Producers | Dom Felton & Iona Patterson |
@@ -97,7 +86,6 @@ Campaign Magazine's 2019 School Reports cited *Ingress Prime* as standout work f
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
-- **Tony Davidson** — Executive Creative Director, W+K London
 - **[Darren Simpson](../collaborators/darren_simpson.md)** — Creative Director, W+K London
 - **[Adam Newby](../collaborators/adam_newby.md)** — Creative, W+K London
 - **[Pete Browse](../collaborators/pete_browse.md)** — Creative, W+K London
@@ -110,16 +98,6 @@ Campaign Magazine's 2019 School Reports cited *Ingress Prime* as standout work f
 - **[Tool of North America](../collaborators/tool_of_north_america.md)** — AI ecosystem build
 
 ## References & Media
-
-### Assets
-![wk_niantic_ingress_prime animated](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime.gif)
-
-![wk_niantic_ingress_prime frame 01](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime_frame_01.jpg)
-![wk_niantic_ingress_prime frame 02](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime_frame_02.jpg)
-![wk_niantic_ingress_prime frame 03](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime_frame_03.jpg)
-![wk_niantic_ingress_prime frame 04](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime_frame_04.jpg)
-![wk_niantic_ingress_prime frame 05](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime_frame_05.jpg)
-![wk_niantic_ingress_prime frame 06](../raw/media/wk_niantic_ingress_prime/2018_wk_niantic_ingress_prime_frame_06.jpg)
 
 - [Tool of North America: full case study](https://toolofna.com/work/ai/ingress-prime-ada-vs-jarvis/)
 - [Chris Boyle: teaser film credits](https://chrisboyle.co.uk/Ingress-Prime)

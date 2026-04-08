@@ -1,12 +1,20 @@
+---
+title: "Legwork Studio"
+type: collaborator
+tags: [design, ux, creative-tech, studio, denver]
+aliases: [Legwork]
+source_urls:
+  - https://legworkstudio.com
+---
+
 # Legwork Studio
 
-**Role Focus:** Design & User Experience
-**Key Agencies:** Independent Studio (Partnered with Google Creative Lab)
+Denver-based design and interactive studio. Partnered with Google Creative Lab on Chrome Experiments, contributing design, UX and environmental aesthetics.
 
-## Associated Projects
+## Worked With Iain On
 
-* [Roll It](../projects/google_roll_it.md)
+- **[Roll It (Google Creative Lab)](../projects/google_roll_it.md)** — Design / UX / environment partner on the WebGL + WebSockets Chrome Experiment, alongside Mode Set. *(evidence: projects/google_roll_it.md)*
 
-## Background & Forensics
+## References
 
-Legwork Studio was instrumental in the design, user experience, and environmental aesthetics of the WebGL/WebSocket Chrome Experiment "Roll It", collaborating heavily with Google Creative Lab and Mode Set.
+- [Legwork Studio — studio site](https://legworkstudio.com)

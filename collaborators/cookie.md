@@ -1,20 +1,22 @@
 ---
-primary_role: Illustrator / Designer
+title: "Simon Cook (Cookie)"
+type: collaborator
+tags: [POKE-London, illustrator, designer, Baker-Tweet, Malice-Box]
+aliases: [Cookie, Simon Cook]
+source_urls:
+  - https://www.theguardian.com/media/pda/2009/apr/03/twitter-marketingandpr
+primary_role: "Illustrator / Designer, POKE London"
 ---
+
 # Simon Cook (Cookie)
 
-**Associated Agency:** POKE London
+Known within POKE as "Cookie," Simon Cook was a designer and illustrator at POKE London. He is credited with the visual identity of Baker Tweet, and Iain Tait's own crackunit.com archive names him as one of the POKE team who worked on The Malice Box Quest (2007). *(evidence: raw/archive/poke_malice_box.md — "Tom and Cookie, two of the other Poke folk who worked on the game")*
 
-## Overview
+## Worked With Iain On
 
-Referred to affectionately in the industry as "Cookie," he was a core designer at POKE London during the agency's golden era. His aesthetic and creative technology sensibilities were instrumental in defining the visual output of POKE across numerous award-winning, highly experimental digital projects.
+- **[Baker Tweet](../projects/poke_baker_tweet.md)** — Illustrator (BakerTweet visual identity / character). *(evidence: projects/poke_baker_tweet.md collaborators list)*
+- **[The Malice Box Quest](../projects/poke_malice_box.md)** — POKE team contributor. *(evidence: raw/archive/poke_malice_box.md, crackunit.com)*
 
-## Key Collaborations
+## References
 
-* **[Baker Tweet](../projects/poke_baker_tweet.md)** (POKE London)
-    *Simon Cook's illustration and design work established the visual identity and charm of BakerTweet (including the iconic BakerTweet owl), providing the aesthetic warmth that balanced the complex physical hardware.*
-* *(Multiple un-archived POKE projects to be appended)*
-
-## Archival Note
-
-*A massive body of his work exists in personal portfolios that require deep-archival indexing to fully extract the true agency credit list.*
+- [The Guardian — BakerTweet (3 April 2009)](https://www.theguardian.com/media/pda/2009/apr/03/twitter-marketingandpr)

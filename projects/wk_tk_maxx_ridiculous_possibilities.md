@@ -47,8 +47,9 @@ W+K London won the TK Maxx account from Grey London in November 2015. "Ridiculou
 **W+K London:**
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **[Hollie Walker](../collaborators/hollie_walker.md)** — Creative Director (long-standing partnership with Freddie Powell; both met at Central Saint Martins)
-- **Freddie Powell** — Creative Director
+- **[Freddie Powell](../collaborators/freddie_powell.md)** — Creative Director
 - **[Paddy Treacy](../collaborators/paddy_treacy.md)** — Creative (copywriter, launch work)
 - **[Mark Shanley](../collaborators/mark_shanley.md)** — Creative (art director, launch work)
 

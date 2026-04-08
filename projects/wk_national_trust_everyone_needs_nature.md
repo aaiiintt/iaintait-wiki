@@ -40,9 +40,10 @@ The creative positioned the National Trust not as a preserver of historic houses
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director, W+K London
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **[Juan Sevilla](../collaborators/juan_sevilla.md)** — Executive Creative Director, W+K London
 - **Flo Heiss** — Creative Director
-- **Derek Lui** — Creative
+- **[Derek Man Lui](../collaborators/derek_man_lui.md)** — Creative
 - **Harry Ingrams** — Creative
 - **Joanna Cassidy Osborne** — Creative
 - **Joseph Paul** — Creative

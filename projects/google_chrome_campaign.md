@@ -60,6 +60,7 @@ CNET reported the full campaign comprised **four spots** (two further spots not 
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, Google Creative Lab
+- **[Ben Malbon](../collaborators/ben_malbon.md)** — Managing Director, Google Creative Lab NYC *(evidence: The Guardian 2025 profile; Mesh career data; user testimony 2026-04-08)*
 - **[72andSunny](../collaborators/72andsunny.md)** — Creative Agency (Chrome account from Feb 2013)
 - **PHD USA** — Media Agency
 - **Essence** — Digital Agency

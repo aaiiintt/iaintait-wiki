@@ -52,6 +52,7 @@ Campaign extended across radio, print, digital, social, and out-of-home.
 **W+K London:**
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **[Sophie Bodoh](../collaborators/sophie_bodoh.md)** — Creative Director
 - **[Scott Dungate](../collaborators/scott_dungate.md)** — Creative Director
 - **[Freddy Taylor](../collaborators/freddy_taylor.md)** — Creative

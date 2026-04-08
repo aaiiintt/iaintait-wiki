@@ -26,6 +26,8 @@ Paddy Treacy was a Creative Director at Wieden+Kennedy London, co-leading with M
 ## Key Projects
 
 - **[Nothing Beats a Londoner](../projects/wk_nothing_beats_a_londoner.md)** — Creative Director (2018). Co-led creative with Mark Shanley under ECDs Iain Tait and Tony Davidson.
+- **[TK Maxx: Ridiculous Possibilities](../projects/wk_tk_maxx_ridiculous_possibilities.md)** — Creative / Copywriter on launch work. *(evidence: projects/wk_tk_maxx_ridiculous_possibilities.md)*
+- **[Rovio Angry Birds 2: Bigger. Badder. Birdier.](../projects/wk_rovio_angry_birds_2.md)** (2015) — Copywriter. *(evidence: projects/wk_rovio_angry_birds_2.md)*
 
 ## References
 

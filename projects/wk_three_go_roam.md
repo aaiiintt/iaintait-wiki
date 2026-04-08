@@ -35,6 +35,7 @@ Ran across television, OOH, digital OOH, online, cinema, social, and print.
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director, W+K London
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **Larry Seftel** — Creative Director, W+K London
 - **David Day** — Creative Director, W+K London
 - **Katy Edelsten** — Creative, W+K London

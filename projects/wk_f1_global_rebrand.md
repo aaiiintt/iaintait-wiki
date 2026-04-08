@@ -63,6 +63,7 @@ Sound design for the film was recognised at D&AD 2019 and ProMax 2018.
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **Tony Davidson** — Executive Creative Director
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer / Head of Integrated Production, W+K London
 - **Richard Turley** — ECD Content & Design (led identity; recruited by Iain Tait from Bloomberg Businessweek)
 - **Marc Rouault** — Typographer (designed F1 Regular, F1 Turbo, F1 Torque typefaces)
 - **Flamingo Research** — Brand Strategy Research (6-month global study)

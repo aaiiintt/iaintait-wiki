@@ -98,6 +98,7 @@ When POKE celebrated their 10th anniversary in 2011, Spot the Bull was one of th
 - **[Iain Tait](../collaborators/)** — Creative Director, POKE London
 - **[Nik Roope](../collaborators/nik_roope.md)** — Co-Creative Director, POKE London
 - **[Oliver Wright](../collaborators/oliver_wright.md)** — Executive Producer, POKE London
+- **[Nilesh Ashra](../collaborators/nilesh_ashra.md)** — Developer, POKE London
 - **[Unit 9](../collaborators/unit9.md)** — Production partner (2008–2009)
 - **Mediaedge CIA** — Media planning and buying
 - **Flashtalking** — Ad technology platform (3D banner unit)

@@ -1,13 +1,20 @@
 ---
-primary_role: Development Partner
+title: "Active Theory"
+type: collaborator
+tags: [creative-tech, webgl, digital-production, studio, venice-beach]
+aliases: [Active Theory Inc]
+source_urls:
+  - https://activetheory.net
 ---
+
 # Active Theory
 
-## Overview
+Venice, California-based creative digital production studio specialising in high-fidelity WebGL and interactive web experiences. Known for multi-device Chrome Experiments and performance-pushing browser work.
 
-Active Theory is an acclaimed creative digital production studio known for building high-fidelity, performance-pushing interactive web experiences, often utilizing WebGL and advanced browser APIs.
+## Worked With Iain On
 
-## Key Projects
+- **[Racer (Google Creative Lab)](../projects/google_racer.md)** — Core development partner on the multi-device, browser-based slot-car Chrome Experiment built with Giorgio Moroder (Cannes Gold Lion, 2013). *(evidence: projects/google_racer.md)*
 
-* **[Racer (Google Creative Lab)](../projects/google_racer.md)** (2013)
-    Active Theory served as the core development partner for this Cannes Gold Lion-winning Chrome Experiment, rendering a perfectly synced, multi-device slot car racing game entirely in the mobile browser.
+## References
+
+- [Active Theory — studio site](https://activetheory.net)

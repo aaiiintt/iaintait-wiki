@@ -10,19 +10,17 @@ tags:
 aliases:
   - Tim Wright
 source_urls: []
-primary_role: 'Freelancer / Creative, POKE London'
+primary_role: "Freelance Scriptwriter, The Malice Box Quest (POKE London)"
 ---
 
 # Tim Wright
 
-## Overview
+Tim Wright was the freelance **scriptwriter** for The Malice Box Quest, the Penguin/Martin Langfield ARG produced by POKE London in 2007. Iain Tait confirmed Wright's role on his crackunit.com blog: *"thanks to some helpful blog readers we eventually found Tim Wright, who was great to work with."* *(evidence: raw/archive/poke_malice_box.md)*
 
-Tim Wright was a freelancer who contributed to [The Malice Box Quest](../projects/poke_malice_box.md) for POKE London in 2007. His specific role on the project has not yet been confirmed from external sources — identified by Iain Tait from the crackunit.com blog.
+## Worked With Iain On
 
-## Key Projects
-
-- **[The Malice Box Quest](../projects/poke_malice_box.md)** — Freelance contributor, POKE London (2007).
+- **[The Malice Box Quest](../projects/poke_malice_box.md)** — Scriptwriter, POKE London (2007). *(evidence: raw/archive/poke_malice_box.md — crackunit.com blog post)*
 
 ## References
 
-- Identified by Iain Tait from crackunit.com blog post (2007)
+- crackunit.com — Iain Tait blog post on The Malice Box (archived in `raw/archive/poke_malice_box.md`)

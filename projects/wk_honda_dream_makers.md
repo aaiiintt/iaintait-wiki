@@ -44,6 +44,7 @@ The film ran as **Channel 4 idents** across Channel 4, More4, Film4, and E4 for 
 - **Laura Sampedro** — Creative Director
 - **Juan Sevilla** — Creative
 - **Mico Toledo** — Creative
+- **[James Guy](../collaborators/james_guy.md)** — Executive Producer, W+K London *(source: Stash Media / Time Based Arts coverage)*
 - **[Time Based Arts](../collaborators/time_based_arts.md)** — Director / Production / Post
 - **Daniel Landin** — Director of Photography
 - **Paul Hardcastle** — Editor

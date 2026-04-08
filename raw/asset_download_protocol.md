@@ -123,11 +123,38 @@ For interactive or print campaigns where no official YouTube/Vimeo upload exists
 
 1. Check W+K London case study page for embedded video or hosted images
 2. Look for press photography on LBBonline "Behind the Work" feature
-3. Download with curl:
+3. Download with curl (see the Portfolio CDN section below for User-Agent requirements):
    ```bash
-   curl -o "/Users/iaintait/Code/llm-wiki/raw/media/{year}_{project_slug}.jpg" "{image_url}"
+   curl -A "Mozilla/5.0" -o "/Users/iaintait/Code/llm-wiki/raw/media/{project_slug}/{year}_{project_slug}.jpg" "{image_url}"
    ```
 4. Note the source URL in the info alongside the file (create a `{slug}.source.txt` with the URL)
+
+---
+
+## Portfolio CDN Stills (cargo.site, format.com, squarespace)
+
+**The lesson from the Headmaster (2026-04-08) ingest:** many creative portfolio sites sit behind CDNs that return a ~919-byte placeholder when the request lacks a browser User-Agent. Without the UA, you'll get a tiny HTML file instead of the real image and not notice until you try to view it.
+
+**Always pass a browser UA:**
+
+```bash
+curl -A "Mozilla/5.0" \
+  -o "/Users/iaintait/Code/llm-wiki/raw/media/{project_slug}/{year}_{project_slug}_{desc}.{ext}" \
+  "{image_url}"
+```
+
+**Validate the download.** If the resulting file is under 10KB, assume it's the bot-block placeholder. Retry with:
+
+1. A different UA string (e.g. `curl -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"`).
+2. If that still fails, use `mcp__apify__apify--rag-web-browser` to fetch the page as rendered markdown, extract the real (often signed/CDN-rewritten) image URL from the markdown, and retry the curl with that URL.
+
+**Known portfolio hosts that need the UA header:**
+- `cargo.site` — confirmed Headmaster 2026-04-08
+- `format.com`
+- `squarespace.com` image CDNs
+- Most personal domain portfolios fronted by Cloudflare
+
+**Batch download loops.** Do not use shell `for` loops with colon-separated `URL:filename` pairs — they fail unpredictably. Expand to one `curl` invocation per file, each on its own line. Easier to retry individual failures.
 
 ---
 

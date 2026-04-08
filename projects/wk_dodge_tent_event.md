@@ -53,7 +53,7 @@ The result: a genuine PR vulnerability became a self-deprecating internet meme, 
 - **Kristin Starnes** — Brand Communications Director, Dodge (client lead)
 - **NMA (Next Media Animation World News)** — Covert amplification (Taiwan)
 
-*Agency co-ECDs at the time: Mark Fitzloff and Susan Hoffman. No further individual W+K creative credits (CD, CW, AD, director, production company) confirmed in available sources.*
+*Agency co-ECDs at the time: [Mark Fitzloff](../collaborators/mark_fitzloff.md) and [Susan Hoffman](../collaborators/susan_hoffman.md). No further individual W+K creative credits (CD, CW, AD, director, production company) confirmed in available sources.*
 
 ## References & Media
 

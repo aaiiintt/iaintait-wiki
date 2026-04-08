@@ -95,6 +95,8 @@ On launch day, Iain wrote on his blog: *"After lots of late nights and hard work
 ## Collaborators
 
 - **[Iain Tait](../collaborators/)** — Creative Director / ECD, concept originator
+- **[Igor Clark](../collaborators/igor_clark.md)** — Technical lead / Management, POKE London *(evidence: directnewideas.com credit "Igor Clark, Mike Pearson - Management")*
+- **[Nilesh Ashra](../collaborators/nilesh_ashra.md)** — Lead Developer, POKE London
 - **[Andrew Zolty](../collaborators/andrew_zolty.md)** — Creative team (Clio 2009 credits)
 - **Nicky Gibson** — Creative team (Clio 2009 credits)
 - **Marc Davies** — Creative team (Clio 2009 credits)

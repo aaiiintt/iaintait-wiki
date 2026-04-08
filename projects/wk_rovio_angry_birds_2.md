@@ -55,7 +55,7 @@ Before launch, a **@smugpigsofinstagram** account was created, parodying "Rich K
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director
 - **[Tony Davidson](../collaborators/tony_davidson.md)** — Executive Creative Director
 - **[Paddy Treacy](../collaborators/paddy_treacy.md)** — Copywriter
-- **Philippa Beaumont** — Copywriter
+- **[Philippa Beaumont](../collaborators/philippa_beaumont.md)** — Copywriter
 - **[Mark Shanley](../collaborators/mark_shanley.md)** — Art Director
 - **Artur Faria** — Art Director
 - **David Goss** — Art Director

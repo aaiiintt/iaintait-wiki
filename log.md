@@ -1,5 +1,52 @@
 # Wiki Activity Log
 
+## [2026-04-08] ingest | Google Photowall for Chromecast + 5 collaborators
+
+Created `projects/google_photowall_chromecast.md` (GCL Chrome Experiment, March 2014). Full team credited from LAD Studio portfolio + Google Developers blog byline (Igor Clark). Created 5 new collaborator profiles: **Igor Clark** (Technical Director — POKE 2005–2008, W+K Portland 2010–2012, GCL 2013–2015), **Suz Chambers** (Executive Producer, GCL — confirmed on Racer, Roll It, Photowall via Awwwards), **George Michael Brower** (Creative Tech, GCL 2010–2015), **Justin Windle** (Creative Tech, GCL 2012–2015, handle: soulwire), **Asa Block** (Producer, GCL). Updated 5 project files: google_racer (Suz added), google_roll_it (Suz linked), poke_balloonacy (Igor added), wk_coca_cola_polar_bowl (Igor added), google_photowall_chromecast (new). Added all 5 to `collaborators_index.md`. Added Photowall to `index.md`. Raw dumps: `raw/research/igor_clark_2026-04-08.md`, `raw/research/suz_chambers_2026-04-08.md`, `raw/research/google_photowall_chromecast_2026-04-08.md`, `raw/research/george_michael_brower_2026-04-08.md`, `raw/research/justin_windle_2026-04-08.md`, `raw/research/asa_block_2026-04-08.md`.
+**Sources consulted:** igorclark.net, developers.googleblog.com, awwwards.com, lad.studio, georgealways.com, soulwire.co.uk
+
+## [2026-04-08] collaborator-research | Ben Malbon
+
+Created `/collaborators/ben_malbon.md`. Managing Director, Google Creative Lab NYC (2011–2013) — The Guardian independently confirmed he "led work on Chrome, Chromebooks and Chrome experiments" in that role, corroborating user testimony on all four GCL projects (Racer, Roll It, Chrome campaign, Chromebook). Pre-GCL: co-founded BBH Labs (2008), Executive Director of Innovation BBH NY. Post-GCL: Director Creative Partnerships → VP Marketing → VP Brand Creative & Accelerating AI, Google EMEA. Also client-side contact on FOOD Google AI Consultancy per user testimony. Added to `collaborators_index.md` under Agency Founders & Leadership. Added to five project files: google_racer, google_roll_it, google_chrome_campaign, google_chromebook_for_everyone, food_google_ai_consultancy. Raw dump: `raw/research/ben_malbon_2026-04-08.md`.
+**Sources consulted:** advertising.theguardian.com, campaignlive.co.uk, adage.com, me.sh (Mesh), blog.shortyawards.com
+
+## [2026-04-08] collaborator-research | bulk enrichment pass (~60 profiles)
+
+Ran 8 parallel `collaborator-research` batches across the remaining stub profiles. Enriched with evidence-cited claims (internal grep + targeted web search; no paid Apify, no hallucinations). Key outcomes:
+
+- **POKE London (3 enriched / 13 already solid):** Cookie (full frontmatter + Malice Box evidence), Nick Farnhill (FOOD co-founding context), Tim Wright (confirmed Scriptwriter on Malice Box).
+- **W+K London creatives 1 (9):** Mark Shanley, Paddy Treacy, Tom Bender, Tom Corcoran, Hollie Walker, Scott Dungate, Sophie Bodoh, Freddy Taylor, Philippa Beaumont — all gained new cross-linked project credits from Phase 1 grep.
+- **W+K London creatives 2 + leadership (6):** Tony Davidson (20 Iain-era project credits, tenure sourced), Rose Fairley (fixed frontmatter + Director of Talent evidence), Juan Sevilla (populated sources), David Dao, Darren Simpson, Adam Newby.
+- **W+K Portland (3 enriched, 9 skipped):** Susan Hoffman, Mark Fitzloff, Dan Wieden (new minimal profile). Bagley/Baldwin already adequate; 7 others (Lieberman, Jensen, Parker, Brown, Alger, Staples, Luhr) skipped per "empty over invented" rule — zero Iain-era archive evidence.
+- **Google Creative Lab (0 enriched):** Zero internal evidence for 10 named GCL figures (Wong, Vranakis, Uglow, Torres, Ciatti, Govil, Heath, O'Neill, Chen, Germick) in current project files. Flagged for a future pass that first adds them to `google_*.md` Collaborators sections.
+- **Directors + film production (5):** Chris Boyle, Helen Power, Megaforce, Riff Raff Films, Stink — all stub-tier, now cited.
+- **Creative tech + VFX studios (10):** Active Theory, Legwork, Mode Set, Plan8, Tool of North America, UNIT9, Nexus Studios, Framestore, The Mill (1→5 projects), Time Based Arts (1→6 projects).
+- **Agency/brand partners (4):** 72andSunny, Gretel, Naked Communications, Niantic.
+
+Cross-link sweep on project files: wrapped plain-text names as profile links in `poke_malice_box` (Cookie, Tim Wright role→Scriptwriter), `wk_harry_potter_wizards_unite` (Sophie Bodoh, Scott Dungate, Adam Newby, Will Wells), `wk_helping_everyone_eat_better` (Freddy Taylor, Philippa Beaumont), `wk_rovio_angry_birds_2` (Philippa Beaumont), `wk_honda_the_other_side` (Scott Dungate), `wk_three_phones_are_good` (Hollie Walker), `wk_coca_cola_polar_bowl` (Fitzloff, Hoffman), `wk_old_spice_responses` (Bagley, Baldwin, Fitzloff, Hoffman), `wk_dodge_tent_event` (Fitzloff, Hoffman).
+
+Rebuilt Patchbay graph.
+
+## [2026-04-08] collaborator-research | batch of 15 must-have collaborators
+
+Ran the `collaborator-research` skill in parallel on 15 collaborators from Iain's must-have list. Created profiles for: **Derek Man Lui, Marc Winklhofer, Jonathan Plackett, Steve Wyles, Joel Gethin Lewis, Indiana Matine, Tom Hostler, Peter Beech, Tomas Coleman, Joe De Souza, James Guy, Will Wells, Freddie Powell, Dan Norris, Ray Shaughnessy**. Every claim cited against grep evidence, LBB Online, Campaign, Adweek, Creative Review, It's Nice That, LinkedIn, or user testimony (2026-04-08).
+
+Wrapped plain-text collaborator bullets as profile links across 10 project files: Headmaster, National Trust Everyone Needs Nature, Coca-Cola The Letter, Three Real 5G, Harry Potter Wizards Unite, TK Maxx Ridiculous Possibilities, Brand Establishments, Sainsbury's Nicholas the Sweep, F1 Neeeum, Nothing Beats a Londoner, Coca-Cola Maroon 5 24hr. Added all 15 to `collaborators_index.md` under appropriate sections.
+
+**Flags for follow-up:**
+- **Indiana Matine** — Niantic credit could not be corroborated. Only verified overlap with Iain is Facebook "Still Going Strong" planning credit (2020). User should reconfirm which Niantic project.
+- **Will Wells** — No external identity hit (common name). Bio left sparse pending a LinkedIn URL or portfolio.
+- **IKEA Live** — No project file in wiki yet. User testimony ties Steve Wyles and Joel Gethin Lewis to it. Candidate for future project ingest.
+- **James Guy** — Additional TV productions (Three, Lurpak, Coca-Cola) probable per user but not yet verified against award-DB credits.
+
+## [2026-04-08] ingest | W+K London — Headmaster
+
+Created `projects/wk_headmaster.md` from two corroborating portfolio pages: `derekmanlui.com/Headmaster` and `derekandtomas.com/Headmaster`. Year set to 2019 per user. Holographic arcade installation for W+K London reception: 3D-scanned staff heads, Looking Glass display, Leap Motion, Unreal Engine, 1982 upcycled cabinet. Iain credited as Creative Director. Team: Derek Man Lui, Marc/Mark Winklhofer, Jonny Plackett, Jonny Isaacson, Steve Wyles, Michael/Mike Naman. Music: Full Force Wolf Horse. Downloaded 8 assets (hero, 6 loop stills, 1 gif) into `raw/media/wk_headmaster/`. Linked in `index.md` under W+K London.
+
+## [2026-04-08] collaborator-research | Nilesh Ashra
+
+Created `collaborators/nilesh_ashra.md` from scratch via the new `collaborator-research` skill. Disambiguated identity (creative technologist; founded W+K Portland's The Lodge 2013, co-founded Two Things 2018, founded OK Tomorrow). Cross-linked four projects per Iain testimony: Balloonacy (POKE), Spot the Bull (POKE), Coca-Cola Polar Bowl (W+K Portland), Hinge AI Dating Coach (FOOD). Added Nilesh to each project's `## Collaborators` section. External corroboration via Adweek, The Drum, Fast Company, LBB Online, Mixing Board interview.
+
 ## [2026-04-07] audit-fixes | Full schema compliance pass
 
 - Fixed malformed YouTube URL in `wk_helping_everyone_eat_better.md` (replaced invalid slug with `_Z13_bNKgPA`)

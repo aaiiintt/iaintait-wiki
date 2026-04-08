@@ -35,7 +35,7 @@ She went on to become one of the most prominent brand and marketing executives o
 ## Key Projects
 
 - **[Coca-Cola / Maroon 5: 24hr Recording Session](../projects/wk_coca_cola_maroon_5_24hr.md)** — Client, Coca-Cola (2011)
-- Hinge AI Dating Coach *(confidential)* — Client / CEO
+- **[Hinge: AI Dating Coach](../projects/confidential/food_hinge_ai_dating_coach.md)** — Client / CEO *(confidential)*
 
 ## References
 

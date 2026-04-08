@@ -24,7 +24,9 @@ Tom Bender was the Art Director on *Nothing Beats a Londoner* at W+K London, wor
 
 ## Key Projects
 
-- **[Nothing Beats a Londoner](../projects/wk_nothing_beats_a_londoner.md)** — Art Director (2018).
+- **[Nothing Beats a Londoner](../projects/wk_nothing_beats_a_londoner.md)** — Art Director (2018). *(evidence: projects/wk_nothing_beats_a_londoner.md)*
+- **[Three: Phones Are Good](../projects/wk_three_phones_are_good.md)** (2018) — Art Director, paired with Tom Corcoran under CD Hollie Walker. *(evidence: projects/wk_three_phones_are_good.md)*
+- **[Sainsbury's: Nicholas the Sweep](../projects/wk_sainsburys_nicholas_the_sweep.md)** — Creative. *(evidence: projects/wk_sainsburys_nicholas_the_sweep.md)*
 
 ## References
 

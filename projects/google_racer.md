@@ -135,8 +135,10 @@ Racer was released alongside — and in the cultural wake of — the Daft Punk c
 ## Collaborators
 
 - **[Iain Tait](../collaborators/)** — ECD, Google Creative Lab NYC; concept originator; patent co-inventor
+- **[Ben Malbon](../collaborators/ben_malbon.md)** — Managing Director, Google Creative Lab NYC *(evidence: The Guardian 2025 profile; Mesh career data; user testimony 2026-04-08)*
 - **[Stewart Smith](../collaborators/stewart_smith.md)** — Creative technologist / software engineer, Google Creative Lab; patent co-inventor
 - **[Jeff Baxter](../collaborators/jeff_baxter.md)** — Designer, Google Creative Lab; patent co-inventor
+- **[Suz Chambers](../collaborators/suz_chambers.md)** — Executive Producer, Google Creative Lab *(evidence: Awwwards suz_chambers profile — credited creator, Honorable Mention May 20, 2013)*
 - **[Active Theory](../collaborators/active_theory.md)** — Development studio; built the full game over 8 weeks from Creative Lab's concept and prototype
 - **[Plan8](../collaborators/plan8.md)** — Sound design
 - **Giorgio Moroder** — Original soundtrack composer
