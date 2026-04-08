@@ -18,6 +18,9 @@ Nick Farnhill co-founded POKE London in 2001 as one of six founders (Iain Tait, 
 - **[The Warholiser](../projects/poke_warholiser.md)** — CEO / co-founder, POKE London (2002). *(evidence: projects/poke_warholiser.md)*
 - **[Room 10101](../projects/poke_room_10101.md)** — CEO / co-founder, POKE London (2004). *(evidence: projects/poke_room_10101.md)*
 - **FOOD** — Co-founder, 2021–present. *(evidence: raw/archive/food_creative_studio.md)*
+- **[KEF: Listen & Believe](../projects/food_kef_listen_and_believe.md)** — Creative Partner, FOOD (2023). *(evidence: user testimony 2026-04-08)*
+- **[RockCorps Unlimited](../projects/food_rockcorps_unlimited.md)** — Creative Partner, FOOD (2022). *(evidence: user testimony 2026-04-08)*
+- **[Google AI Consultancy](../projects/confidential/food_google_ai_consultancy.md)** — Creative Partner, FOOD (2023). *(evidence: user testimony 2026-04-08)*
 
 ## References
 

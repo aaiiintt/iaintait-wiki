@@ -33,6 +33,8 @@ The project was designed to coincide with and elevate KEF's flagship experience 
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Strategic & Creative Partner, FOOD
+- **[Nick Farnhill](../collaborators/nick_farnhill.md)** — Creative Partner, FOOD
+- **[Richard Turley](../collaborators/richard_turley.md)** — Creative Partner, FOOD
 
 ## References & Media
 

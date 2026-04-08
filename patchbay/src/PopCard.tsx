@@ -84,7 +84,7 @@ export function PopCard({ node, graph, onClose, onSelect }: Props) {
             <p className="popcard-desc">{node.desc}</p>
           ) : null}
           {node.confidential && (
-            <p className="popcard-confidential-notice">Details available under NDA.</p>
+            <p className="popcard-confidential-notice">Confidential R&amp;D Project.</p>
           )}
 
           {chips.length > 0 && (

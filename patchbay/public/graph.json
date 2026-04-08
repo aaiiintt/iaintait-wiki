@@ -47,6 +47,15 @@
       "confidential": true
     },
     {
+      "id": "person:nick_farnhill",
+      "kind": "person",
+      "title": "Nick Farnhill",
+      "role": null,
+      "body": "\n# Nick Farnhill\n\nNick Farnhill co-founded POKE London in 2001 as one of six founders (Iain Tait, Nik Roope, Simon Waterfall, Peter Beech, Tom Hostler) and served as Chief Executive throughout the agency's independent years. He remained CEO through the Publicis Groupe acquisition in September 2013, continuing to run Publicis.Poke until later co-founding **FOOD** with Iain Tait and Richard Turley in 2021. *(evidence: raw/archive/food_creative_studio.md; raw/research/poke_london_agency_2026-04-06.md)*\n\n## Worked With Iain On\n\n- **[The Warholiser](../projects/poke_warholiser.md)** — CEO / co-founder, POKE London (2002). *(evidence: projects/poke_warholiser.md)*\n- **[Room 10101](../projects/poke_room_10101.md)** — CEO / co-founder, POKE London (2004). *(evidence: projects/poke_room_10101.md)*\n- **FOOD** — Co-founder, 2021–present. *(evidence: raw/archive/food_creative_studio.md)*\n- **[KEF: Listen & Believe](../projects/food_kef_listen_and_believe.md)** — Creative Partner, FOOD (2023). *(evidence: user testimony 2026-04-08)*\n- **[RockCorps Unlimited](../projects/food_rockcorps_unlimited.md)** — Creative Partner, FOOD (2022). *(evidence: user testimony 2026-04-08)*\n- **[Google AI Consultancy](../projects/confidential/food_google_ai_consultancy.md)** — Creative Partner, FOOD (2023). *(evidence: user testimony 2026-04-08)*\n\n## References\n\n- [Creative Bloq — Iain Tait profile (2009)](https://www.creativebloq.com/3d/iain-tait-7099043)\n- [The Guardian — Publicis buys Poke (September 2013)](https://www.theguardian.com/media/2013/sep/30/publicis-buys-poke-london)\n",
+      "richness": 202,
+      "hasProfile": true
+    },
+    {
       "id": "person:ben_malbon",
       "kind": "person",
       "title": "Ben Malbon",
@@ -216,8 +225,8 @@
       "title": "KEF: Listen & Believe",
       "year": 2023,
       "desc": "\"Listen & Believe\" was an integrated brand activation campaign produced for KEF, one of the world's premier high-fidelity audio manufacturers.",
-      "body": "\n# Listen & Believe\n\n## Overview\n\n\"Listen & Believe\" was an integrated brand activation campaign produced for KEF, one of the world's premier high-fidelity audio manufacturers.\n\n## Project Summary\n\nThe project was designed to coincide with and elevate KEF's flagship experience center. It was anchored by premium film content and a cohesive cultural strategy crafted by the team at FOOD. The campaign underscored the brand's commitment to high-craft audio innovation and immersive listening experiences, translating KEF's deep acoustic heritage into a modern, lifestyle-driven cultural narrative.\n\n## Collaborators\n\n- **[Iain Tait](../collaborators/iain_tait.md)** — Strategic & Creative Partner, FOOD\n\n## References & Media\n\n### Assets\n![food_kef_listen_and_believe animated](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe.gif)\n\n![food_kef_listen_and_believe frame 01](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_01.jpg)\n![food_kef_listen_and_believe frame 02](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_02.jpg)\n![food_kef_listen_and_believe frame 03](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_03.jpg)\n![food_kef_listen_and_believe frame 04](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_04.jpg)\n![food_kef_listen_and_believe frame 05](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_05.jpg)\n![food_kef_listen_and_believe frame 06](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_06.jpg)\n\n- [KEF](https://www.kef.com)\n",
-      "richness": 420,
+      "body": "\n# Listen & Believe\n\n## Overview\n\n\"Listen & Believe\" was an integrated brand activation campaign produced for KEF, one of the world's premier high-fidelity audio manufacturers.\n\n## Project Summary\n\nThe project was designed to coincide with and elevate KEF's flagship experience center. It was anchored by premium film content and a cohesive cultural strategy crafted by the team at FOOD. The campaign underscored the brand's commitment to high-craft audio innovation and immersive listening experiences, translating KEF's deep acoustic heritage into a modern, lifestyle-driven cultural narrative.\n\n## Collaborators\n\n- **[Iain Tait](../collaborators/iain_tait.md)** — Strategic & Creative Partner, FOOD\n- **[Nick Farnhill](../collaborators/nick_farnhill.md)** — Creative Partner, FOOD\n- **[Richard Turley](../collaborators/richard_turley.md)** — Creative Partner, FOOD\n\n## References & Media\n\n### Assets\n![food_kef_listen_and_believe animated](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe.gif)\n\n![food_kef_listen_and_believe frame 01](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_01.jpg)\n![food_kef_listen_and_believe frame 02](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_02.jpg)\n![food_kef_listen_and_believe frame 03](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_03.jpg)\n![food_kef_listen_and_believe frame 04](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_04.jpg)\n![food_kef_listen_and_believe frame 05](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_05.jpg)\n![food_kef_listen_and_believe frame 06](../raw/media/food_kef_listen_and_believe/2023_food_kef_listen_and_believe_frame_06.jpg)\n\n- [KEF](https://www.kef.com)\n",
+      "richness": 436,
       "sourceUrls": [
         "https://food.xyz",
         "https://www.kef.com"
@@ -226,13 +235,22 @@
       "slug": "food_kef_listen_and_believe"
     },
     {
+      "id": "person:richard_turley",
+      "kind": "person",
+      "title": "Richard Turley",
+      "role": null,
+      "body": "\n# Richard Turley\n\n**Era:** W+K London (c.2017–2019); FOOD (co-founder, 2021–present)\n\n## Overview\n\nRichard Turley is a British graphic designer and art director known for his tenure as creative director of *Bloomberg Businessweek*, where he became famous for bold, provocative cover design. He was recruited to Wieden+Kennedy London by Iain Tait specifically to lead the Formula One brand identity work.\n\nHis It's Nice That profile (2019) records the recruitment: *\"Iain called me up... Iain runs the London office.\"*\n\n## Key Projects\n\n- **[Formula 1 Global Rebrand — Engineered Insanity](../projects/wk_f1_global_rebrand.md)** — Led the identity work (2017). Directed the fundamental deconstruction and rebuild of the F1 visual identity, culminating in the new logo revealed at the Abu Dhabi Grand Prix and three custom typefaces (F1 Regular, F1 Turbo, F1 Torque designed by Marc Rouault).\n- **[KEF: Listen & Believe](../projects/food_kef_listen_and_believe.md)** — Creative Partner, FOOD (2023). *(evidence: user testimony 2026-04-08)*\n\n## Background\n\n- Creative Director, *Bloomberg Businessweek* (prior to W+K)\n- Known for graphic design that drew press and industry attention in its own right\n\n## References\n\n- [It's Nice That: Richard Turley profile — confirms Iain Tait's recruitment (2019)](https://www.itsnicethat.com/articles/richard-turley-wieden-kennedy-london-graphic-design-050219)\n- [Creative Review: F1 rebrand — most-read article of 2017](https://www.creativereview.co.uk/formula-1-rebrand/)\n",
+      "richness": 218,
+      "hasProfile": true
+    },
+    {
       "id": "project:food_rockcorps_unlimited",
       "kind": "project",
       "title": "RockCorps Unlimited",
       "year": 2022,
       "desc": "A continuous creative collaboration spanning entertainment and cultural impact for RockCorps.",
-      "body": "\n# RockCorps Unlimited\n\n## Overview\n\nA continuous creative collaboration spanning entertainment and cultural impact for RockCorps.\n\n## Project Summary\n\nRockCorps is a pro-social production company that uses music to inspire volunteerism (\"Give, Get Given\"). FOOD partnered with RockCorps Unlimited post-2022 to innovate their format, modernize their digital cultural footprint, and develop new entertainment models that blend high-profile music events with scalable social impact programs for modern audiences.\n\n## Collaborators\n\n- **[Iain Tait](../collaborators/iain_tait.md)** — Creative / Strategic Partner, FOOD\n\n## References & Media\n\n- [RockCorps](https://www.rockcorps.com)\n",
-      "richness": 134,
+      "body": "\n# RockCorps Unlimited\n\n## Overview\n\nA continuous creative collaboration spanning entertainment and cultural impact for RockCorps.\n\n## Project Summary\n\nRockCorps is a pro-social production company that uses music to inspire volunteerism (\"Give, Get Given\"). FOOD partnered with RockCorps Unlimited post-2022 to innovate their format, modernize their digital cultural footprint, and develop new entertainment models that blend high-profile music events with scalable social impact programs for modern audiences.\n\n## Collaborators\n\n- **[Iain Tait](../collaborators/iain_tait.md)** — Creative / Strategic Partner, FOOD\n- **[Nick Farnhill](../collaborators/nick_farnhill.md)** — Creative Partner, FOOD\n\n## References & Media\n\n- [RockCorps](https://www.rockcorps.com)\n",
+      "richness": 142,
       "sourceUrls": [
         "https://food.xyz",
         "https://www.rockcorps.com"
@@ -1084,15 +1102,6 @@
       "slug": "poke_room_10101"
     },
     {
-      "id": "person:nick_farnhill",
-      "kind": "person",
-      "title": "Nick Farnhill",
-      "role": null,
-      "body": "\n# Nick Farnhill\n\nNick Farnhill co-founded POKE London in 2001 as one of six founders (Iain Tait, Nik Roope, Simon Waterfall, Peter Beech, Tom Hostler) and served as Chief Executive throughout the agency's independent years. He remained CEO through the Publicis Groupe acquisition in September 2013, continuing to run Publicis.Poke until later co-founding **FOOD** with Iain Tait and Richard Turley in 2021. *(evidence: raw/archive/food_creative_studio.md; raw/research/poke_london_agency_2026-04-06.md)*\n\n## Worked With Iain On\n\n- **[The Warholiser](../projects/poke_warholiser.md)** — CEO / co-founder, POKE London (2002). *(evidence: projects/poke_warholiser.md)*\n- **[Room 10101](../projects/poke_room_10101.md)** — CEO / co-founder, POKE London (2004). *(evidence: projects/poke_room_10101.md)*\n- **FOOD** — Co-founder, 2021–present. *(evidence: raw/archive/food_creative_studio.md)*\n\n## References\n\n- [Creative Bloq — Iain Tait profile (2009)](https://www.creativebloq.com/3d/iain-tait-7099043)\n- [The Guardian — Publicis buys Poke (September 2013)](https://www.theguardian.com/media/2013/sep/30/publicis-buys-poke-london)\n",
-      "richness": 154,
-      "hasProfile": true
-    },
-    {
       "id": "person:nokia",
       "kind": "person",
       "title": "Nokia",
@@ -1821,14 +1830,6 @@
       ],
       "client": "Formula One Group (Liberty Media)",
       "slug": "wk_f1_global_rebrand"
-    },
-    {
-      "id": "person:richard_turley",
-      "kind": "person",
-      "title": "Richard Turley",
-      "role": "ECD Content & Design (led identity; recruited by Iain Tait from Bloomberg Businessweek)",
-      "richness": 40,
-      "hasProfile": false
     },
     {
       "id": "person:marc_rouault",
@@ -4233,6 +4234,11 @@
     },
     {
       "source": "project:confidential/food_google_ai_consultancy",
+      "target": "person:nick_farnhill",
+      "kind": "collab"
+    },
+    {
+      "source": "project:confidential/food_google_ai_consultancy",
       "target": "person:ben_malbon",
       "kind": "collab"
     },
@@ -4342,6 +4348,16 @@
       "kind": "collab"
     },
     {
+      "source": "project:food_kef_listen_and_believe",
+      "target": "person:nick_farnhill",
+      "kind": "collab"
+    },
+    {
+      "source": "project:food_kef_listen_and_believe",
+      "target": "person:richard_turley",
+      "kind": "collab"
+    },
+    {
       "source": "project:food_rockcorps_unlimited",
       "target": "agency:food",
       "kind": "agency"
@@ -4349,6 +4365,11 @@
     {
       "source": "project:food_rockcorps_unlimited",
       "target": "person:iain_tait",
+      "kind": "collab"
+    },
+    {
+      "source": "project:food_rockcorps_unlimited",
+      "target": "person:nick_farnhill",
       "kind": "collab"
     },
     {

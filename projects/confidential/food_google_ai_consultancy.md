@@ -29,6 +29,7 @@ A creative and strategic consultancy for Google exploring how AI technologies co
 ## Collaborators
 
 - **[Iain Tait](../../collaborators/iain_tait.md)** — Strategic / Creative Partner, FOOD
+- **[Nick Farnhill](../../collaborators/nick_farnhill.md)** — Creative Partner, FOOD
 - **[Ben Malbon](../../collaborators/ben_malbon.md)** — Client / Google stakeholder *(evidence: user testimony 2026-04-08)*
 
 ## References & Media

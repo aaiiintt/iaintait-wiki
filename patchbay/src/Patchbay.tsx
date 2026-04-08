@@ -137,9 +137,24 @@ export function Patchbay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, graph]);
 
+  // Periodic gentle kick — keeps nodes alive with a barely-perceptible drift.
+  useEffect(() => {
+    if (!graph) return;
+    const id = setInterval(() => {
+      try { (ref.current as any)?.start(0.05); } catch { /* noop */ }
+    }, 6000);
+    return () => clearInterval(id);
+  }, [graph]);
+
   const [pendingNavigate, setPendingNavigate] = useState<NodeDatum | null>(null);
   // Incremented to trigger ring position refresh after sim ticks or resizes.
   const [ringVersion, setRingVersion] = useState(0);
+
+  // Keep rings synced during continuous drift (fallback alongside onSimulationEnd).
+  useEffect(() => {
+    const id = setInterval(() => setRingVersion((v) => v + 1), 2000);
+    return () => clearInterval(id);
+  }, []);
 
   const selectNode = (node: NodeDatum | undefined) => {
     const cg = ref.current;
@@ -163,6 +178,16 @@ export function Patchbay() {
       const ids = [node.id, ...adj.map((n) => (n as NodeDatum).id)];
       cg.fitViewByNodeIds(ids, 500);
       cg.focusNode?.(node);
+      // Kick the simulation so the graph reshuffles around the selection,
+      // then re-center on the node + its cluster once the energy dissipates.
+      try { (cg as any).start(0.25); } catch { /* noop */ }
+      setTimeout(() => {
+        try {
+          const adj2 = cg.getAdjacentNodes?.(node.id) ?? [];
+          const ids2 = [node.id, ...adj2.map((n) => (n as NodeDatum).id)];
+          cg.fitViewByNodeIds(ids2, 600);
+        } catch { /* noop */ }
+      }, 2200);
     } catch { /* noop */ }
   };
 
@@ -217,12 +242,12 @@ export function Patchbay() {
           showDynamicLabels={false}
           showHoveredNodeLabel
           showLabelsFor={selected ? [selected] : []}
-          simulationGravity={0.15}
-          simulationRepulsion={1.2}
-          simulationFriction={0.85}
-          simulationLinkSpring={1.0}
-          simulationLinkDistance={8}
-          simulationDecay={1500}
+          simulationGravity={0.05}
+          simulationRepulsion={1.6}
+          simulationFriction={0.82}
+          simulationLinkSpring={0.6}
+          simulationLinkDistance={18}
+          simulationDecay={8000}
           fitViewOnInit
           onClick={selectNode}
           onNodeMouseOver={(node) => {

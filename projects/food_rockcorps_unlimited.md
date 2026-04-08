@@ -34,6 +34,7 @@ RockCorps is a pro-social production company that uses music to inspire voluntee
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Creative / Strategic Partner, FOOD
+- **[Nick Farnhill](../collaborators/nick_farnhill.md)** — Creative Partner, FOOD
 
 ## References & Media
 

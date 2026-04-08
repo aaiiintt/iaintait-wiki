@@ -3,6 +3,8 @@ title: Richard Turley
 type: collaborator
 tags:
   - W+K-London
+  - FOOD
+  - co-founder
   - design
   - identity
   - Bloomberg-Businessweek
@@ -19,7 +21,7 @@ primary_role: 'ECD Content & Design, Wieden+Kennedy London'
 
 # Richard Turley
 
-**Era:** W+K London (c.2017–2019)
+**Era:** W+K London (c.2017–2019); FOOD (co-founder, 2021–present)
 
 ## Overview
 
@@ -30,6 +32,7 @@ His It's Nice That profile (2019) records the recruitment: *"Iain called me up..
 ## Key Projects
 
 - **[Formula 1 Global Rebrand — Engineered Insanity](../projects/wk_f1_global_rebrand.md)** — Led the identity work (2017). Directed the fundamental deconstruction and rebuild of the F1 visual identity, culminating in the new logo revealed at the Abu Dhabi Grand Prix and three custom typefaces (F1 Regular, F1 Turbo, F1 Torque designed by Marc Rouault).
+- **[KEF: Listen & Believe](../projects/food_kef_listen_and_believe.md)** — Creative Partner, FOOD (2023). *(evidence: user testimony 2026-04-08)*
 
 ## Background
 
