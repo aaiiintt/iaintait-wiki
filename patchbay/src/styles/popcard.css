@@ -1,0 +1,306 @@
+.popcard-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: transparent;
+}
+.popcard {
+  background: #fff;
+  border: 1px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.popcard-docked {
+  position: fixed;
+  left: 24px;
+  top: 80px;
+  bottom: 24px;
+  width: 440px;
+  z-index: 51;
+  animation: popcard-slide 320ms cubic-bezier(.34, 1.2, .64, 1);
+}
+@keyframes popcard-slide {
+  0%   { transform: translateX(-32px); opacity: 0; }
+  100% { transform: translateX(0);     opacity: 1; }
+}
+.cg-stage {
+  position: absolute;
+  inset: 0;
+  transition: transform 360ms cubic-bezier(.34, 1.1, .64, 1);
+}
+.cg-stage > * { width: 100%; height: 100%; }
+.cg-stage.shifted {
+  transform: translateX(232px);
+}
+.popcard-head {
+  position: relative;
+  padding: 16px 44px 12px 18px;
+  border-bottom: 1px solid #000;
+  background: #f4f1ec;
+}
+.popcard-scroll {
+  padding: 14px 18px 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+.popcard-foot {
+  padding: 10px 18px;
+  border-top: 1px solid #000;
+  background: #f4f1ec;
+}
+.popcard-section-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #666;
+  margin: 14px 0 6px;
+}
+.popcard-body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+.popcard-body h1,
+.popcard-body h2,
+.popcard-body h3 {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 14px 0 6px;
+  font-weight: 700;
+}
+.popcard-body h1 { font-size: 14px; }
+.popcard-body p { margin: 0 0 10px; }
+.popcard-body ul, .popcard-body ol { margin: 0 0 10px; padding-left: 18px; }
+.popcard-body li { margin-bottom: 3px; }
+.popcard-body a { color: #0044ff; text-decoration: underline; }
+.popcard-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  background: #f4f1ec;
+  padding: 1px 4px;
+  border: 1px solid #ddd;
+}
+.popcard-body img { max-width: 100%; border: 1px solid #000; margin: 6px 0; }
+.popcard-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0 12px;
+  font-size: 12px;
+}
+.popcard-body th,
+.popcard-body td {
+  text-align: left;
+  vertical-align: top;
+  padding: 4px 8px;
+  border-bottom: 1px solid #e2e0d9;
+}
+.popcard-body th {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  border-bottom: 1px solid #000;
+  background: #f4f1ec;
+}
+.popcard-body blockquote {
+  margin: 8px 0;
+  padding-left: 10px;
+  border-left: 3px solid #000;
+  color: #444;
+}
+@keyframes popcard-pop {
+  0%   { transform: scale(0.05); opacity: 0; }
+  60%  { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.popcard-kind {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid #000;
+  margin-bottom: 8px;
+}
+.kind-project { background: #ff2a00; color: #fff; }
+.kind-agency  { background: #0044ff; color: #fff; }
+.kind-person  { background: #00c853; color: #000; }
+.popcard-title {
+  font-size: 18px;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.popcard-meta {
+  font-size: 11px;
+  color: #555;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+.popcard-meta span { margin-right: 6px; }
+.popcard-desc {
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 6px 0 10px;
+  color: #222;
+}
+.popcard-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 6px 0 10px;
+}
+.chip {
+  font-size: 10px;
+  padding: 2px 6px;
+  border: 1px solid #000;
+  background: #f4f4f4;
+  white-space: nowrap;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 120ms, box-shadow 120ms;
+}
+button.chip { line-height: 1.4; }
+button.chip:hover { transform: translate(-1px, -1px); box-shadow: 2px 2px 0 #000; }
+button.chip:active { transform: translate(0, 0); box-shadow: none; }
+.chip-project { background: #ff2a00; color: #fff; }
+.chip-agency  { background: #0044ff; color: #fff; }
+.chip-person  { background: #fff; }
+.chip-more    { background: #000; color: #fff; }
+.popcard-link {
+  display: inline-block;
+  font-size: 11px;
+  text-decoration: underline;
+  color: #000;
+}
+.popcard-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: 0;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.toolbar {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.search {
+  width: min(420px, 60vw);
+  padding: 10px 14px;
+  border: 1px solid #000;
+  background: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  box-shadow: 4px 4px 0 #000;
+  outline: none;
+}
+.toggle {
+  padding: 0 14px;
+  border: 1px solid #000;
+  background: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000;
+  white-space: nowrap;
+}
+.toggle.on { background: #00c853; color: #000; }
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.filter-label {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 4px;
+}
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 3px 2px;
+  user-select: none;
+  color: #999;
+  transition: color 120ms;
+}
+.filter-row.on { color: #000; font-weight: 600; }
+.filter-row .swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000;
+  flex-shrink: 0;
+  opacity: 0.35;
+  transition: opacity 120ms;
+}
+.filter-row.on .swatch { opacity: 1; }
+.filter-name { flex: 1; }
+.filter-row input[type="checkbox"] {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000;
+  background: #fff;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}
+.filter-row input[type="checkbox"]:checked {
+  background: #000;
+}
+.filter-row input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 2px; top: -1px;
+  width: 4px; height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Cosmograph hovered-node label override */
+.cg-label {
+  font-family: ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  box-shadow: 3px 3px 0 #000 !important;
+  padding: 4px 8px !important;
+  border-radius: 0 !important;
+  font-weight: 600 !important;
+}
+
+#viz-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.obsidian/workspace*
+.obsidian/cache
+
+# Compiled wiki dump (regenerable via compress.py)
+iaintait.md
+
+# Node
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Patchbay dev symlinks (target paths only valid locally)
+patchbay/public/wiki-media
+patchbay/public/wiki-assets
+
+# Archived media (too large for git) — recursive
+raw/media/**/*.mp4
+raw/media/**/*.webm
+raw/media/**/*.mkv
+raw/media/**/*.mov
+raw/media/**/*.avi
+raw/media/**/*.mp3
+raw/media/**/*.m4a
+raw/media/**/*.part
+raw/media/**/*.ytdl

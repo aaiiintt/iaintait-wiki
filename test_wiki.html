@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAIN TAIT / MCP SERVER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        :root {
+            --paper: #F7F7F4;
+            --ink: #000000;
+            --rgb-r: #FF2A00; 
+            --rgb-g: #00C853; 
+            --rgb-b: #0044FF; 
+            --grid-line: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            letter-spacing: -0.02em;
+        }
+
+        .txt-display { font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; }
+        .txt-meta { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
+        .txt-body { font-size: 0.8rem; line-height: 1.4; font-weight: 500; }
+
+        /* The D3 Canvas */
+        #viz-container {
+            position: relative;
+            background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+            background-size: 24px 24px;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        #edges-layer, #nodes-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        #edges-layer { z-index: 1; pointer-events: none; }
+        #nodes-layer { z-index: 10; pointer-events: none; }
+
+        /* Physical Cables (The Noodles) */
+        .link { 
+            fill: none;
+            stroke-width: 2px; 
+            opacity: 0; 
+            transition: opacity 0.5s; 
+            stroke-linecap: round;
+        }
+        .link.visible { opacity: 0.85; }
+        .link-agency { stroke: var(--rgb-r); }
+        .link-collab { stroke: var(--rgb-g); }
+        .link-asset { stroke: var(--rgb-b); }
+        .link-query { stroke: var(--ink); stroke-dasharray: 4 6; stroke-width: 2px; opacity: 0.3; }
+
+        /* General Node Styles */
+        .node-card {
+            position: absolute;
+            pointer-events: auto;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.4s, box-shadow 0.2s;
+            cursor: grab;
+        }
+        .node-card.visible { opacity: 1; }
+        .node-card:active { cursor: grabbing; }
+
+        /* Central Query Node */
+        .node-query {
+            width: 480px;
+            background: #FFFFFF;
+            border: 3px solid var(--ink);
+            box-shadow: 8px 8px 0px var(--ink);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .query-header {
+            background: var(--ink);
+            color: #FFF;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: grab;
+        }
+        .query-header:active { cursor: grabbing; }
+
+        #agent-answer { 
+            padding: 1.5rem; 
+            font-size: 0.95rem; 
+            line-height: 1.5; 
+            border-bottom: 1px solid var(--grid-line); 
+            display: none; 
+        }
+
+        /* Project Node - Enforced Height to protect Patchbay */
+        .node-project {
+            width: 280px;
+            height: 260px; /* Locked height */
+            background: #FFFFFF;
+            border: 2px solid var(--ink);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+        .node-project:hover { box-shadow: 8px 8px 0px rgba(0,0,0,0.2); z-index: 50; }
+
+        .project-content {
+            padding: 1.25rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* The Icon Patchbay */
+        .patchbay {
+            height: 44px;
+            flex-shrink: 0; /* Never allow flexbox to crush this */
+            border-top: 1px solid var(--grid-line);
+            display: flex;
+            width: 100%;
+            background: #FFFFFF;
+        }
+        .patch-btn {
+            flex: 1; display: flex; justify-content: center; align-items: center;
+            cursor: pointer; border-right: 1px solid var(--grid-line); transition: background 0.2s;
+        }
+        .patch-btn:last-child { border-right: none; }
+        .patch-btn:hover { background: #F7F7F4; }
+        
+        /* Active States for Icons */
+        .patch-btn.active.dot-r-btn { background: rgba(255, 42, 0, 0.1); }
+        .patch-btn.active.dot-g-btn { background: rgba(0, 200, 83, 0.1); }
+        .patch-btn.active.dot-b-btn { background: rgba(0, 68, 255, 0.1); }
+
+        /* Child Nodes */
+        .node-agency { background: var(--rgb-r); color: white; padding: 0.5rem 1rem; font-weight: 900; border-radius: 2px; box-shadow: 3px 3px 0px rgba(0,0,0,0.2); }
+        .node-person { background: #FFFFFF; color: var(--ink); border: 2px dashed var(--ink); padding: 0.5rem 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+        .node-person:hover { background: var(--rgb-g); color: white; border-color: var(--rgb-g); box-shadow: 4px 4px 0px rgba(0,200,83,0.3); }
+        
+        /* Asset Nodes */
+        .node-asset {
+            width: 240px; height: 140px;
+            border: 2px solid var(--rgb-b);
+            background: #000;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 6px 6px 0px rgba(0,68,255,0.2);
+        }
+        .sprite-simulation {
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(45deg, #111, #111 20px, #333 20px, #333 40px);
+            background-size: 600% 100%;
+            animation: playSprite 0.6s steps(6) infinite;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .sprite-text { color: white; font-family: monospace; font-size: 0.7rem; mix-blend-mode: difference; text-align: center;}
+        @keyframes playSprite { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+
+        /* Telemetry Stream */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        .telemetry-row { opacity: 0; transform: translateY(10px); animation: slideUp 0.3s ease forwards; }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="w-full h-screen">
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-business" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+        </symbol>
+        <symbol id="icon-people" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+        </symbol>
+        <symbol id="icon-pictures" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+        </symbol>
+    </svg>
+
+    <main class="flex w-full h-full">
+        <section class="w-3/4 border-r border-[var(--grid-line)] relative" id="viz-container">
+            <svg id="edges-layer"></svg>
+            <div id="nodes-layer">
+                
+                <div id="node-CENTRAL" class="node-card node-query visible">
+                    <div class="query-header txt-meta" id="query-drag-handle">
+                        <span class="text-sm tracking-widest font-black">IAIN TAIT: MCP SERVER</span>
+                        <div class="flex gap-4 items-center">
+                            <span class="text-[#00FF41] status-pulse">IDLE</span>
+                            <button onclick="toggleAnswer()" class="hover:text-[var(--accent)] text-lg leading-none cursor-pointer">[ — ]</button>
+                        </div>
+                    </div>
+                    
+                    <div id="agent-answer" class="txt-body text-gray-800"></div>
+                    
+                    <div class="flex items-center p-4">
+                        <span class="text-[var(--accent)] font-bold text-xl mr-3">></span>
+                        <input type="text" id="main-input" class="w-full border-none outline-none text-xl txt-display bg-transparent" placeholder="AWAITING QUERY..." readonly>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="w-1/4 bg-[#111] flex flex-col" id="telemetry-section">
+            <div class="h-12 border-b border-[#333] flex items-center justify-between px-6 shrink-0 bg-black">
+                <span class="txt-meta text-gray-400">MCP PROTOCOL / TELEMETRY</span>
+                <span class="txt-meta text-[#00FF41]">V.2026</span>
+            </div>
+            <div class="flex-grow p-6 overflow-y-auto font-mono text-xs text-[#00FF41]" id="telemetry-log">
+                <div class="mb-4 text-gray-500">// SYSTEM INITIATED.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- THE DATABASE ---
+        const db = {
+            projects: {
+                "P1": { id: "P1", title: "NOTHING BEATS A LONDONER", year: "2018", desc: "Seeded first through young athletes' own Instagram channels before paid distribution, establishing authenticity before reach.", agency: "A1", collabs: ["C1", "C2", "C3"], asset: "AS1" },
+                "P2": { id: "P2", title: "OLD SPICE: RESPONSES", year: "2010", desc: "186 personalised video responses to fan tweets in 2.5 days. The defining proof-of-concept for real-time branded content.", agency: "A2", collabs: ["C1", "C4"], asset: "AS2" }
+            },
+            agencies: {
+                "A1": { id: "A1", title: "W+K LONDON" },
+                "A2": { id: "A2", title: "W+K PORTLAND" }
+            },
+            collabs: {
+                "C1": { id: "C1", title: "IAIN TAIT (ECD)" },
+                "C2": { id: "C2", title: "TOM CORCORAN (CW)" },
+                "C3": { id: "C3", title: "MEGAFORCE (DIR)" },
+                "C4": { id: "C4", title: "JASON BAGLEY (CD)" }
+            },
+            assets: {
+                "AS1": { id: "AS1", title: "LDNR_SPRITE.WEBP" },
+                "AS2": { id: "AS2", title: "SPICE_SPRITE.WEBP" }
+            }
+        };
+
+        let nodes = [{ id: "CENTRAL", type: "query", isFixed: true }];
+        let links = [];
+        let activeToggles = { agency: {}, collab: {}, asset: {} };
+
+        // Math Constants
+        const PROJECT_HEIGHT = 260; // Exact height of node-project
+        const PROJECT_WIDTH = 280;
+
+        // --- D3 SETUP ---
+        const container = document.getElementById('viz-container');
+        let width = container.clientWidth;
+        let height = container.clientHeight;
+
+        const svg = d3.select("#edges-layer");
+        const nodesLayer = d3.select("#nodes-layer");
+
+        const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(220))
+            .force("charge", d3.forceManyBody().strength(-2500))
+            .force("center", d3.forceCenter(width / 2, height / 2).strength(0.05))
+            .force("collide", d3.forceCollide().radius(150))
+            .on("tick", ticked);
+
+        d3.select("#node-CENTRAL").call(d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended));
+
+        let isMinimized = false;
+        window.toggleAnswer = function() {
+            const box = document.getElementById('agent-answer');
+            isMinimized = !isMinimized;
+            box.style.display = isMinimized ? 'none' : 'block';
+            simulation.alpha(0.3).restart();
+        };
+
+        // --- RENDER LOGIC ---
+        function updateGraph() {
+            const linkSelection = svg.selectAll(".link").data(links, d => `${d.source.id || d.source}-${d.target.id || d.target}-${d.type}`);
+            linkSelection.exit().remove();
+            linkSelection.enter().append("path")
+                .attr("class", d => `link visible link-${d.type}`);
+            
+            const nodeData = nodes.filter(n => n.id !== "CENTRAL");
+            const nodeSelection = nodesLayer.selectAll(".dynamic-node").data(nodeData, d => d.id);
+            nodeSelection.exit().transition().duration(300).style("opacity", 0).remove();
+            
+            const nodeEnter = nodeSelection.enter().append("div")
+                .attr("class", d => `node-card visible dynamic-node node-${d.type}`)
+                .attr("id", d => `node-${d.id}`)
+                .style("left", `${width/2}px`)
+                .style("top", `${height/2}px`)
+                .call(d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended));
+
+            nodeEnter.html(d => {
+                if (d.type === 'project') {
+                    const p = db.projects[d.id];
+                    return `
+                        <div class="project-content">
+                            <div class="txt-meta text-gray-500 mb-1">${p.year}</div>
+                            <h2 class="txt-display text-xl leading-none mb-3">${p.title}</h2>
+                            <p class="txt-body text-gray-700">${p.desc}</p>
+                            <div class="mt-auto flex justify-start pt-3">
+                                <a href="#" class="text-[var(--ink)] text-[0.65rem] font-bold uppercase tracking-widest border-b border-[var(--ink)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors pb-0.5">Read More ↗</a>
+                            </div>
+                        </div>
+                        <div class="patchbay">
+                            <div class="patch-btn dot-r-btn" onclick="toggleLocal('${d.id}', 'agency')">
+                                <svg class="w-5 h-5 flex-shrink-0 text-[var(--rgb-r)]"><use href="#icon-business"></use></svg>
+                            </div>
+                            <div class="patch-btn dot-g-btn" onclick="toggleLocal('${d.id}', 'collab')">
+                                <svg class="w-5 h-5 flex-shrink-0 text-[var(--rgb-g)]"><use href="#icon-people"></use></svg>
+                            </div>
+                            <div class="patch-btn dot-b-btn" onclick="toggleLocal('${d.id}', 'asset')">
+                                <svg class="w-5 h-5 flex-shrink-0 text-[var(--rgb-b)]"><use href="#icon-pictures"></use></svg>
+                            </div>
+                        </div>
+                    `;
+                } else if (d.type === 'agency' || d.type === 'person') {
+                    const source = d.type === 'agency' ? db.agencies[d.id] : db.collabs[d.id];
+                    const clickAction = d.type === 'person' ? `onclick="expandCollaborator('${d.id}')"` : '';
+                    return `<div ${clickAction} class="pointer-events-auto">${source.title}</div>`;
+                } else if (d.type === 'asset') {
+                    return `
+                        <div class="sprite-simulation pointer-events-none">
+                            <div class="sprite-text">6-FRAME WEBP<br>${db.assets[d.id].title}</div>
+                        </div>
+                    `;
+                }
+            });
+
+            simulation.nodes(nodes);
+            simulation.force("link").links(links);
+            simulation.alpha(0.8).restart();
+        }
+
+        // --- MATH: GRAVITY BEZIER NOODLES ---
+        function ticked() {
+            d3.select("#node-CENTRAL")
+                .style("left", d => `${nodes[0].x}px`)
+                .style("top", d => `${nodes[0].y}px`);
+
+            nodesLayer.selectAll(".dynamic-node")
+                .style("left", d => `${d.x}px`)
+                .style("top", d => `${d.y}px`);
+
+            svg.selectAll(".link").attr("d", d => {
+                const s = getAnchorPoint(d.source, 'source', d.type, null);
+                const t = getAnchorPoint(d.target, 'target', d.type, s.y);
+                
+                const sag = 80; 
+                
+                // Cable always drops DOWN out of the source
+                const cp1x = s.x;
+                const cp1y = s.y + sag;
+                
+                // If target is below source, cable comes in from TOP (t.y - sag)
+                // If target is above source, cable loops up and plugs in from BOTTOM (t.y + sag)
+                const cp2x = t.x;
+                const cp2y = t.y < s.y ? t.y + sag : t.y - sag;
+                
+                return `M ${s.x} ${s.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${t.x} ${t.y}`;
+            });
+        }
+
+        function getAnchorPoint(node, role, linkType, sourceNodeY) {
+            let x = node.x;
+            let y = node.y;
+
+            if (node.type === 'project') {
+                if (role === 'source') {
+                    y = node.y + (PROJECT_HEIGHT / 2); // Bottom edge
+                    if (linkType === 'agency') x = node.x - 93.3; // Hardcoded 1/3 offset
+                    if (linkType === 'collab') x = node.x;
+                    if (linkType === 'asset') x = node.x + 93.3;
+                } else {
+                    y = node.y - (PROJECT_HEIGHT / 2); // Incoming query line hits top
+                }
+            } else if (node.type === 'query') {
+                y = node.y + 40; // Bottom of query box
+            } else {
+                // Incoming lines to child nodes
+                const halfHeight = node.type === 'asset' ? 70 : 18;
+                // If the target node is ABOVE the source, the cable plugs into its bottom. Otherwise, top.
+                const isAbove = node.y < sourceNodeY;
+                y = isAbove ? node.y + halfHeight : node.y - halfHeight;
+            }
+            return {x, y};
+        }
+
+        // --- INTERACTION LOGIC ---
+        window.toggleLocal = function(projectId, toggleType) {
+            log("USER_INTERACT", `Toggled ${toggleType} on ${projectId}`);
+            const projectData = db.projects[projectId];
+            const btnClass = toggleType === 'agency' ? '.dot-r-btn' : toggleType === 'collab' ? '.dot-g-btn' : '.dot-b-btn';
+            const btn = document.querySelector(`#node-${projectId} ${btnClass}`);
+            
+            if (activeToggles[toggleType][projectId]) {
+                btn.classList.remove('active');
+                activeToggles[toggleType][projectId] = false;
+                links = links.filter(l => !(l.source.id === projectId && l.type === toggleType));
+                
+                nodes = nodes.filter(n => {
+                    if (n.type === 'project' || n.type === 'query') return true;
+                    return links.some(l => l.target.id === n.id || l.source.id === n.id);
+                });
+            } else {
+                btn.classList.add('active');
+                activeToggles[toggleType][projectId] = true;
+                
+                const addNodeAndLink = (targetId, nodeType) => {
+                    if (!nodes.find(n => n.id === targetId)) {
+                        const projNode = nodes.find(n => n.id === projectId);
+                        // Spawn child below the project
+                        nodes.push({ id: targetId, type: nodeType, x: projNode.x + (Math.random()*40-20), y: projNode.y + 160 });
+                    }
+                    links.push({ source: projectId, target: targetId, type: toggleType });
+                };
+
+                if (toggleType === 'agency') addNodeAndLink(projectData.agency, 'agency');
+                if (toggleType === 'collab') projectData.collabs.forEach(c => addNodeAndLink(c, 'person'));
+                if (toggleType === 'asset') addNodeAndLink(projectData.asset, 'asset');
+            }
+            updateGraph();
+        };
+
+        window.expandCollaborator = function(collabId) {
+            log("JOURNEY_PIVOT", `Querying DB for projects featuring: ${db.collabs[collabId].title}`);
+            Object.values(db.projects).forEach(p => {
+                if (p.collabs.includes(collabId) && !nodes.find(n => n.id === p.id)) {
+                    log("RETRIEVE", `Found project: ${p.id}`);
+                    nodes.push({ id: p.id, type: 'project', x: width/2, y: height/2 + 250 });
+                    links.push({ source: "CENTRAL", target: p.id, type: "query" });
+                    links.push({ source: p.id, target: collabId, type: "collab" });
+                    activeToggles['collab'][p.id] = true; 
+                }
+            });
+            setTimeout(() => {
+                Object.values(db.projects).forEach(p => {
+                    if (p.collabs.includes(collabId)) {
+                        const btn = document.querySelector(`#node-${p.id} .dot-g-btn`);
+                        if(btn) btn.classList.add('active');
+                    }
+                });
+            }, 50);
+            updateGraph();
+        };
+
+        // --- SIMULATION SCRIPT ---
+        const inputField = document.getElementById('main-input');
+        const answerBox = document.getElementById('agent-answer');
+        const telemetry = document.getElementById('telemetry-log');
+
+        function log(action, data) {
+            const row = document.createElement('div');
+            row.className = 'telemetry-row mb-1';
+            row.innerHTML = `<span class="text-gray-500">[${new Date().toISOString().substring(11, 23)}]</span> <span class="text-white font-bold w-24 inline-block">${action}</span> <span class="text-[#00FF41]">> ${data}</span>`;
+            telemetry.appendChild(row);
+            telemetry.scrollTop = telemetry.scrollHeight;
+        }
+
+        setTimeout(() => {
+            const query = "Landmark projects that redefined real-time brand behavior.";
+            let i = 0;
+            const typing = setInterval(() => {
+                inputField.value += query.charAt(i); i++;
+                if(i >= query.length) {
+                    clearInterval(typing);
+                    setTimeout(() => {
+                        log("CALL_TOOL", "semantic_search('real-time brand behavior authentic culture')");
+                        document.querySelector('.status-pulse').textContent = "SEARCHING";
+                        
+                        setTimeout(() => {
+                            answerBox.style.display = "block";
+                            answerBox.innerHTML = `I retrieved <strong>Old Spice: Responses</strong> and <strong>Nothing Beats a Londoner</strong>. Both campaigns leveraged real-time culture and unfiltered authenticity to subvert traditional advertising formats. Click the icons below the projects to explore the agencies, teams, and visual assets.`;
+                            
+                            nodes.push({ id: "P1", type: "project", x: width/2 - 180, y: height/2 + 250 });
+                            nodes.push({ id: "P2", type: "project", x: width/2 + 180, y: height/2 + 250 });
+                            links.push({ source: "CENTRAL", target: "P1", type: "query" });
+                            links.push({ source: "CENTRAL", target: "P2", type: "query" });
+                            
+                            updateGraph();
+                            log("RENDER", "Graph updated with 2 results");
+                            document.querySelector('.status-pulse').textContent = "COMPLETE";
+                            inputField.value = "";
+                            inputField.placeholder = "ASK A FOLLOW-UP...";
+                            
+                        }, 800);
+                    }, 400);
+                }
+            }, 30);
+        }, 1000);
+
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x; d.fy = d.y;
+        }
+        function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null; d.fy = null;
+        }
+        
+        window.addEventListener('resize', () => {
+            width = container.clientWidth;
+            height = container.clientHeight;
+            simulation.force("center", d3.forceCenter(width / 2, height / 2).strength(0.05));
+            simulation.alpha(0.3).restart();
+        });
+    </script>
+</body>
+</html>
