@@ -51,6 +51,7 @@ Ran across television, OOH, digital OOH, online, cinema, social, and print.
 - **Yann Gorriz** — Line Producer
 - **The Mill** — VFX
 - **Alex Hammond** — VFX Supervisor, The Mill
+- **"Shoop"** — Salt-N-Pepa (featured track)
 - **Wake The Town** — Music
 - **Wave Studios** — Sound
 - **Jack Sedgwick** — Sound Designer
@@ -70,4 +71,4 @@ Ran across television, OOH, digital OOH, online, cinema, social, and print.
 - [Campaign Live: launch article (May 2017)](https://www.campaignlive.com/article/three-go-roam-wieden-kennedy-london/1434379)
 
 ### Raw Research
-- [Missed projects research file](../raw/research/missed_projects.md)
+- [Raw research file](../raw/research/wk_three_go_roam_2026-04-08.md)

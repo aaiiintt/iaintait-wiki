@@ -1,5 +1,19 @@
 # Wiki Activity Log
 
+## [2026-04-08] ingest | 15 backfilled W+K projects (pipeline test)
+
+Ingest pass for 15 projects that predated the raw-research pipeline. All 15 got dedicated raw dumps (`raw/research/<slug>_2026-04-08.md`). Significant new evidence ingested:
+
+- **wk_coca_cola_maroon_5_24hr** — added `## Awards` (BT Digital Music Awards 2011: Best Event, Winner).
+- **wk_sainsburys_the_big_night** — named performers: lead = Tia Isaac (age 8), Plugboy = Harrison Wilmot.
+- **wk_three_real_5g** — added `## Awards` (D&AD 2021 Yellow Pencil Direction + Graphite Pencil Production Design; CICLOPE 2020 Grand Prix); added VFX studios Nineteentwenty + Frender alongside The Mill.
+- **wk_sainsburys_food_dancing** — added Time Based Arts as Post / Online credit.
+- **wk_three_go_roam** — added "Shoop" by Salt-N-Pepa as featured track.
+
+All 15 raw research links updated from batch/placeholder files to correct dated slugs.
+
+**Sources consulted:** dandad.org, lbbonline.com, campaignlive.co.uk, creativereview.co.uk, webbyawards.com, lovethework.com
+
 ## [2026-04-08] ingest | Google Photowall for Chromecast + 5 collaborators
 
 Created `projects/google_photowall_chromecast.md` (GCL Chrome Experiment, March 2014). Full team credited from LAD Studio portfolio + Google Developers blog byline (Igor Clark). Created 5 new collaborator profiles: **Igor Clark** (Technical Director — POKE 2005–2008, W+K Portland 2010–2012, GCL 2013–2015), **Suz Chambers** (Executive Producer, GCL — confirmed on Racer, Roll It, Photowall via Awwwards), **George Michael Brower** (Creative Tech, GCL 2010–2015), **Justin Windle** (Creative Tech, GCL 2012–2015, handle: soulwire), **Asa Block** (Producer, GCL). Updated 5 project files: google_racer (Suz added), google_roll_it (Suz linked), poke_balloonacy (Igor added), wk_coca_cola_polar_bowl (Igor added), google_photowall_chromecast (new). Added all 5 to `collaborators_index.md`. Added Photowall to `index.md`. Raw dumps: `raw/research/igor_clark_2026-04-08.md`, `raw/research/suz_chambers_2026-04-08.md`, `raw/research/google_photowall_chromecast_2026-04-08.md`, `raw/research/george_michael_brower_2026-04-08.md`, `raw/research/justin_windle_2026-04-08.md`, `raw/research/asa_block_2026-04-08.md`.

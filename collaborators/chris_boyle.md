@@ -15,7 +15,7 @@ primary_role: "Director / Co-founder, Private Island"
 
 # Chris Boyle
 
-London-based director and co-founder of Private Island, a mixed-media production studio he set up in 2015 with EP Helen Power after 10+ years working together as a director–producer partnership across London production companies. His AI viral experiments and short films — made with tools like Stable Diffusion, ControlNet and Runway — have racked up tens of millions of views and been featured in The New York Times, Wired, The Economist and the BBC. His "Meme, Myself and A.I." (2025) is the third part of an anthology of AI/machine-learning short films.
+London-based director and co-founder of **[Private Island](private_island.md)**, a mixed-media production studio he set up in 2015 with EP Helen Power after 10+ years working together as a director–producer partnership across London production companies. His AI viral experiments and short films — made with tools like Stable Diffusion, ControlNet and Runway — have racked up tens of millions of views and been featured in The New York Times, Wired, The Economist and the BBC. His "Meme, Myself and A.I." (2025) is the third part of an anthology of AI/machine-learning short films.
 
 ## Worked With Iain On
 

@@ -32,7 +32,7 @@ primary_role: Executive Creative Director
 
 Sainsbury's Christmas 2018. A two-minute film — directed by **Michael Gracey**, the director of *The Greatest Showman* — following a young girl performing a rendition of **"You Get What You Give"** by New Radicals on stage, surrounded by child actors dressed as Christmas characters.
 
-The breakout star was a child dressed as an electrical plug — "**Plugboy**" — whose deadpan cameo became a viral sensation under the hashtag **#PlugLife**, spawning thousands of memes and social media mentions. The lead child actor was subsequently invited to switch on her hometown's Christmas lights.
+The breakout star was a child dressed as an electrical plug — "**Plugboy**" — whose deadpan cameo became a viral sensation under the hashtag **#PlugLife**, spawning thousands of memes and social media mentions. The lead performer was **Tia Isaac** (aged 8); Plugboy was played by **Harrison Wilmot**. The lead child actor was subsequently invited to switch on her hometown's Christmas lights.
 
 Tagline: *"We give all we've got for the ones we love."*
 
@@ -105,4 +105,4 @@ Campaign extended across radio, print, digital, social, and out-of-home.
 - [LBBonline: "Michael Gracey Directs Sainsbury's On-Stage 'Big Night' Christmas Ad"](https://lbbonline.com/news/michael-gracey-directs-sainsburys-on-stage-big-night-christmas-ad)
 
 ### Raw Research
-- [Missed projects research file](../raw/research/missed_projects.md)
+- [Raw research file](../raw/research/wk_sainsburys_the_big_night_2026-04-08.md)

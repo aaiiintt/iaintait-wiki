@@ -95,4 +95,4 @@ Directed by **Taika Waititi** (*Jojo Rabbit*, *Thor: Ragnarok*) — whose home c
 - [SHOOTonline: Top Spot of the Week](https://www.shootonline.com/video/top-spot-week-taika-waititi-directs-coca-colas-xmas-ad-letter%C2%A0-wk-london)
 
 ### Raw Research
-- [Missed projects research file](../raw/research/missed_projects.md)
+- [Raw research file](../raw/research/wk_coca_cola_the_letter_2026-04-08.md)

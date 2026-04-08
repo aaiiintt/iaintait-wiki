@@ -68,4 +68,4 @@ The creative positioned the National Trust not as a preserver of historic houses
 ![wk_national_trust_everyone_needs_nature frame 06](../raw/media/wk_national_trust_everyone_needs_nature/2020_wk_national_trust_everyone_needs_nature_frame_06.jpg)
 
 - [LBB Online: #EveryoneNeedsNature coverage](https://lbbonline.com)
-- [Raw research file](../raw/research/wk_london_brands_2026-04-07.md)
+- [Raw research file](../raw/research/wk_national_trust_everyone_needs_nature_2026-04-08.md)

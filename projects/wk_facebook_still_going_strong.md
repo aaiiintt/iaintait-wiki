@@ -72,4 +72,4 @@ The film was created entirely during COVID-19 lockdown and made using authentic 
 - [Adweek: "Facebook's Newest Ad Shows How Groups Are 'Still Going Strong' During COVID-19"](https://www.adweek.com/creativity/facebooks-newest-ad-shows-how-groups-are-still-going-strong-during-covid-19/)
 
 ### Raw Research
-- [Missed projects research file](../raw/research/missed_projects.md)
+- [Raw research file](../raw/research/wk_facebook_still_going_strong_2026-04-08.md)

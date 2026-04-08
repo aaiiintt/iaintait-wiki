@@ -77,6 +77,9 @@ The campaign centred on a bespoke track commissioned for the spot: **"Food Danci
 - **Siri Bunford** — Director (Knucklehead)
 - **Knucklehead** — Production company
 
+**Post:**
+- **[Time Based Arts](../collaborators/time_based_arts.md)** — Post production / Online
+
 **Photography:**
 - **David Sykes** — Food stills photographer
 - **Josh Cole** — B&W portraiture photographer
@@ -104,4 +107,4 @@ The campaign centred on a bespoke track commissioned for the spot: **"Food Danci
 - [Adweek: "W+K London Dances Around the Kitchen in First Work for Retail Giant Sainsbury's"](https://www.adweek.com/agencyspy/wk-london-dances-around-the-kitchen-in-first-work-for-retail-giant-sainsburys/124221/)
 
 ### Raw Research
-- [Missed projects research file](../raw/research/missed_projects.md)
+- [Raw research file](../raw/research/wk_sainsburys_food_dancing_2026-04-08.md)

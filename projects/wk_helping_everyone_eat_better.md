@@ -70,4 +70,4 @@ A 60-second TV spot using **match-cut cinematography** to frame raw produce and 
 - [Branding.news: Sainsbury's "Helping Everyone Eat Better" credits](https://branding.news)
 
 ### Raw Research
-- [Raw research file](../raw/research/wk_london_brands_2026-04-07.md)
+- [Raw research file](../raw/research/wk_helping_everyone_eat_better_2026-04-08.md)

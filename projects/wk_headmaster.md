@@ -64,3 +64,6 @@ The answer was Headmaster — an arcade game stuffed with 3D scans of the entire
 ![Headmaster loop 07](../raw/media/wk_headmaster/loops_07.jpg)
 ![Headmaster loop 08](../raw/media/wk_headmaster/loops_08.jpg)
 ![Headmaster loop 09](../raw/media/wk_headmaster/loops_09.jpg)
+
+### Raw Research
+- [Raw research file](../raw/research/wk_headmaster_2026-04-08.md)

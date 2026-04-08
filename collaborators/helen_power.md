@@ -14,7 +14,7 @@ primary_role: "Executive Producer / Partner, Private Island"
 
 # Helen Power
 
-Co-founder, EP and Partner at Private Island, the London-based mixed-media production studio she launched in 2015 with director Chris Boyle after more than a decade working together as a director–producer partnership at other London production companies. Her production credits span commercials, music promos and gaming cinematics, with Private Island clients including Adobe, Bud Light, Visa, Nike, Pokémon GO, Ingress, League of Legends and EA's FIFA 22.
+Co-founder, EP and Partner at **[Private Island](private_island.md)**, the London-based mixed-media production studio she launched in 2015 with director Chris Boyle after more than a decade working together as a director–producer partnership at other London production companies. Her production credits span commercials, music promos and gaming cinematics, with Private Island clients including Adobe, Bud Light, Visa, Nike, Pokémon GO, Ingress, League of Legends and EA's FIFA 22.
 
 ## Worked With Iain On
 

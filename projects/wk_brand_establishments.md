@@ -87,4 +87,4 @@ Voiceover by **Peter Serafinowicz**. Maintained Tyrrells' distinctly eccentric, 
 
 - [Campaign Live: Bud Light UK launch coverage](https://www.campaignlive.co.uk)
 - [Ads of the World: Tyrrells "Absurdly Good"](https://www.adsoftheworld.com)
-- [Raw research file](../raw/research/wk_london_brands_2026-04-07.md)
+- [Raw research file](../raw/research/wk_brand_establishments_2026-04-08.md)

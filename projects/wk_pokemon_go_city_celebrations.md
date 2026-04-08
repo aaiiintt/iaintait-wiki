@@ -118,3 +118,4 @@ The campaign fused brand advertising with live gameplay mechanics at a scale tha
 ### Raw Research
 - [Original research file](../raw/research/wk_niantic_campaigns_2026-04-07.md)
 - [Deep research file (2026-04-07)](../raw/research/wk_pokemon_go_deep_2026-04-07.md)
+- [Raw research file (2026-04-08)](../raw/research/wk_pokemon_go_city_celebrations_2026-04-08.md)

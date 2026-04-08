@@ -52,6 +52,12 @@ Fans globally could influence the creative process as it happened — their cont
 | Countries reached (live stream) | 139 |
 | Coca-Cola Facebook promotion reach | 20+ million |
 
+## Awards
+
+| Award | Category | Result |
+|---|---|---|
+| BT Digital Music Awards 2011 | Best Event | Winner |
+
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Global Interactive Creative Director, W+K (authored the Campaign magazine first-person piece about the project; quoted in The Drum)
@@ -86,4 +92,4 @@ Fans globally could influence the creative process as it happened — their cont
 - [Marketing Week: Coca-Cola / Maroon 5 coverage (2011)](https://www.marketingweek.com)
 
 ### Raw Research
-- [Raw research file](../raw/research/wk_portland_dodge_cocacola_2026-04-07.md)
+- [Raw research file](../raw/research/wk_coca_cola_maroon_5_24hr_2026-04-08.md)

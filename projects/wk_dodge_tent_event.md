@@ -72,4 +72,5 @@ The result: a genuine PR vulnerability became a self-deprecating internet meme, 
 - [Jalopnik: "Dodge Bests PETA With Invisible Monkey Ad" (Aug 12, 2010)](https://www.jalopnik.com/dodge-bests-peta-with-invisible-monkey-ad-5611061/)
 - [YouTube: Matt Moore's personal upload of the spot](https://www.youtube.com/watch?v=m7vEQaw3egU)
 - [Dailymotion: spot upload](https://www.dailymotion.com/video/xgocsc)
-- [Raw research file](../raw/research/wk_portland_dodge_cocacola_2026-04-07.md)
+- [Raw research file (2026-04-07)](../raw/research/wk_portland_dodge_cocacola_2026-04-07.md)
+- [Raw research file (2026-04-08)](../raw/research/wk_dodge_tent_event_2026-04-08.md)

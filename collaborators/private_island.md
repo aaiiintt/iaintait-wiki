@@ -1,20 +1,28 @@
 ---
 title: "Private Island"
 type: collaborator
-tags: [production-company, VFX, studio]
-aliases: [Private Island Productions]
+tags: [production-company, VFX, mixed-media, studio, wk_london]
+aliases: [Private Island Productions, privateisland.tv]
 source_urls:
-  - https://wearepi.com
+  - https://www.privateisland.tv
+  - https://www.lbbonline.com/news/studio-private-island-signs-to-skunk-us
 ---
 
 # Private Island
 
-**Type:** Production Company / VFX Studio
-**Role on collaborations:** Production partner on W+K London projects.
+London-based mixed-media production studio, founded in 2015 by director **[Chris Boyle](chris_boyle.md)** and executive producer **[Helen Power](helen_power.md)** after more than a decade working together as a director–producer partnership. Specialises in commercials, music promos, gaming cinematics and AI/generative work. Clients include Adobe, Bud Light, Visa, Nike, Pokémon GO, Ingress, League of Legends and EA's FIFA 22. Signed to SKUNK for US representation (per LBB, 2023).
 
-Creative production company specialising in experiential and digital work.
+## Founders
 
-## Projects
+- **[Chris Boyle](chris_boyle.md)** — Director / Co-founder
+- **[Helen Power](helen_power.md)** — Executive Producer / Co-founder
 
-- [Ingress Prime: ADA vs. JARVIS (2018)](../projects/wk_niantic_ingress_prime.md)
-- [Gillian Wearing Deepfake (2019)](../projects/wk_gillian_wearing_deepfake.md)
+## Worked With Iain On
+
+- **[Niantic: Ingress Prime — ADA vs. JARVIS](../projects/wk_niantic_ingress_prime.md)** — Production company (edit, animation, online & VFX), W+K London × Niantic, 2018
+- **[Wearing Gillian](../projects/wk_gillian_wearing_deepfake.md)** — Production company, W+K London, 2018–2019
+
+## References
+
+- [Private Island — privateisland.tv](https://www.privateisland.tv)
+- [LBB: Private Island signs to SKUNK US](https://www.lbbonline.com/news/studio-private-island-signs-to-skunk-us)

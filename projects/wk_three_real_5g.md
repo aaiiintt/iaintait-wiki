@@ -35,6 +35,14 @@ The 90-second version aired during ITV's Ant & Dec's Saturday Night Takeaway on 
 
 **Brands featured in the spot:** Tinder, Samsung, YouTube Music, Deliveroo, Greggs.
 
+## Awards
+
+| Award | Category | Result |
+|---|---|---|
+| D&AD 2021 | Yellow Pencil — Direction | Winner |
+| D&AD 2021 | Graphite Pencil — Production Design | Winner |
+| CICLOPE 2020 | Grand Prix | Winner |
+
 ## Collaborators
 
 - **[Iain Tait](../collaborators/iain_tait.md)** — Executive Creative Director, W+K London
@@ -54,6 +62,8 @@ The 90-second version aired during ITV's Ant & Dec's Saturday Night Takeaway on 
 - **Robin Brown** — Production Designer
 - **Ameena Callender** — Costume Designer
 - **[The Mill](../collaborators/the_mill.md)** — VFX
+- **Nineteentwenty** — VFX
+- **Frender** — VFX
 - **Lewis Capaldi** — Talent (5G hologram)
 
 ## References & Media
@@ -74,4 +84,4 @@ The 90-second version aired during ITV's Ant & Dec's Saturday Night Takeaway on 
 - [The Mill case study](https://www.themill.com/work/case-study/creating-a-mind-bending-futuristic-universe-with-three-to-launch-their-new-5g-network/)
 
 ### Raw Research
-- [Missed projects research file](../raw/research/missed_projects.md)
+- [Raw research file](../raw/research/wk_three_real_5g_2026-04-08.md)

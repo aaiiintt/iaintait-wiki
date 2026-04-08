@@ -83,4 +83,5 @@ A cinematic piece giving a grounded, chaotic perspective on being a wizard-in-tr
 ![wk_harry_potter_wizards_unite frame 06](../raw/media/wk_harry_potter_wizards_unite/2019_wk_harry_potter_wizards_unite_frame_06.jpg)
 
 - [W+K London work page](https://wklondon.com/work/harry-potter-wizards-unite/)
-- [Raw research file](../raw/research/wk_niantic_campaigns_2026-04-07.md)
+- [Raw research file (2026-04-07)](../raw/research/wk_niantic_campaigns_2026-04-07.md)
+- [Raw research file (2026-04-08)](../raw/research/wk_harry_potter_wizards_unite_2026-04-08.md)
