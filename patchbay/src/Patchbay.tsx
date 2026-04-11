@@ -77,6 +77,14 @@ export function Patchbay() {
         }
       }
     }
+    // 3. Anchor agencies to Iain — agencies have no natural edges to
+    //    Iain, so they drift freely. These synthetic springs pull each
+    //    agency toward centre; mutual repulsion distributes them radially.
+    for (const n of nodes) {
+      if (n.kind === 'agency') {
+        addEdge(IAIN_ID, n.id, 'agency');
+      }
+    }
     return { nodes, edges };
   }, [graph, enabled]);
 
@@ -243,10 +251,10 @@ export function Patchbay() {
           showHoveredNodeLabel
           showLabelsFor={selected ? [selected] : []}
           simulationGravity={0.05}
-          simulationRepulsion={1.6}
+          simulationRepulsion={2.0}
           simulationFriction={0.82}
           simulationLinkSpring={0.6}
-          simulationLinkDistance={18}
+          simulationLinkDistance={22}
           simulationDecay={8000}
           fitViewOnInit
           onClick={selectNode}

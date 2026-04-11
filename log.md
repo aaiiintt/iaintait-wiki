@@ -1,5 +1,10 @@
 # Wiki Activity Log
 
+## [2026-04-11] ingest | Nick Farnhill (collaborator deep profile)
+
+Full rewrite of `collaborators/nick_farnhill.md` from dedicated raw research dump. Career timeline now spans Deepend (~1994–2001) → POKE co-founder (2001) → Publicis.Poke Joint CEO (2014) → Publicis London CEO (2016) → Publicis Worldwide UK CEO (2018) → Publicis•Poke CEO (2019) → FOOD co-founder (2021). Added Lovie Awards co-founder/co-chair (2010–present), Tech City Apprenticeship, Hackney House, MUBI advisory board. Key biographical details: CS education, Nijmegen University 1994, Deepend origin, Mother seed funding for POKE, £10m Publicis acquisition. Multiple verified quotes from Adweek, The Drum, YouTube interviews.
+**Sources consulted:** thedrum.com, adweek.com, moreaboutadvertising.com, creativereview.co.uk, apprenticenation.co.uk, youtube.com
+
 ## [2026-04-08] ingest | 15 backfilled W+K projects (pipeline test)
 
 Ingest pass for 15 projects that predated the raw-research pipeline. All 15 got dedicated raw dumps (`raw/research/<slug>_2026-04-08.md`). Significant new evidence ingested:
