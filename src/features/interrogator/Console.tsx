@@ -388,7 +388,7 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
       {/* Anchored Header Unit (Sticky Top, relative when open to allow mobile page scrolling) */}
       <div className={`${open ? "relative" : "sticky top-0"} bg-white z-20 pb-4 border-b border-gray-200 mb-6 pt-2`}>
         {/* 0. Session Resource usage banner */}
-        <div className="text-sm text-gray-400 pb-2 mb-3 flex justify-between select-none">
+        <div className="text-body text-gray-400 pb-2 mb-3 flex justify-between select-none">
           <span>TOKENS: {sessionStats.total.toLocaleString()} <span className="hidden sm:inline">({sessionStats.input.toLocaleString()} IN | {sessionStats.output.toLocaleString()} OUT)</span></span>
           <span>COST: ${sessionStats.cost.toFixed(6)}</span>
         </div>
@@ -415,7 +415,7 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
                   spellCheck={false}
                   autoFocus
                 />
-                <span className="text-sm text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
+                <span className="text-meta text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
                   ESC
                 </span>
               </div>
@@ -474,8 +474,8 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
             disabled={loading}
             className="mcp-trigger flex items-center gap-3 w-full text-left cursor-text disabled:opacity-50"
           >
-            <span className="text-sm font-bold text-gray-900 select-none">mcp-aaiiintt:</span>
-            <span className="flex-1 text-sm text-gray-400 truncate flex items-center font-mono">
+            <span className="text-body font-bold text-gray-900 select-none">mcp-aaiiintt:</span>
+            <span className="flex-1 text-body text-gray-400 truncate flex items-center font-mono">
               {loading ? (
                 "Waiting for response…"
               ) : (
@@ -485,7 +485,7 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
                 </>
               )}
             </span>
-            <span className="text-sm text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
+            <span className="text-meta text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
               ⌘&nbsp;K
             </span>
           </button>
