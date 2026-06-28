@@ -1,0 +1,17 @@
+# Ignore list for gcloud source uploads
+.gcloudignore
+.git
+.gitignore
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Databases
+local.db*
+
+# Exclude playground nextjs templates that conflict with our Vite config
+postcss.config.js
+tailwind.config.ts
+next.config.js
+app/
