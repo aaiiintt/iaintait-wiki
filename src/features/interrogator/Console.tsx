@@ -165,9 +165,32 @@ To get started, run a command, ask a question, or select a topic below.`,
     return () => clearTimeout(timer);
   }, [search]);
 
+  const clearConversation = () => {
+    setMessages([
+      {
+        id: "welcome",
+        sender: "agent",
+        text: `Welcome to the Iain Tait career archive—a knowledge base spanning 25 years of [digital innovation](file:///digital_innovation.md), [creative campaigns](file:///creative_campaigns.md), [patents](file:///patents.md), and leadership at [POKE](file:///agencies/poke_london.md), [W+K](file:///wieden_and_kennedy.md), [Google](file:///agencies/google_creative_lab.md), and [FOOD](file:///agencies/food.md).
+
+Want to use this data elsewhere? You can connect this database directly to your own local AI agent (like Claude Desktop or Cursor). Check the [MCP Server Connection Guide](file:///industry/mcp.md) to set it up for real-time queries.
+
+To get started, run a command, ask a question, or select a topic below.`,
+        timestamp: new Date(),
+      }
+    ]);
+    setActiveLogs(null);
+    setLoading(false);
+    setInput("");
+  };
+
   const executeCommand = (query: string, text?: string) => {
     setOpen(false);
     setSearch("");
+    
+    if (query === "Clear Conversation") {
+      clearConversation();
+      return;
+    }
     
     if (query === "Connect to MCP") {
       const userMsg: Message = {
@@ -398,6 +421,7 @@ To get started, run a command, ask a question, or select a topic below.`,
                 <Command.Group heading="QUICK ACTIONS">
                   <Command.Item onSelect={() => executeCommand("surprise_me", "I'm feeling lucky")}>I'm feeling lucky <span className="cmd-meta">Execute ↵</span></Command.Item>
                   <Command.Item onSelect={() => executeCommand("Working with Iain")}>Working with Iain <span className="cmd-meta">Execute ↵</span></Command.Item>
+                  <Command.Item onSelect={() => executeCommand("Clear Conversation")}>Clear Conversation <span className="cmd-meta">Clear ↵</span></Command.Item>
                 </Command.Group>
               </>
             )}
