@@ -27,7 +27,7 @@ Before making changes live, the agent MUST run the following pre-flight verifica
 3.  **Graph Consistency**: Run `npm run db:sync` to generate new node embeddings, refresh database entries, and clear dynamic cached responses. Ensure no orphaned nodes or dead links exist.
 
 ## 4. Git & GitHub Usage
-*   Commit changes to the active branch (`stack-migration`).
+*   Commit changes to the active working branch.
 *   Use present-tense, semantic commit logs (e.g. `Implement smart search caching` or `Fix imports in sync.ts`).
 *   Verify branch sync status using `git status` and push with `git push origin <branch>`.
 

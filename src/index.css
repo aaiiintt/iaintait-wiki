@@ -64,80 +64,78 @@ html, body {
 /* Markdown parsing custom typography - styled to match pure box-drawing ASCII console */
 .prose {
   font-family: var(--font-mono) !important;
-  font-size: calc(11px * var(--base-text-scale)) !important;
+  font-size: calc(13px * var(--base-text-scale)) !important;
   line-height: 1.6;
 }
-.prose h1 {
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   font-family: var(--font-mono) !important;
-  font-size: calc(11px * var(--base-text-scale)) !important;
-  font-weight: 700;
+  font-size: calc(13px * var(--base-text-scale)) !important;
+  font-weight: 700 !important;
   text-transform: uppercase;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  color: #111111;
-}
-.prose h2 {
-  font-family: var(--font-mono) !important;
-  font-size: calc(11px * var(--base-text-scale)) !important;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  color: #111111;
-}
-.prose h3 {
-  font-family: var(--font-mono) !important;
-  font-size: calc(11px * var(--base-text-scale)) !important;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-top: 1.25rem;
-  margin-bottom: 0.5rem;
   color: #111111;
 }
 .prose p {
   font-family: var(--font-mono) !important;
-  font-size: calc(11px * var(--base-text-scale)) !important;
+  font-size: calc(13px * var(--base-text-scale)) !important;
   line-height: 1.6;
   margin-bottom: 1rem;
   color: #2b2b2b;
 }
-.prose ul, .prose ol {
+.prose ul {
   font-family: var(--font-mono) !important;
-  font-size: calc(11px * var(--base-text-scale)) !important;
+  font-size: calc(13px * var(--base-text-scale)) !important;
   margin-bottom: 1rem;
   padding-left: 0.25rem;
   list-style-type: none;
 }
-.prose li {
+.prose ol {
+  font-family: var(--font-mono) !important;
+  font-size: calc(13px * var(--base-text-scale)) !important;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem !important;
+  list-style-type: decimal !important;
+}
+.prose ul li {
   margin-bottom: 0.4rem;
   position: relative;
   padding-left: 1.25rem;
 }
-.prose li::before {
+.prose ul li::before {
   content: "├─";
   position: absolute;
   left: 0;
   color: #a3a3a3;
   font-weight: normal;
 }
+.prose ul li:last-child::before {
+  content: "└─";
+}
+.prose ol li {
+  margin-bottom: 0.4rem;
+  list-style-item: decimal;
+}
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: calc(10px * var(--base-text-scale));
+  margin: 1.25rem 0;
+  font-size: calc(12px * var(--base-text-scale)) !important;
 }
 .prose th, .prose td {
-  border: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea;
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 .prose th {
-  background: #fafafa;
-  font-weight: 600;
+  background: transparent;
+  font-weight: 700;
   color: #111111;
+  border-bottom: 2px solid #111111;
 }
 .prose blockquote {
-  border-left: 2px solid #111111;
+  border-left: 2px solid #a3a3a3;
   padding-left: 1rem;
   font-style: normal;
   margin: 1.5rem 0;
@@ -151,22 +149,29 @@ html, body {
   display: block;
 }
 .prose code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: #f5f5f5;
-  padding: 0.2rem 0.4rem;
+  font-family: var(--font-mono) !important;
+  font-size: 1em !important;
+  font-weight: normal !important;
+  background: transparent !important;
+  padding: 0 !important;
+  color: #111111;
+}
+.prose :not(pre) > code::before, .prose :not(pre) > code::after {
+  content: "`";
+  color: #888888;
 }
 .prose pre {
-  background: #f9f9f9;
-  border: 1px solid #eaeaea;
-  padding: 1rem;
-  overflow-x: auto;
-  margin: 1.5rem 0;
+  background: #fafafa !important;
+  border: 1px solid #eaeaea !important;
+  padding: 1rem !important;
+  overflow-x: auto !important;
+  margin: 1.5rem 0 !important;
 }
 .prose pre code {
-  background: transparent;
-  padding: 0;
-  font-size: 0.9em;
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 1em !important;
+  font-weight: normal !important;
 }
 
 /* Highlighter pen style for clickable links */

@@ -344,14 +344,20 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
   // Configure marked custom renderer for the inline agent outputs
   const renderer = new marked.Renderer();
   
-  renderer.heading = ({ text }) => {
+  renderer.heading = ({ text, depth }) => {
     // Parse markdown links in headings to render them as clean, clickable anchors rather than raw text
     let processedText = text;
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
     processedText = processedText.replace(linkRegex, (match, linkText, href) => {
       return `<a href="${href}" class="underline hover:text-gray-600 font-bold">${linkText}</a>`;
     });
-    return `<h4 class="font-mono text-xs font-bold text-gray-900 mt-4 mb-2">// ${processedText}</h4>`;
+    let prefix = "// ";
+    if (depth === 1) prefix = "::: ";
+    else if (depth === 2) prefix = "// ";
+    else if (depth === 3) prefix = ":: ";
+    else if (depth >= 4) prefix = "- ";
+
+    return `<h${depth} class="font-mono text-sm font-bold text-gray-900 mt-4 mb-2 select-none">${prefix}${processedText}</h${depth}>`;
   };
 
   renderer.image = ({ href, title, text }) => {
@@ -511,7 +517,7 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
 
             {/* Bubble Content */}
             <div 
-              className={`max-w-[90%] text-xs leading-relaxed ${
+              className={`max-w-[90%] text-sm leading-relaxed ${
                 m.sender === "user" 
                   ? "bg-gray-100 text-gray-900 px-4 py-2.5 rounded-none border border-gray-200" 
                   : "bg-white text-gray-800"
