@@ -23,6 +23,7 @@ COPY --from=builder /app/collaborators ./collaborators
 COPY --from=builder /app/agencies ./agencies
 COPY --from=builder /app/industry ./industry
 COPY --from=builder /app/README.md ./README.md
+COPY --from=builder /app/raw ./raw
 
 EXPOSE 8080
 ENV PORT=8080
