@@ -237,8 +237,6 @@ a:hover, .prose a:hover {
 
 [cmdk-input]:focus-visible {
   outline: none;
-  box-shadow: none;
-  border-bottom: 1px solid #111111;
 }
 
 [cmdk-input]::placeholder {
