@@ -348,13 +348,13 @@ To get started, run a command, ask a question, or select a topic below.`,
           disabled={loading}
           className="mcp-trigger flex items-center gap-3 w-full text-left cursor-text disabled:opacity-50"
         >
-          <span className="text-xs font-bold text-gray-900 select-none">_AAIIINTT_MCP$</span>
-          <span className="flex-1 text-xs text-gray-400 truncate flex items-center">
+          <span className="text-[11px] font-bold text-gray-900 select-none">IAINTAIT_MCP:</span>
+          <span className="flex-1 text-[11px] text-gray-400 truncate flex items-center font-mono">
             {loading ? (
               "Waiting for response…"
             ) : (
               <>
-                Type a command or search...
+                Ask me anything...
                 <span className="mcp-cursor ml-1 text-gray-400">▊</span>
               </>
             )}
@@ -371,13 +371,16 @@ To get started, run a command, ask a question, or select a topic below.`,
           label="Global Command Menu"
           loop
         >
-          <Command.Input 
-            value={search} 
-            onValueChange={setSearch} 
-            placeholder="Search archive or type a command…" 
-            autoComplete="off"
-            spellCheck={false}
-          />
+          <div className="cmdk-input-wrapper">
+            <span className="cmdk-input-prefix">IAINTAIT_MCP:</span>
+            <Command.Input 
+              value={search} 
+              onValueChange={setSearch} 
+              placeholder="Ask me anything..." 
+              autoComplete="off"
+              spellCheck={false}
+            />
+          </div>
           <Command.List>
             <Command.Empty>No results found.</Command.Empty>
 

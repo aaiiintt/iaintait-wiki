@@ -223,12 +223,28 @@ a:hover, .prose a:hover {
   }
 }
 
+.cmdk-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.cmdk-input-prefix {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111111;
+  font-family: var(--font-mono);
+  user-select: none;
+  white-space: nowrap;
+}
+
 [cmdk-input] {
   width: 100%;
   font-size: 11px;
-  padding: 12px 16px;
+  padding: 12px 0;
   border: none;
-  border-bottom: 1px solid #eaeaea;
   background: transparent;
   color: #111111;
   border-radius: 0;
