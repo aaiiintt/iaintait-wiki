@@ -25,6 +25,11 @@ mcpRoute.get("/", async (c) => {
 
   console.log(`MCP Client connected: SSE Session ${sessionId}`);
 
+  c.header("Content-Type", "text/event-stream");
+  c.header("Cache-Control", "no-cache, no-transform");
+  c.header("Connection", "keep-alive");
+  c.header("X-Accel-Buffering", "no");
+
   return streamSSE(c, async (stream) => {
     // Register the session callback
     sessions.set(sessionId, (data: string) => {

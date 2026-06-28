@@ -282,10 +282,10 @@ export default function AdminDashboard() {
 
                   <button
                     type="submit"
-                    disabled={savingTone}
-                    className="bg-[#111111] hover:bg-gray-800 text-white font-mono text-xs uppercase py-3 disabled:bg-gray-300"
+                    disabled={savingTone || diagData?.isProduction}
+                    className="bg-[#111111] hover:bg-gray-800 text-white font-mono text-xs uppercase py-3 disabled:bg-gray-300 select-none"
                   >
-                    {savingTone ? "Writing records..." : "Commit Tone Update"}
+                    {diagData?.isProduction ? "Read-Only in Production" : (savingTone ? "Writing records..." : "Commit Tone Update")}
                   </button>
                 </form>
               )}

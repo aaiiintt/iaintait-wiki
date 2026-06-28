@@ -27,6 +27,11 @@ systemRoute.get("/tone", async (c) => {
 // POST /api/system/tone - Save edits to a specific tone route
 systemRoute.post("/tone", async (c) => {
   const body = await c.req.json();
+  const isProduction = process.env.NODE_ENV === "production" || !!process.env.K_SERVICE;
+  if (isProduction) {
+    return c.json({ error: "Tone updates are read-only in production. Edit agent responses locally and deploy via Git." }, 403);
+  }
+
   const { id, keyphrase, simulatedStepsJson, agentResponseMarkdown, targetProjectSlug } = body;
 
   if (!id) {
