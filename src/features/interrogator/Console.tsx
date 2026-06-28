@@ -338,11 +338,8 @@ To get started, run a command, ask a question, or select a topic below.`,
       <div className="sticky top-0 bg-white z-10 pb-4 border-b border-gray-200 mb-6 pt-2">
         {/* 0. Session Resource usage banner */}
         <div className="text-[10px] text-gray-400 pb-2 mb-3 flex justify-between select-none">
-          <span>SESSION:_ACTIVE</span>
-          <span className="flex gap-4">
-            <span>TOKENS: {sessionStats.total.toLocaleString()} ({sessionStats.input.toLocaleString()} IN | {sessionStats.output.toLocaleString()} OUT)</span>
-            <span>EST. COST: ${sessionStats.cost.toFixed(6)}</span>
-          </span>
+          <span>TOKENS: {sessionStats.total.toLocaleString()} ({sessionStats.input.toLocaleString()} IN | {sessionStats.output.toLocaleString()} OUT)</span>
+          <span>EST. COST: ${sessionStats.cost.toFixed(6)}</span>
         </div>
 
         {/* 3. Global Command Palette Trigger */}
