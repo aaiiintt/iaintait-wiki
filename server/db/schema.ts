@@ -41,3 +41,28 @@ export type Edge = typeof edges.$inferSelect;
 export type NewEdge = typeof edges.$inferInsert;
 export type AgentRoute = typeof agentRoutes.$inferSelect;
 export type NewAgentRoute = typeof agentRoutes.$inferInsert;
+
+export const queryCache = sqliteTable("query_cache", {
+  queryText: text("query_text").primaryKey(), // lowercase, trimmed search phrase
+  responseJson: text("response_json").notNull(), // JSON string payload of target response
+  hitCount: integer("hit_count").notNull().default(1),
+  updatedAt: integer("updated_at").notNull(), // timestamp ms
+  curated: integer("curated").notNull().default(0), // 0=dynamic, 1=manually approved/frozen
+  queryVectorJson: text("query_vector_json"), // JSON float array of normalized query embedding
+});
+
+export const queryLogs = sqliteTable("query_logs", {
+  id: text("id").primaryKey(), // unique random id
+  queryText: text("query_text").notNull(),
+  responseJson: text("response_json").notNull(),
+  hitCount: integer("hit_count").notNull().default(1),
+  status: text("status", { enum: ["pending", "seeded", "ignored"] }).notNull().default("pending"),
+  createdAt: integer("created_at").notNull(),
+});
+
+export const nodeEmbeddings = sqliteTable("node_embeddings", {
+  nodeId: text("node_id")
+    .primaryKey()
+    .references(() => nodes.id, { onDelete: "cascade" }),
+  embeddingJson: text("embedding_json").notNull(), // JSON float array of normalized embedding
+});

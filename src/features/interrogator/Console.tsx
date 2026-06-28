@@ -277,12 +277,19 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
           nodeTitle: data.targetNodeTitle
         };
         
-        // Small delay to simulate active tool traversal and model synthesis
-        setTimeout(() => {
+        const isCached = (data as any).cached === true;
+        if (isCached) {
           setMessages((prev) => [...prev, agentMsg]);
           setLoading(false);
           setActiveLogs(null);
-        }, 1200);
+        } else {
+          // Small delay to simulate active tool traversal and model synthesis
+          setTimeout(() => {
+            setMessages((prev) => [...prev, agentMsg]);
+            setLoading(false);
+            setActiveLogs(null);
+          }, 1200);
+        }
       } else {
         throw new Error("API Connection error");
       }
@@ -438,7 +445,12 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
                   <Command.Group heading="ARCHIVE NODES">
                     {autocompleteResults.map(node => (
                       <Command.Item key={node.id} onSelect={() => executeCommand(node.id, node.title)}>
-                        {node.title} <span className="text-gray-400 capitalize text-[10px] ml-2">({node.kind})</span>
+                        {node.title}
+                        {node.relationContext ? (
+                          <span className="text-amber-700 font-medium text-[9px] ml-2 font-mono">({node.relationContext})</span>
+                        ) : (
+                          <span className="text-gray-400 capitalize text-[10px] ml-2">({node.kind})</span>
+                        )}
                         <span className="cmd-meta">Jump to ↵</span>
                       </Command.Item>
                     ))}

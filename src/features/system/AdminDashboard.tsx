@@ -23,7 +23,7 @@ interface DiagnosticsData {
 }
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<"tone" | "sync" | "diagnostics">("tone");
+  const [activeTab, setActiveTab] = useState<"tone" | "sync" | "diagnostics" | "curation">("tone");
   
   // Sync States
   const [syncing, setSyncing] = useState(false);
@@ -43,11 +43,39 @@ export default function AdminDashboard() {
   const [savingTone, setSavingTone] = useState(false);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
 
+  // Curation States
+  interface QueryLog {
+    id: string;
+    queryText: string;
+    responseJson: string;
+    hitCount: number;
+    status: "pending" | "seeded" | "ignored";
+    createdAt: number;
+  }
+  interface CurationStats {
+    totalQueries: number;
+    cacheHits: number;
+    cacheHitRate: number;
+  }
+  const [logs, setLogs] = useState<QueryLog[]>([]);
+  const [stats, setStats] = useState<CurationStats | null>(null);
+  const [loadingLogs, setLoadingLogs] = useState(false);
+  const [selectedLog, setSelectedLog] = useState<QueryLog | null>(null);
+  const [customResponse, setCustomResponse] = useState("");
+  const [seedingLogId, setSeedingLogId] = useState<string | null>(null);
+  const [seedMsg, setSeedMsg] = useState<string | null>(null);
+
   // Initial loads
   useEffect(() => {
     loadToneRoutes();
     loadDiagnostics();
   }, []);
+
+  useEffect(() => {
+    if (activeTab === "curation") {
+      loadCurationData();
+    }
+  }, [activeTab]);
 
   async function loadToneRoutes() {
     try {
@@ -63,6 +91,57 @@ export default function AdminDashboard() {
       console.error("Failed to load tone routes:", err);
     }
   }
+
+  async function loadCurationData() {
+    setLoadingLogs(true);
+    try {
+      const res = await fetch("/api/search/admin/query-logs");
+      if (res.ok) {
+        const data = await res.json();
+        setLogs(data.logs);
+        setStats(data.stats);
+      }
+    } catch (err) {
+      console.error("Failed to load curation data:", err);
+    } finally {
+      setLoadingLogs(false);
+    }
+  }
+
+  const handleSeedCache = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedLog) return;
+    setSeedingLogId(selectedLog.id);
+    setSeedMsg(null);
+    try {
+      const res = await fetch("/api/search/admin/seed-cache", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          logId: selectedLog.id,
+          customResponseText: customResponse
+        })
+      });
+      if (res.ok) {
+        setSeedMsg("Successfully seeded custom response to curated cache!");
+        loadCurationData();
+        // Update selected log state
+        const updatedLogs = logs.map(l => 
+          l.id === selectedLog.id 
+            ? { ...l, status: "seeded" as const, responseJson: JSON.stringify({ ...JSON.parse(l.responseJson), agentResponse: customResponse }) }
+            : l
+        );
+        setLogs(updatedLogs);
+        setSelectedLog(null);
+      } else {
+        throw new Error("Failed to seed cache");
+      }
+    } catch (err: any) {
+      setSeedMsg(`Seeding failed: ${err.message}`);
+    } finally {
+      setSeedingLogId(null);
+    }
+  };
 
   async function loadDiagnostics() {
     setLoadingDiag(true);
@@ -204,6 +283,14 @@ export default function AdminDashboard() {
           }`}
         >
           // Graph Diagnostics ({diagData?.issues.orphans.length || 0} issues)
+        </button>
+        <button
+          onClick={() => setActiveTab("curation")}
+          className={`px-6 py-3 font-mono text-xs border-r border-[#EAEAEA] transition-all hover:bg-white ${
+            activeTab === "curation" ? "bg-white font-bold border-b-2 border-b-[#111111]" : "text-gray-500"
+          }`}
+        >
+          // Cache Curation & Logs
         </button>
       </div>
 
@@ -454,6 +541,148 @@ export default function AdminDashboard() {
                 </div>
               </div>
             ) : null}
+          </div>
+        )}
+
+        {/* CURATION TAB */}
+        {activeTab === "curation" && (
+          <div className="flex flex-col gap-8">
+            {/* Stats Dashboard */}
+            {stats && (
+              <div className="grid grid-cols-1 md:grid-cols-4 border border-[#EAEAEA] bg-gray-50 divide-y md:divide-y-0 md:divide-x divide-[#EAEAEA]">
+                <div className="p-6 text-center">
+                  <div className="text-2xl font-bold tracking-tight">{stats.totalQueries}</div>
+                  <div className="font-mono text-[10px] text-gray-500 uppercase mt-1">Total System Queries</div>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-2xl font-bold tracking-tight">{stats.cacheHits}</div>
+                  <div className="font-mono text-[10px] text-gray-500 uppercase mt-1">Cache Hits</div>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-2xl font-bold tracking-tight text-amber-700">{stats.cacheHitRate.toFixed(1)}%</div>
+                  <div className="font-mono text-[10px] text-gray-500 uppercase mt-1">Cache Hit Efficiency</div>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-2xl font-bold tracking-tight text-green-700">${(stats.cacheHits * 0.00035).toFixed(4)}</div>
+                  <div className="font-mono text-[10px] text-gray-500 uppercase mt-1">Grounded LLM Cost Savings</div>
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              {/* Left Column: Log list */}
+              <div className="border border-[#EAEAEA] p-6 bg-white flex flex-col">
+                <h3 className="font-mono text-xs font-bold text-gray-500 uppercase border-b border-[#EAEAEA] pb-3 mb-4 flex items-center justify-between">
+                  <span>Logged Interrogation Queries</span>
+                  <span className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded text-[10px]">
+                    {logs.length}
+                  </span>
+                </h3>
+
+                {loadingLogs ? (
+                  <div className="font-mono text-xs text-gray-400 py-8 animate-pulse">Loading traffic logs...</div>
+                ) : logs.length === 0 ? (
+                  <div className="text-xs font-mono text-gray-400 select-none py-4 text-center border border-dashed border-gray-200">No interrogation logs found. Run queries from the homepage Console first!</div>
+                ) : (
+                  <div className="max-h-[600px] overflow-y-auto flex flex-col gap-2 pr-2">
+                    {logs.map((log) => (
+                      <div
+                        key={log.id}
+                        onClick={() => {
+                          setSelectedLog(log);
+                          try {
+                            const payload = JSON.parse(log.responseJson);
+                            setCustomResponse(payload.agentResponse || "");
+                          } catch {
+                            setCustomResponse("");
+                          }
+                          setSeedMsg(null);
+                        }}
+                        className={`p-4 border transition-all cursor-pointer flex flex-col gap-1.5 ${
+                          selectedLog?.id === log.id
+                            ? "border-[#111111] bg-[#111111]/5"
+                            : "border-gray-100 hover:border-gray-300 bg-white"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-mono text-[10px] font-bold text-gray-800 break-all select-all">
+                            "{log.queryText}"
+                          </span>
+                          <span className={`font-mono text-[9px] uppercase px-1.5 py-0.5 border ${
+                            log.status === "seeded"
+                              ? "bg-green-50 border-green-200 text-green-700"
+                              : "bg-amber-50 border-amber-200 text-amber-700"
+                          }`}>
+                            {log.status}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-[10px] text-gray-400 font-mono">
+                          <span>Hits: {log.hitCount}</span>
+                          <span>{new Date(log.createdAt).toLocaleDateString()} {new Date(log.createdAt).toLocaleTimeString()}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Right Column: Editor Sandbox Drawer */}
+              <div className="flex flex-col gap-6">
+                {selectedLog ? (
+                  <form onSubmit={handleSeedCache} className="border border-[#111111] p-6 bg-white flex flex-col gap-5">
+                    <h3 className="font-mono text-xs font-bold text-gray-500 uppercase border-b border-[#EAEAEA] pb-3 mb-2 flex items-center justify-between">
+                      <span>Curate Cache Response</span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedLog(null)}
+                        className="text-gray-400 hover:text-black font-mono text-[10px] normal-case"
+                      >
+                        [Close Editor]
+                      </button>
+                    </h3>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-mono text-[10px] text-gray-500 uppercase">Query Expression</label>
+                      <input
+                        type="text"
+                        value={selectedLog.queryText}
+                        readOnly
+                        className="border border-gray-100 text-xs font-mono p-2 bg-gray-50 cursor-not-allowed text-gray-500"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="font-mono text-[10px] text-gray-500 uppercase">Curated Response (Markdown)</label>
+                      <textarea
+                        value={customResponse}
+                        onChange={(e) => setCustomResponse(e.target.value)}
+                        rows={14}
+                        className="border border-[#EAEAEA] text-xs font-mono p-3 leading-relaxed bg-[#FAFAFA]"
+                        required
+                      />
+                    </div>
+
+                    {seedMsg && (
+                      <div className="font-mono text-xs p-3 bg-gray-50 border border-[#EAEAEA] text-[#111111] select-none">
+                        {seedMsg}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={!!seedingLogId || diagData?.isProduction}
+                      className="bg-[#111111] hover:bg-gray-800 text-white font-mono text-xs uppercase py-3 disabled:bg-gray-300 transition-all select-none"
+                    >
+                      {diagData?.isProduction ? "Read-Only in Production" : (seedingLogId ? "Writing to Cache..." : "Freeze & Seed to Cache")}
+                    </button>
+                  </form>
+                ) : (
+                  <div className="border border-[#EAEAEA] p-10 bg-gray-50 text-center flex flex-col items-center justify-center min-h-[300px]">
+                    <span className="font-mono text-xs text-gray-400">// Select a query log card on the left to curate and freeze its response</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         )}
       </div>

@@ -1,10 +1,11 @@
 import { Hono } from "hono";
 import { db } from "../db";
-import { nodes, agentRoutes } from "../db/schema";
-import { eq, sql } from "drizzle-orm";
+import { nodes, agentRoutes, queryCache, queryLogs } from "../db/schema";
+import { eq, sql, and, desc } from "drizzle-orm";
 import { ai, searchArchiveTool, getNodeDetailsTool, getTimelineErasTool } from "../ai/engine";
 import { getSemanticIntentKeyphrase } from "./intentClassifier";
 import { translateMediaUrls } from "../utils/media";
+import { vertexAI } from "@genkit-ai/google-genai";
 
 export const searchRoute = new Hono();
 
@@ -14,6 +15,91 @@ searchRoute.get("/", async (c) => {
 
   if (!query) {
     return c.json({ error: "Empty query" }, 400);
+  }
+
+  const cleanQuery = query.toLowerCase().trim();
+
+  // 1. Exact string match cache lookup
+  const [cachedMatch] = await db
+    .select()
+    .from(queryCache)
+    .where(eq(queryCache.queryText, cleanQuery))
+    .limit(1);
+
+  if (cachedMatch) {
+    await db
+      .update(queryCache)
+      .set({ hitCount: cachedMatch.hitCount + 1, updatedAt: Date.now() })
+      .where(eq(queryCache.queryText, cleanQuery));
+    const payload = JSON.parse(cachedMatch.responseJson);
+    return c.json({
+      ...payload,
+      cached: true,
+      tokenUsage: { input: 0, output: 0, total: 0 }
+    });
+  }
+
+  // 2. Generate normalized query embedding
+  let queryVector: number[] | null = null;
+  try {
+    const embedResponse = await ai.embed({
+      embedder: vertexAI.embedder("text-embedding-004"),
+      content: query
+    });
+    const rawEmbed = embedResponse[0]?.embedding;
+    if (rawEmbed && Array.isArray(rawEmbed)) {
+      let sumSq = 0;
+      for (const val of rawEmbed) sumSq += val * val;
+      const norm = Math.sqrt(sumSq);
+      queryVector = norm > 0 ? rawEmbed.map(v => v / norm) : rawEmbed;
+    }
+  } catch (err) {
+    console.error("Query embedding generation failed:", err);
+  }
+
+  // 3. Cosine similarity semantic cache lookup
+  if (queryVector) {
+    const allCached = await db
+      .select({
+        queryText: queryCache.queryText,
+        responseJson: queryCache.responseJson,
+        queryVectorJson: queryCache.queryVectorJson,
+        hitCount: queryCache.hitCount
+      })
+      .from(queryCache);
+
+    let bestMatch: typeof allCached[0] | null = null;
+    let bestSimilarity = -1;
+
+    for (const entry of allCached) {
+      if (entry.queryVectorJson) {
+        const cachedVec: number[] = JSON.parse(entry.queryVectorJson);
+        if (cachedVec.length === queryVector.length) {
+          let dot = 0;
+          for (let i = 0; i < queryVector.length; i++) {
+            dot += queryVector[i]! * cachedVec[i]!;
+          }
+          if (dot > bestSimilarity) {
+            bestSimilarity = dot;
+            bestMatch = entry;
+          }
+        }
+      }
+    }
+
+    if (bestMatch && bestSimilarity > 0.95) {
+      console.log(`⚡ Semantic Cache Hit: "${bestMatch.queryText}" (similarity: ${bestSimilarity.toFixed(4)})`);
+      await db
+        .update(queryCache)
+        .set({ hitCount: bestMatch.hitCount + 1, updatedAt: Date.now() })
+        .where(eq(queryCache.queryText, bestMatch.queryText));
+      const payload = JSON.parse(bestMatch.responseJson);
+      return c.json({
+        ...payload,
+        cached: true,
+        tokenUsage: { input: 0, output: 0, total: 0 }
+      });
+    }
   }
 
   // 1. Check for exact node ID match first (e.g. from click-intercepted file URLs)
@@ -425,7 +511,7 @@ SUGGESTIONS:
       ];
     }
 
-    return c.json({
+    const responseData = {
       query,
       type: "agent",
       executionLogs: {
@@ -443,7 +529,37 @@ SUGGESTIONS:
         total: usage.totalTokens || 0
       },
       suggestedQuestions
+    };
+
+    // Write to cache immediately (dynamic curated=0)
+    await db.insert(queryCache).values({
+      queryText: cleanQuery,
+      responseJson: JSON.stringify(responseData),
+      hitCount: 1,
+      updatedAt: Date.now(),
+      curated: 0,
+      queryVectorJson: queryVector ? JSON.stringify(queryVector) : null
+    }).onConflictDoUpdate({
+      target: queryCache.queryText,
+      set: {
+        responseJson: JSON.stringify(responseData),
+        updatedAt: Date.now(),
+        queryVectorJson: queryVector ? JSON.stringify(queryVector) : null
+      }
     });
+
+    // Log this query for administrative curation review
+    const logId = Math.random().toString(36).substring(2, 15);
+    await db.insert(queryLogs).values({
+      id: logId,
+      queryText: query,
+      responseJson: JSON.stringify(responseData),
+      hitCount: 1,
+      status: "pending",
+      createdAt: Date.now()
+    });
+
+    return c.json(responseData);
   } catch (err: any) {
     console.error("Genkit execution failed:", err);
     return c.json({
@@ -465,5 +581,102 @@ SUGGESTIONS:
         "How do I hire Iain / FOOD for a project?"
       ]
     }, 200);
+  }
+});
+
+// GET /api/search/admin/query-logs - Get all logged user queries
+searchRoute.get("/admin/query-logs", async (c) => {
+  try {
+    const logs = await db
+      .select()
+      .from(queryLogs)
+      .orderBy(desc(queryLogs.createdAt));
+
+    // Also get cache hit statistics to display on the dashboard
+    const cacheEntries = await db.select().from(queryCache);
+    const totalQueries = logs.reduce((sum, l) => sum + l.hitCount, 0) + cacheEntries.reduce((sum, c) => sum + c.hitCount - 1, 0);
+    const cacheHits = cacheEntries.reduce((sum, c) => sum + c.hitCount - 1, 0);
+
+    return c.json({
+      logs,
+      stats: {
+        totalQueries,
+        cacheHits,
+        cacheHitRate: totalQueries > 0 ? (cacheHits / totalQueries) * 100 : 0,
+      }
+    });
+  } catch (err: any) {
+    return c.json({ error: err.message }, 500);
+  }
+});
+
+// POST /api/search/admin/seed-cache - Seed an edited query response into query_cache
+searchRoute.post("/admin/seed-cache", async (c) => {
+  try {
+    const { logId, customResponseText } = await c.req.json();
+    if (!logId || !customResponseText) {
+      return c.json({ error: "Missing logId or customResponseText" }, 400);
+    }
+
+    const [log] = await db.select().from(queryLogs).where(eq(queryLogs.id, logId)).limit(1);
+    if (!log) {
+      return c.json({ error: "Log entry not found" }, 404);
+    }
+
+    // Parse existing response payload and update the agentResponse text
+    const payload = JSON.parse(log.responseJson);
+    payload.agentResponse = customResponseText;
+
+    const cleanQuery = log.queryText.toLowerCase().trim();
+
+    // Look up query vector if exists
+    let queryVectorJson: string | null = null;
+    try {
+      const embedResponse = await ai.embed({
+        embedder: vertexAI.embedder("text-embedding-004"),
+        content: log.queryText
+      });
+      const rawEmbed = embedResponse[0]?.embedding;
+      if (rawEmbed && Array.isArray(rawEmbed)) {
+        let sumSq = 0;
+        for (const val of rawEmbed) sumSq += val * val;
+        const norm = Math.sqrt(sumSq);
+        const queryVector = norm > 0 ? rawEmbed.map(v => v / norm) : rawEmbed;
+        queryVectorJson = JSON.stringify(queryVector);
+      }
+    } catch (e) {
+      console.error("Embedding generation failed for seeding:", e);
+    }
+
+    // Save/update in the cache as curated (curated = 1)
+    await db
+      .insert(queryCache)
+      .values({
+        queryText: cleanQuery,
+        responseJson: JSON.stringify(payload),
+        hitCount: log.hitCount,
+        updatedAt: Date.now(),
+        curated: 1,
+        queryVectorJson
+      })
+      .onConflictDoUpdate({
+        target: queryCache.queryText,
+        set: {
+          responseJson: JSON.stringify(payload),
+          updatedAt: Date.now(),
+          curated: 1,
+          queryVectorJson
+        }
+      });
+
+    // Update log status to seeded
+    await db
+      .update(queryLogs)
+      .set({ status: "seeded", responseJson: JSON.stringify(payload) })
+      .where(eq(queryLogs.id, logId));
+
+    return c.json({ success: true });
+  } catch (err: any) {
+    return c.json({ error: err.message }, 500);
   }
 });

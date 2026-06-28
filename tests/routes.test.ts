@@ -11,6 +11,7 @@ vi.mock("genkit", () => {
   return {
     genkit: () => ({
       defineTool: (config: any) => config,
+      embed: async () => [{ embedding: Array(768).fill(0.1) }],
       generate: async ({ prompt }: { prompt: string }) => {
         const parts = prompt.split("User Query:");
         const q = (parts[parts.length - 1] || prompt).toLowerCase();

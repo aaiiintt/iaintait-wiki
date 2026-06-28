@@ -2,7 +2,10 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { db } from "./index";
-import { nodes, edges, agentRoutes, type NewNode, type NewEdge, type NewAgentRoute } from "./schema";
+import { nodes, edges, agentRoutes, queryCache, nodeEmbeddings, type NewNode, type NewEdge, type NewAgentRoute } from "./schema";
+import { eq } from "drizzle-orm";
+import { ai } from "../ai/engine";
+import { vertexAI } from "@genkit-ai/google-genai";
 
 const WIKI_ROOT = path.resolve(process.cwd());
 
@@ -165,6 +168,29 @@ function enrichNodeBodyWithVideoMetadata(body: string): string {
     }
   }
   return enrichedBody;
+}
+
+async function getNormalizedEmbedding(text: string): Promise<number[]> {
+  try {
+    const response = await ai.embed({
+      embedder: vertexAI.embedder("text-embedding-004"),
+      content: text,
+    });
+    const rawValues = response[0]?.embedding;
+    if (!rawValues || !Array.isArray(rawValues)) {
+      throw new Error("Invalid embedding response");
+    }
+    let sumSq = 0;
+    for (const val of rawValues) {
+      sumSq += val * val;
+    }
+    const norm = Math.sqrt(sumSq);
+    if (norm === 0) return rawValues;
+    return rawValues.map((val) => val / norm);
+  } catch (err) {
+    console.error(`Embedding failed for text: "${text.slice(0, 30)}..."`, err);
+    throw err;
+  }
 }
 
 // Main sync operation
@@ -444,6 +470,8 @@ export async function sync() {
   await db.transaction(async (tx) => {
     await tx.delete(nodes);
     await tx.delete(edges);
+    await tx.delete(nodeEmbeddings);
+    await tx.delete(queryCache).where(eq(queryCache.curated, 0));
 
     console.log(`Inserting ${parsedNodes.size} nodes into database...`);
     const nodesArray = Array.from(parsedNodes.values());
@@ -459,6 +487,23 @@ export async function sync() {
   });
 
   console.log("Database Node & Edge sync complete!");
+
+  // Generate and store normalized embeddings for all nodes
+  console.log("Generating node embeddings...");
+  const nodesArray = Array.from(parsedNodes.values());
+  for (const node of nodesArray) {
+    const searchText = `Title: ${node.title}\nKind: ${node.kind}\nClient: ${node.client || ""}\nRole: ${node.role || ""}\nDescription: ${node.desc || ""}\nContent: ${node.body || ""}`;
+    try {
+      const normalizedVector = await getNormalizedEmbedding(searchText);
+      await db.insert(nodeEmbeddings).values({
+        nodeId: node.id,
+        embeddingJson: JSON.stringify(normalizedVector),
+      });
+    } catch (err) {
+      console.error(`✗ Failed to embed: ${node.id}`);
+    }
+  }
+  console.log(`Generated embeddings for ${nodesArray.length} nodes.`);
 
   // 7. Seed Agent Routes
   console.log("Seeding Agent Intent Routes...");
