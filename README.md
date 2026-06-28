@@ -1,6 +1,6 @@
 # Iain Tait — Career Archive & Remote MCP Server
 
-This repository is a forensic career archive mapping 25 years of work at the intersection of technology, culture, and creativity (incorporating POKE London, Wieden+Kennedy Portland & London, Google Creative Lab, and FOOD). 
+This repository is a forensic career archive mapping 25 years of work at the intersection of technology, culture, and creativity (incorporating [POKE London](agencies/poke_london.md), [Wieden+Kennedy Portland](agencies/wieden_and_kennedy_portland.md) & [London](agencies/wieden_and_kennedy_london.md), [Google Creative Lab](agencies/google_creative_lab.md), and [FOOD](agencies/food.md)). 
 
 It is built as an **open knowledge engine** designed for the Smart Web. It exposes Iain's complete project history, collaborations, and patent records via a **hosted remote Model Context Protocol (MCP) Server** over HTTP, wrapped in a fastidious, minimalist typographic web interface.
 
@@ -12,7 +12,7 @@ It is built as an **open knowledge engine** designed for the Smart Web. It expos
 * **Database**: [SQLite](https://sqlite.org/) accessed via [Drizzle ORM](https://orm.drizzle.team/) for lightweight, sub-millisecond graph query matching.
 * **Frontend**: React 19 + [Vite](https://vite.dev/) compiled cleanly with [Tailwind CSS v4](https://tailwindcss.com/).
 * **Visual Design**: Pure-white canvas (`#FFFFFF`), hairline borders (`1px solid #EAEAEA`), and geometric system-native typography (**SF Pro Display** + JetBrains Mono) representing a grid-aligned "direct interaction with the machine."
-* **Primary Source of Truth**: Preserves your local Markdown vault (projects, collaborators, agencies, industry logs) as the editing surface, syncing changes to SQLite on command.
+* **Primary Source of Truth**: Preserves your local Markdown files (projects, collaborators, agencies, industry logs) formatted in the Open Knowledge Format, syncing changes to SQLite on command.
 
 ---
 
@@ -26,9 +26,9 @@ It is built as an **open knowledge engine** designed for the Smart Web. It expos
 ├── vite.config.ts             ← React plugin and API server proxy configuration
 ├── drizzle.config.ts          ← SQLite schema definition for Drizzle ORM
 │
-├── projects/                  ← Project Markdown nodes (Obsidian vault files)
-├── collaborators/             ← Collaborator profiles (Obsidian vault files)
-├── agencies/                  ← Agency profiles (Obsidian vault files)
+├── projects/                  ← Project Markdown nodes (Open Knowledge Format)
+├── collaborators/             ← Collaborator profiles (Open Knowledge Format)
+├── agencies/                  ← Agency profiles (Open Knowledge Format)
 ├── industry/                  ← Industry logs, FAQ, speaking, and writing files
 ├── raw/                       ← Ingestion media and asset files
 │   └── media/                 ← Case study images, GIFs, and loop videos
@@ -38,7 +38,7 @@ It is built as an **open knowledge engine** designed for the Smart Web. It expos
 │   ├── db/
 │   │   ├── index.ts           ← Libsql client connector
 │   │   ├── schema.ts          ← Drizzle tables (nodes, edges, agent_routes)
-│   │   └── sync.ts            ← Obsidian markdown to SQLite sync parser script
+│   │   └── sync.ts            ← Open Knowledge markdown to SQLite sync parser script
 │   └── routes/
 │       ├── mcp.ts             ← Remote MCP Server (SSE transport & tools executor)
 │       ├── search.ts          ← Local query search (agent intent overrides & FTS5 fallback)
@@ -63,12 +63,13 @@ It is built as an **open knowledge engine** designed for the Smart Web. It expos
 ## Ingest Pipeline (`npm run db:sync`)
 
 Your SQLite database is generated dynamically from your markdown files. The ingestion pipeline:
-1. Walks the markdown directories recursively.
-2. Parses frontmatter (metadata) and markdown bodies.
-3. Computes a **richness score** (words + 50 * external links + 30 * media assets) for search sorting.
-4. Parses internal links (e.g. `[Stewart Smith](../collaborators/stewart_smith.md)`) and generates directional graph edges.
-5. Deduplicates relationships and commits them to SQLite in a single transaction.
-6. Seeds your **Agent Intent Routes** table with professional search strategies and responses.
+1. Scans the root `README.md` and ingests it as the core system documentation node (`readme:about`).
+2. Walks the markdown directories recursively (projects, collaborators, agencies, industry).
+3. Parses YAML frontmatter (metadata) and markdown bodies.
+4. Computes a **richness score** (words + 50 * external links + 30 * media assets) for search sorting.
+5. Parses internal links (e.g. `[Stewart Smith](../collaborators/stewart_smith.md)`) and generates directional graph edges.
+6. Deduplicates relationships and commits them to SQLite in a single transaction.
+7. Seeds your **Agent Intent Routes** table with professional search strategies and responses.
 
 ---
 
@@ -94,7 +95,7 @@ A box-drawing visual representation of your career eras:
 * Selecting a project opens it in the Document Inspector. Stacks to a scrollable accordion list on mobile screens.
 
 ### 3. Inline Media Inspector
-The right panel parses your Obsidian markdown into clean, grid-aligned typography.
+The right panel parses your Open Knowledge markdown into clean, grid-aligned typography.
 * **Inline Images & GIFs**: Rendered centered with thin borders.
 * **Inline Loop Videos (`.mp4`, `.webm`)**: Renders case study clips using autoplaying, looping, and muted settings, behaving like high-definition, zero-lag GIFs.
 * **Connected Chips Grid**: Shows a visual grid of adjacent nodes (collaborators, agencies, industry files), allowing you to jump through the career network.
@@ -122,8 +123,8 @@ When an external LLM client (like Claude Desktop) queries a project description,
 
 Access the admin dashboard by clicking the `[ system login ]` link in the footer or navigating to `http://localhost:5173/system`.
 
-1. **Obsidian DB Sync**: Click the manual sync trigger button to re-scan the markdown vault and re-build your SQLite database in real-time.
-2. **Diagnostics**: Checks for **orphan nodes** (nodes disconnected from the graph) and **dead links** (markdown files referencing files that do not exist), outputting a list of issues to fix in your Obsidian vault.
+1. **Open Knowledge Sync**: Click the manual sync trigger button to re-scan the markdown files and re-build your SQLite database in real-time (disabled in production environment).
+2. **Diagnostics**: Checks for **orphan nodes** (nodes disconnected from the graph) and **dead links** (markdown files referencing files that do not exist), outputting a list of issues to fix in your markdown files.
 3. **Agent Tone Playground**:
    * Select a curated agent intent route.
    * Edit the trigger keyphrase, simulated terminal logs, or witty agent response markdown.
@@ -199,3 +200,26 @@ Initialize, run, and compile the workspace using these commands:
   npm run build
   ```
   Checks TypeScript types (`tsc --noEmit`) and packages static Vite files into `dist/`. Hono will serve these files automatically in production mode.
+
+---
+
+## Open Knowledge Format (OKF)
+
+This project adheres to the **Open Knowledge Format (OKF)**, an open specification designed to standardize how organizational and career knowledge is stored for portability, durability, and AI readability.
+
+### Core Principles
+1. **Just Markdown**: All content is stored as plain markdown files, ensuring it is readable by humans in any editor, renderable on git hosts like GitHub, and easily queryable.
+2. **Just Files**: The vault is a simple, directory-based folder tree. No complex database servers or proprietary runtimes are required to author content.
+3. **YAML Frontmatter**: Files contain metadata blocks (e.g. `title`, `year`, `client`, `tags`) to provide structured context, allowing AI agents to classify nodes.
+4. **Graph-Based Linking**: Nodes cross-link using standard markdown relative paths, generating a queryable knowledge graph.
+
+---
+
+## Production Deployment Flow (Google Cloud Run)
+
+The site is designed to run in serverless container hosts like **Google Cloud Run** with zero database maintenance overhead.
+
+### Build & Pre-Compilation
+* **No Live DB Required**: In production, the SQLite database is built **during compilation**. The deployment pipeline runs `npm run db:sync` to parse the OKF markdown files and compile `local.db`.
+* **Baked-in SQLite**: The `local.db` database is packaged directly inside the container image. The live Hono application serves queries from this local read-only database with sub-millisecond query latency.
+* **Git-Driven Content updates**: To update content on the live site, simply edit the markdown files locally, commit them, and push them to Git to trigger a build. The `/system` dashboard automatically disables write options when running in a live container.

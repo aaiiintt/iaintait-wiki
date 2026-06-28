@@ -6,12 +6,12 @@ import { eq, sql } from "drizzle-orm";
 
 export const systemRoute = new Hono();
 
-// POST /api/system/sync - Trigger Obsidian to SQLite sync
+// POST /api/system/sync - Trigger Open Knowledge to SQLite sync
 systemRoute.post("/sync", async (c) => {
   try {
     console.log("Admin triggered database sync...");
     await sync();
-    return c.json({ success: true, message: "Obsidian sync completed successfully." });
+    return c.json({ success: true, message: "Open Knowledge sync completed successfully." });
   } catch (err) {
     console.error("Manual sync failed:", err);
     return c.json({ error: String(err) }, 500);
@@ -73,7 +73,10 @@ systemRoute.get("/diagnostics", async (c) => {
   const [edgeCountRes] = await db.select({ count: sql`count(*)` }).from(edges);
   const [toneCountRes] = await db.select({ count: sql`count(*)` }).from(agentRoutes);
 
+  const isProduction = process.env.NODE_ENV === "production" || !!process.env.K_SERVICE;
+
   return c.json({
+    isProduction,
     stats: {
       totalNodes: nodeCountRes?.count || 0,
       totalEdges: edgeCountRes?.count || 0,

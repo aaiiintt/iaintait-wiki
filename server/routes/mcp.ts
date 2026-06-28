@@ -72,7 +72,7 @@ const toolsList = [
   },
   {
     name: "getNodeDetails",
-    description: "Retrieve the full narrative narrative body, description, client, role, year, and connected relations for a specific node ID (e.g. 'project:wk_nike_better_world', 'person:chris_boyle', 'agency:poke_london', or 'industry:mcp'). Use this when the user asks about a specific project, agency, person, or industry log/guide.",
+    description: "Retrieve the full narrative narrative body, description, client, role, year, and connected relations for a specific node ID (e.g. 'project:wk_nike_better_world', 'person:chris_boyle', 'agency:poke_london', 'industry:mcp', or 'readme:about'). Use this when the user asks about a specific project, agency, person, industry log, or system documentation.",
     inputSchema: {
       type: "object",
       properties: {

@@ -10,6 +10,7 @@ interface AgentRoute {
 }
 
 interface DiagnosticsData {
+  isProduction?: boolean;
   stats: {
     totalNodes: number;
     totalEdges: number;
@@ -100,7 +101,7 @@ export default function AdminDashboard() {
       const res = await fetch("/api/system/sync", { method: "POST" });
       const data = await res.json();
       if (res.ok && data.success) {
-        setSyncMsg("Obsidian files parsed & SQLite database re-synced successfully!");
+        setSyncMsg("Open Knowledge files parsed & SQLite database re-synced successfully!");
         loadDiagnostics();
         loadToneRoutes();
       } else {
@@ -194,7 +195,7 @@ export default function AdminDashboard() {
             activeTab === "sync" ? "bg-white font-bold border-b-2 border-b-[#111111]" : "text-gray-500"
           }`}
         >
-          // Obsidian DB Sync
+          // Open Knowledge Sync
         </button>
         <button
           onClick={() => setActiveTab("diagnostics")}
@@ -348,23 +349,31 @@ export default function AdminDashboard() {
         {activeTab === "sync" && (
           <div className="max-w-xl border border-[#111111] p-8 bg-white flex flex-col gap-6">
             <h3 className="font-mono text-xs font-bold text-gray-500 uppercase border-b border-[#EAEAEA] pb-3">
-              // Obsidian File Ingestion Sync
+              // Open Knowledge File Ingestion Sync
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               This action walks your local career archive markdown directories (projects, collaborators, agencies, industry), parses their properties and references, maps their relational links, and fully repopulates your SQLite database.
             </p>
-            {syncMsg && (
-              <div className="font-mono text-xs p-4 bg-gray-50 border border-[#EAEAEA] text-[#111111] select-none">
-                {syncMsg}
+            {diagData?.isProduction ? (
+              <div className="font-mono text-xs p-4 bg-amber-50 border border-amber-200 text-amber-800 select-none leading-relaxed">
+                ⚠️ Database is pre-compiled and read-only in production. Content updates are deployed via Git.
               </div>
+            ) : (
+              <>
+                {syncMsg && (
+                  <div className="font-mono text-xs p-4 bg-gray-50 border border-[#EAEAEA] text-[#111111] select-none">
+                    {syncMsg}
+                  </div>
+                )}
+                <button
+                  onClick={handleSync}
+                  disabled={syncing}
+                  className="bg-[#111111] hover:bg-gray-800 text-white font-mono text-xs uppercase py-4 disabled:bg-gray-300 transition-all select-none"
+                >
+                  {syncing ? "Ingesting Open Knowledge Bundle..." : "Trigger Manual DB Sync"}
+                </button>
+              </>
             )}
-            <button
-              onClick={handleSync}
-              disabled={syncing}
-              className="bg-[#111111] hover:bg-gray-800 text-white font-mono text-xs uppercase py-4 disabled:bg-gray-300 transition-all select-none"
-            >
-              {syncing ? "Parsing Obsidian Vault..." : "Trigger Manual DB Sync"}
-            </button>
           </div>
         )}
 
@@ -427,7 +436,7 @@ export default function AdminDashboard() {
                     </span>
                   </h3>
                   {diagData.issues.deadLinks.length === 0 ? (
-                    <div className="text-xs font-mono text-gray-400 select-none">No dead links found. All Obsidian paths are verified!</div>
+                    <div className="text-xs font-mono text-gray-400 select-none">No dead links found. All markdown paths are verified!</div>
                   ) : (
                     <div className="max-h-96 overflow-y-auto flex flex-col gap-2">
                       {diagData.issues.deadLinks.map((edge) => (

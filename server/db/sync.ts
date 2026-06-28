@@ -169,7 +169,7 @@ function enrichNodeBodyWithVideoMetadata(body: string): string {
 
 // Main sync operation
 export async function sync() {
-  console.log("Starting LLM Wiki sync to SQLite...");
+  console.log("Starting Open Knowledge sync to SQLite...");
 
   const projectsDir = path.join(WIKI_ROOT, "projects");
   const collaboratorsDir = path.join(WIKI_ROOT, "collaborators");
@@ -373,6 +373,35 @@ export async function sync() {
     });
   }
 
+  // 4.5. Process Root README.md as system documentation node
+  const readmePath = path.join(WIKI_ROOT, "README.md");
+  if (fs.existsSync(readmePath)) {
+    const fileContent = fs.readFileSync(readmePath, "utf8");
+    const parsed = matter(fileContent);
+    const fm = parsed.data || {};
+    const body = parsed.content;
+
+    const words = wordCount(body);
+    const { assets, refs } = countAssetsAndRefs(body);
+    const richness = words + 50 * refs + 30 * assets;
+    const readmeId = "readme:about";
+
+    const firstPara =
+      body.split("\n").find((l) => l.trim().length > 60 && !l.trim().startsWith("#")) || "";
+
+    addNode({
+      id: readmeId,
+      kind: "about",
+      title: fm.title || "README: Career Archive & Remote MCP Server",
+      year: fm.year || null,
+      desc: firstPara.trim().slice(0, 320),
+      body: body,
+      richness,
+      sourceUrls: JSON.stringify(fm.source_urls || []),
+      slug: "readme",
+    });
+  }
+
   // 5. Scan Markdown bodies for cross-links to make dynamic edges
   for (const node of parsedNodes.values()) {
     if (!node.body) continue;
@@ -385,6 +414,8 @@ export async function sync() {
       filePath = path.join(agenciesDir, `${node.slug}.md`);
     } else if (node.kind === "industry") {
       filePath = path.join(industryDir, `${node.slug}.md`);
+    } else if (node.kind === "about") {
+      filePath = path.join(WIKI_ROOT, "README.md");
     }
 
     if (!filePath || !fs.existsSync(filePath)) continue;
@@ -433,7 +464,7 @@ export async function sync() {
   console.log("Seeding Agent Intent Routes...");
   await seedAgentRoutes();
 
-  console.log("LLM Wiki Ingestion Sync completed successfully!");
+  console.log("Open Knowledge Ingestion Sync completed successfully!");
 }
 
 // Seed the Agent Intent Routes matching the current classifier intents

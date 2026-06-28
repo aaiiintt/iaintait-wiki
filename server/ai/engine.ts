@@ -23,6 +23,23 @@ function readMarkdownFileDirectly(id: string): { body: string; frontmatter: any 
   let relativeFolder = "";
   let slug = "";
 
+  if (id === "readme:about") {
+    const filePath = path.join(process.cwd(), "README.md");
+    if (fs.existsSync(filePath)) {
+      try {
+        const rawContent = fs.readFileSync(filePath, "utf-8");
+        const { data, content } = matter(rawContent);
+        return {
+          body: translateMediaUrls(content),
+          frontmatter: data
+        };
+      } catch (err) {
+        console.error(`Failed to read README directly:`, err);
+      }
+    }
+    return null;
+  }
+
   if (id.startsWith("project:")) {
     relativeFolder = "projects";
     slug = id.replace("project:", "");
@@ -179,7 +196,7 @@ export const searchArchiveTool = ai.defineTool(
 export const getNodeDetailsTool = ai.defineTool(
   {
     name: "getNodeDetails",
-    description: "Retrieve the full narrative narrative body, description, client, role, year, and connected relations for a specific node ID (e.g. 'project:wk_nike_better_world', 'person:chris_boyle', 'agency:poke_london', or 'industry:mcp'). Use this when the user asks about a specific project, agency, person, or industry log/guide.",
+    description: "Retrieve the full narrative narrative body, description, client, role, year, and connected relations for a specific node ID (e.g. 'project:wk_nike_better_world', 'person:chris_boyle', 'agency:poke_london', 'industry:mcp', or 'readme:about'). Use this when the user asks about a specific project, agency, person, industry log, or system documentation.",
     inputSchema: z.object({ id: z.string().describe("The unique node ID") }),
     outputSchema: z.object({
       id: z.string(),

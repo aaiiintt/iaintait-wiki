@@ -3,7 +3,6 @@
 Thumbs.db
 
 # Editor
-.obsidian/
 
 # Compiled wiki dump (regenerable via compress.py)
 iaintait.md

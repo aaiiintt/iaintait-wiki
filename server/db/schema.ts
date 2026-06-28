@@ -2,7 +2,7 @@ import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
 export const nodes = sqliteTable("nodes", {
   id: text("id").primaryKey(), // e.g. "project:poke_baker_tweet"
-  kind: text("kind", { enum: ["project", "agency", "person", "industry"] }).notNull(),
+  kind: text("kind", { enum: ["project", "agency", "person", "industry", "about"] }).notNull(),
   title: text("title").notNull(),
   year: integer("year"),
   desc: text("desc"),
