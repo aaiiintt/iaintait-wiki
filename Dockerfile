@@ -4,7 +4,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-RUN npm run db:sync
+RUN npm run db:push && npm run db:sync
 
 FROM node:20-alpine AS runner
 WORKDIR /app
