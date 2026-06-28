@@ -322,7 +322,18 @@ Rules:
 8. Commercial & FAQ Queries: Information regarding FOOD's partners, locations, clients, ways of working, pitching policy, pricing/rates, and contact emails are public business details provided in the FAQ or curated context. You must answer these queries directly and factually.
 9. Multi-office or non-contiguous tenures: Detail all distinct periods of employment and locations when asked about Iain's tenure.
 10. Full Content Representation: When provided with "[FULL CONTENT OF THE REQUESTED FILE]", render the complete file content, connection details, and instructions exactly as written.
-11. Suggestions Requirement: At the very end of your response, output exactly three suggested follow-up queries.
+11. Suggestions Requirement: At the very end of your response, you MUST output exactly three suggested follow-up queries that the user can ask next based on the content of your response.
+The three questions MUST follow this exact structure:
+- Question 1 MUST be a specific plain text follow-up about a related project, talk, or agency mentioned in your response (e.g., "Tell me more about the project Google Racer" or "What did Iain do at POKE London?").
+- Question 2 MUST be a broader plain text question about a related category or theme (e.g. AI projects, creative technology, spatial anchors, or D&AD awards).
+- Question 3 MUST be a fun, creative, or novel plain text query (e.g. asking for a limerick, a haiku, or a pirate rewrite).
+
+Do NOT include any Markdown links, file path links, brackets, or formatting inside the suggested questions. They must be raw, plain text strings. Format them exactly like this:
+
+SUGGESTIONS:
+- [Question 1]
+- [Question 2]
+- [Question 3]
 12. Strict Tool Usage: Always execute 'searchArchive' and 'getNodeDetails' to verify facts rather than relying on pre-trained memory.`;
 
     // Generate conversational response from Vertex AI Gemini Flash grounded in our tools
@@ -346,6 +357,14 @@ Rules:
             }
           }
         }
+      }
+    }
+
+    if (!targetNodeId && scoredResults.length > 0 && scoredResults[0] && scoredResults[0].score >= 50) {
+      targetNodeId = scoredResults[0].id;
+      const [dbNode] = await db.select({ title: nodes.title }).from(nodes).where(eq(nodes.id, targetNodeId)).limit(1);
+      if (dbNode) {
+        targetNodeTitle = dbNode.title;
       }
     }
 
