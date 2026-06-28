@@ -1,4 +1,5 @@
 ---
+type: collaborator
 primary_role: Creative Director
 agency: Google Creative Lab
 ---

@@ -1,3 +1,8 @@
+---
+title: "Iain Tait - Professional Wiki Index"
+type: index
+---
+
 # Iain Tait - Professional Wiki Index
 
 This is the curated index of all major entities and projects in the wiki, archiving a 25-year career across POKE, Wieden+Kennedy, Google Creative Lab, and FOOD.
@@ -137,5 +142,4 @@ This is the curated index of all major entities and projects in the wiki, archiv
 
 ## Knowledge Administration
 
-- [Full Project Master Registry](projects_initial_list.md)
 - `raw/` - Directory housing all scraped raw intel, webby archives, and temporal constraints.

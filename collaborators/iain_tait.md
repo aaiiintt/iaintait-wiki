@@ -86,7 +86,7 @@ Connected to people at university via computers and a love of house music — sw
 
 ### POKE London (Dec 2001–Apr 2010)
 
-Co-founded December 2001 with [Nick Farnhill](nick_farnhill.md), [Nik Roope](nik_roope.md), [Simon Waterfall](simon_waterfall.md), Tom Hostler, and Peter Beech. Mother provided early seed funding. Offices in London and New York. Clients included American Express, Orange, Yahoo!, Zopa, Mulberry, Turkcell.
+Co-founded December 2001 with [Nick Farnhill](nick_farnhill.md), [Nik Roope](nik_roope.md), [Simon Waterfall](simon_waterfall.md), [Tom Hostler](tom_hostler.md), and [Peter Beech](peter_beech.md). Mother provided early seed funding. Offices in London and New York. Clients included American Express, Orange, Yahoo!, Zopa, Mulberry, Turkcell.
 
 ### W+K Portland (Apr 2010–May 2012)
 
@@ -108,7 +108,7 @@ Executive Creative Director alongside [Tony Davidson](tony_davidson.md). Recruit
 
 ### FOOD (Nov 2021–present)
 
-Co-founded with [Nick Farnhill](nick_farnhill.md) and [Richard Turley](richard_turley.md). Company registered November 2021; publicly announced August 2022. Office in Islington, London (by a canal, co-lead tenants with Made by Many). Business model: ~50% consultancy, ~50% owned/co-owned IP. *(LBB 2023, More About Advertising 2022)*
+Co-founded with [Nick Farnhill](nick_farnhill.md) and [Richard Turley](richard_turley.md). Company registered November 2021; publicly announced August 2022. FOOD is a global boutique with offices in London (Shoreditch) and New York (Chinatown). Business model: ~50% consultancy, ~50% owned/co-owned IP. *(LBB 2023, More About Advertising 2022)*
 
 ---
 
@@ -126,7 +126,7 @@ Filed 2014-07-23 | Published 2017-11-23. Co-inventors: William Davison Najdecki,
 
 | Recognition | Year |
 |---|---|
-| NMA Most Influential Person in New Media (UK) | 2009 |
+| [NMA Most Influential Person in New Media (UK)](../industry/new_media_age_column.md) | 2009 |
 | Creativity 50 | 2010, 2011 |
 | Fortune Magazine 40 Under 40 | 2010 |
 | Ad Age 25 Media Mavens | ~2010 |
@@ -226,7 +226,8 @@ Filed 2014-07-23 | Published 2017-11-23. Co-inventors: William Davison Najdecki,
 - D&AD Digital Advertising Jury Foreman, 2013
 - One Club Board of Directors, 2015–2021
 - One Show Interactive Jury Chair, 2010
-- Personal blog: [crackunit.com](https://www.crackunit.com)
+- Personal blog: [Crackunit Blog](../industry/crackunit_blog.md) / [crackunit.com](https://www.crackunit.com)
+- Current pricing, availability, and engagement details are available in the [FAQ](../industry/faq.md).
 
 ---
 

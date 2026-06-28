@@ -1,12 +1,20 @@
 ---
-title: "Andy Awards Judging Diary (Adweek, 2012)"
-type: writing
-tags: [Andy-Awards, judging, Adweek, awards-culture, W+K, essay]
-aliases: [ANDY judging diary, Kauai judging diary]
+title: Andy Awards Judging Diary (Adweek, 2012)
+type: industry
+tags:
+- Andy-Awards
+- judging
+- Adweek
+- awards-culture
+- W+K
+- essay
+aliases:
+- ANDY judging diary
+- Kauai judging diary
 source_urls:
-  - https://www.adweek.com/agencyspy/iain-tait-gives-us-an-exclusive-look-into-andys-judging-in-hawaii/
+- https://www.adweek.com/agencyspy/iain-tait-gives-us-an-exclusive-look-into-andys-judging-in-hawaii/
+subtype: writing
 ---
-
 # Andy Awards Judging Diary
 
 **Publication:** Adweek (AgencySpy)

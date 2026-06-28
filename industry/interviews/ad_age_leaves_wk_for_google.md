@@ -1,12 +1,17 @@
 ---
 title: "Ad Age: Iain Tait Leaves W+K for Google"
-type: interview
-tags: [Ad-Age, Google-Creative-Lab, W+K-Portland, career-move, press]
+type: industry
+tags:
+  - Ad-Age
+  - Google-Creative-Lab
+  - career-move
+  - press
+  - wieden_kennedy_portland
 aliases: []
 source_urls:
   - https://adage.com/article/agency-news/iain-tait-leaves-wieden-kennedy-google/234162
+subtype: interview
 ---
-
 # Ad Age: Iain Tait Leaves W+K for Google
 
 **Publication:** Ad Age

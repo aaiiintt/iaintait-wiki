@@ -42,7 +42,7 @@ Partner at Deepend, a pioneering digital agency that grew to 300 people worldwid
 
 ## POKE London
 
-Co-founded POKE in 2001, weeks after Deepend's collapse, alongside Iain Tait, Nik Roope, Tom Hostler, and Peter Beech. Mother provided early seed funding. Nick served as Managing Partner / CEO throughout the agency's independent years.
+Co-founded POKE in 2001, weeks after Deepend's collapse, alongside [Iain Tait](iain_tait.md), [Nik Roope](nik_roope.md), [Tom Hostler](tom_hostler.md), and [Peter Beech](peter_beech.md). Mother provided early seed funding. Nick served as Managing Partner / CEO throughout the agency's independent years.
 
 > "About three or four weeks later a small group of us started POKE, and with the help of Mother actually at the time who put a bit of money in, we launched POKE."
 > — Nick Farnhill, YouTube/Source LF Career Advice, 2014

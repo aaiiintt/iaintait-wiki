@@ -1,12 +1,20 @@
 ---
-title: "High Scores"
-type: talk
-tags: [Playful, London, games, play, POKE, conference]
-aliases: [High Scores, Playful 2008]
+title: High Scores
+type: industry
+tags:
+- Playful
+- London
+- games
+- play
+- POKE
+- conference
+aliases:
+- High Scores
+- Playful 2008
 source_urls:
-  - https://vimeo.com/2602586
+- https://vimeo.com/2602586
+subtype: talk
 ---
-
 # High Scores
 
 **Event:** Playful London

@@ -2,8 +2,9 @@
 title: Podcasts & Speaking
 section: Industry Contributions
 scope: Audio & Keynotes
+subtype: overview
+type: industry
 ---
-
 # Podcasts & Speaking
 
 As a veteran creative executive, Iain Tait has been sought after for his perspectives on digital marketing, agency culture, sustainability in advertising, and the impact of AI on creative industries.

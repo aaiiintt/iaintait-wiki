@@ -1,3 +1,11 @@
+---
+title: "Andrew Ackermann"
+type: collaborator
+tags: [google_creative_lab, patent]
+aliases: []
+source_urls: [https://patents.google.com/patent/US20170337584A1]
+---
+
 # Andrew Ackermann
 
 **Role Focus:** R&D / Technology

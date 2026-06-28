@@ -74,14 +74,14 @@ Fans globally could influence the creative process as it happened — their cont
 ## References & Media
 
 ### Assets
-![wk_coca_cola_maroon_5_24hr animated](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr.gif)
+![wk_coca_cola_maroon_5_24hr animated](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr.gif)
 
-![wk_coca_cola_maroon_5_24hr frame 01](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr_frame_01.jpg)
-![wk_coca_cola_maroon_5_24hr frame 02](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr_frame_02.jpg)
-![wk_coca_cola_maroon_5_24hr frame 03](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr_frame_03.jpg)
-![wk_coca_cola_maroon_5_24hr frame 04](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr_frame_04.jpg)
-![wk_coca_cola_maroon_5_24hr frame 05](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr_frame_05.jpg)
-![wk_coca_cola_maroon_5_24hr frame 06](../raw/media/wk_coca_cola_maroon_5_24hr/2012_wk_coca_cola_maroon_5_24hr_frame_06.jpg)
+![wk_coca_cola_maroon_5_24hr frame 01](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr_frame_01.jpg)
+![wk_coca_cola_maroon_5_24hr frame 02](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr_frame_02.jpg)
+![wk_coca_cola_maroon_5_24hr frame 03](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr_frame_03.jpg)
+![wk_coca_cola_maroon_5_24hr frame 04](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr_frame_04.jpg)
+![wk_coca_cola_maroon_5_24hr frame 05](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr_frame_05.jpg)
+![wk_coca_cola_maroon_5_24hr frame 06](../raw/media/wk_coca_cola_maroon_5_24hr/2011_wk_coca_cola_maroon_5_24hr_frame_06.jpg)
 
 ### Video
 - [YouTube: "Is Anybody Out There" — Maroon 5 ft. PJ Morton (the song)](https://www.youtube.com/watch?v=IJdWn96ldOE)

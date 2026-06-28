@@ -1,12 +1,18 @@
 ---
-title: "Creative Review: Creativity Sucks! — AI Discussion"
-type: podcast
-tags: [Creative-Review, podcast, AI, creativity, FOOD]
-aliases: [Creativity Sucks podcast]
+title: "Creative Review: Creativity Sucks! \u2014 AI Discussion"
+type: industry
+tags:
+- Creative-Review
+- podcast
+- AI
+- creativity
+- FOOD
+aliases:
+- Creativity Sucks podcast
 source_urls:
-  - https://www.creativereview.co.uk/creativity-sucks-podcast-ai/
+- https://www.creativereview.co.uk/creativity-sucks-podcast-ai/
+subtype: podcast
 ---
-
 # Creative Review: Creativity Sucks! — AI Discussion
 
 **Podcast:** Creativity Sucks! (Creative Review)

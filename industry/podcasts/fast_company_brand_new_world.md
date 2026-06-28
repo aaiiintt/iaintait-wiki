@@ -1,12 +1,21 @@
 ---
-title: "Fast Company Brand New World — S1E3: The Next Creative Revolution"
-type: podcast
-tags: [Fast-Company, podcast, AI, creativity, FOOD, Brand-New-World]
-aliases: [Brand New World, Brand Next, Fast Company podcast]
+title: "Fast Company Brand New World \u2014 S1E3: The Next Creative Revolution"
+type: industry
+tags:
+- Fast-Company
+- podcast
+- AI
+- creativity
+- FOOD
+- Brand-New-World
+aliases:
+- Brand New World
+- Brand Next
+- Fast Company podcast
 source_urls:
-  - https://podcasts.apple.com/us/podcast/the-next-creative-revolution/id1794780886?i=1000698859844
+- https://podcasts.apple.com/us/podcast/the-next-creative-revolution/id1794780886?i=1000698859844
+subtype: podcast
 ---
-
 # Fast Company: Brand New World — "The Next Creative Revolution"
 
 **Podcast:** Brand New World (Fast Company)

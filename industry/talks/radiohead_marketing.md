@@ -1,12 +1,19 @@
 ---
-title: "Radiohead Marketing Presentation"
-type: talk
-tags: [Radiohead, In-Rainbows, music, marketing, digital-distribution, POKE]
-aliases: [Radiohead Marketing]
+title: Radiohead Marketing Presentation
+type: industry
+tags:
+- Radiohead
+- In-Rainbows
+- music
+- marketing
+- digital-distribution
+- POKE
+aliases:
+- Radiohead Marketing
 source_urls:
-  - https://vimeo.com/1356001
+- https://vimeo.com/1356001
+subtype: talk
 ---
-
 # Radiohead Marketing Presentation
 
 **Event:** Unknown

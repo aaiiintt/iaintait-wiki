@@ -1,3 +1,11 @@
+---
+title: "William Davison Najdecki"
+type: collaborator
+tags: [google_creative_lab, patent]
+aliases: []
+source_urls: [https://patents.google.com/patent/US20170337584A1]
+---
+
 # William Davison Najdecki
 
 **Role Focus:** R&D / Technology

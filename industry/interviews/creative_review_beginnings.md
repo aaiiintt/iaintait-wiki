@@ -1,12 +1,18 @@
 ---
 title: "Creative Review: Creative Leaders on Beginnings"
-type: interview
-tags: [Creative-Review, interview, career-origins, W+K-London]
-aliases: [CR Beginnings, Creative Leaders on Beginnings]
+type: industry
+tags:
+  - Creative-Review
+  - interview
+  - career-origins
+  - wieden_kennedy_london
+aliases:
+  - CR Beginnings
+  - Creative Leaders on Beginnings
 source_urls:
   - https://www.creativereview.co.uk/creative-leaders-beginnings/
+subtype: interview
 ---
-
 # Creative Review: Creative Leaders on Beginnings
 
 **Publication:** Creative Review

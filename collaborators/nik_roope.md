@@ -24,7 +24,7 @@ primary_role: 'Co-founder & Co-Creative Director, POKE London'
 
 ## Background
 
-Nik Roope studied conceptual art and sculpture at art school in Liverpool before entering the digital world through his brother's involvement with **Antirom**, an early digital art group headed by the late Andy Cameron. He went on to work at CHBi (which became European Razorfish) and then **Oven Digital**, where he met Iain Tait. When Oven Digital collapsed in the dotcom bust, Nik, Iain, and four others (Peter Beech, Nick Farnhill, Simon Waterfall, Tom Hostler) founded POKE London.
+Nik Roope studied conceptual art and sculpture at art school in Liverpool before entering the digital world through his brother's involvement with **Antirom**, an early digital art group headed by the late Andy Cameron. He went on to work at CHBi (which became European Razorfish) and then **Oven Digital**, where he met Iain Tait. When Oven Digital collapsed in the dotcom bust, Nik, Iain, and four others ([Peter Beech](peter_beech.md), [Nick Farnhill](nick_farnhill.md), [Simon Waterfall](simon_waterfall.md), [Tom Hostler](tom_hostler.md)) founded POKE London.
 
 ## At POKE
 

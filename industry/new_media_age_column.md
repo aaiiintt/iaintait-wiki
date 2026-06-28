@@ -2,17 +2,18 @@
 title: New Media Age Column
 section: Industry Contributions
 scope: Publications / Thought Leadership
+subtype: overview
+type: industry
 ---
-
 # New Media Age (NMA)
 
 *New Media Age* (NMA) was the preeminent UK trade publication for interactive and digital media from the late 1990s through 2011, documenting the rise of the commercial internet.
 
 ## Industry Impact
 
-During era-defining shifts in digital advertising, Iain Tait was a prominent voice in NMA, both as a subject of the publication's coverage on agency innovation and as a direct contributor.
+During era-defining shifts in digital advertising, [Iain Tait](../collaborators/iain_tait.md) was a prominent voice in NMA, both as a subject of the publication's coverage on agency innovation and as a direct contributor.
 
-His influence on the UK's digital marketing landscape was formalized when he was voted the **"Most Influential Person"** in the *New Media Age Top 100 Interactive Agencies Guide* in 2009—a definitive ranking of power within the UK interactive sector.
+His influence on the UK's digital marketing landscape was formalized when he was voted the **"Most Influential Person"** in the *New Media Age Top 100 Interactive Agencies Guide* in 2009—a definitive ranking of power within the UK interactive sector during his tenure at [POKE London](../agencies/poke_london.md).
 
 ## The NMA Column
 

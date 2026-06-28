@@ -1,12 +1,20 @@
 ---
-title: "10 Reasons Why Digital is Better than Advertising"
-type: talk
-tags: [PSFK, digital, advertising, manifesto, POKE, keynote]
-aliases: ["10 Reasons Why Digital is Better than Advertising", "10 Reasons"]
+title: 10 Reasons Why Digital is Better than Advertising
+type: industry
+tags:
+- PSFK
+- digital
+- advertising
+- manifesto
+- POKE
+- keynote
+aliases:
+- 10 Reasons Why Digital is Better than Advertising
+- 10 Reasons
 source_urls:
-  - https://vimeo.com/863125
+- https://vimeo.com/863125
+subtype: talk
 ---
-
 # 10 Reasons Why Digital is Better than Advertising
 
 **Event:** PSFK Conference

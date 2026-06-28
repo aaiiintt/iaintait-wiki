@@ -1,3 +1,11 @@
+---
+title: "Claire Stapleton"
+type: collaborator
+tags: [google_creative_lab, editorial]
+aliases: []
+source_urls: []
+---
+
 # Claire Stapleton
 
 **Role Focus:** Editorial & Creative

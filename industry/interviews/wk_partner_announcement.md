@@ -1,11 +1,17 @@
 ---
-title: "W+K Partner Announcement"
-type: interview
-tags: [W+K-Portland, partner, Dan-Wieden, promotion, press]
-aliases: [W+K partner]
+title: W+K Partner Announcement
+type: industry
+tags:
+  - partner
+  - Dan-Wieden
+  - promotion
+  - press
+  - wieden_kennedy_london
+aliases:
+  - W+K partner
 source_urls: []
+subtype: interview
 ---
-
 # Wieden+Kennedy Partner Announcement
 
 **Source:** Wieden+Kennedy / Trade Press

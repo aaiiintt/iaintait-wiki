@@ -1,3 +1,11 @@
+---
+title: "Jason Striegel"
+type: collaborator
+tags: [google_creative_lab, creative_technologist]
+aliases: []
+source_urls: []
+---
+
 # Jason Striegel
 
 **Role Focus:** Creative Technologist

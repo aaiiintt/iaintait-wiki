@@ -1,3 +1,8 @@
+---
+title: "Forensic Collaborators Hub"
+type: index
+---
+
 # Collaborators Index
 
 A master record of the key humans, technologists, artists, and production companies that have collaborated on the projects archived in this wiki. Treating collaborators as first-class entities helps accurately reflect the cross-pollinated nature of agency work and tracks the real people behind the PR summaries.

@@ -1,3 +1,11 @@
+---
+title: "Google Creative Lab"
+type: agency
+tags: [google, creative_lab, nyc]
+aliases: ["Google Creative Lab NYC", "Google Creative Lab"]
+source_urls: []
+---
+
 # Google Creative Lab (NYC)
 
 ## Agency Overview

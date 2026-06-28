@@ -23,8 +23,8 @@ source_urls:
 - **[Nik Roope](../collaborators/nik_roope.md)** — Co-founder / ECD
 - **[Simon Waterfall](../collaborators/simon_waterfall.md)** — Co-founder / Creative Director (departed September 2009)
 - **[Nick Farnhill](../collaborators/nick_farnhill.md)** — Co-founder / CEO
-- **Peter Beech** — Co-founder
-- **Tom Hostler** — Co-founder
+- **[Peter Beech](../collaborators/peter_beech.md)** — Co-founder
+- **[Tom Hostler](../collaborators/tom_hostler.md)** — Co-founder
 
 ## Overview
 

@@ -131,4 +131,4 @@ BakerTweet was selected for inclusion in MoMA's **"Talk to Me: Design and the Co
 ### Raw Context
 
 - [Raw research file](../raw/research/baker_tweet_2026-04-06.md)
-- [Raw ingest source](../raw/poke_baker_tweet.md)
+- [Raw ingest source](../raw/archive/poke_baker_tweet.md)

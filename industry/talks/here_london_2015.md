@@ -1,12 +1,20 @@
 ---
-title: "A Crowd of Terrible Content"
-type: talk
-tags: [Here-London, Its-Nice-That, content, platforms, W+K-London, keynote]
-aliases: [Here London 2015, A Crowd of Terrible Content]
+title: A Crowd of Terrible Content
+type: industry
+tags:
+- Here-London
+- Its-Nice-That
+- content
+- platforms
+- W+K-London
+- keynote
+aliases:
+- Here London 2015
+- A Crowd of Terrible Content
 source_urls:
-  - https://www.youtube.com/watch?v=-9H5tZffhyc
+- https://www.youtube.com/watch?v=-9H5tZffhyc
+subtype: talk
 ---
-
 # A Crowd of Terrible Content
 
 **Event:** Here London (It's Nice That)

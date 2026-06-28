@@ -1,12 +1,22 @@
 ---
 title: "Dan Wieden: the quiet titan"
-type: writing
-tags: [Campaign, Dan-Wieden, tribute, W+K, obituary, essay]
-aliases: [Dan Wieden quiet titan, Campaign Dan Wieden]
+type: industry
+tags:
+  - Campaign
+  - Dan-Wieden
+  - tribute
+  - obituary
+  - essay
+  - wieden_kennedy
+  - wieden_kennedy_portland
+  - wieden_kennedy_london
+aliases:
+  - Dan Wieden quiet titan
+  - Campaign Dan Wieden
 source_urls:
   - https://www.campaignlive.co.uk/article/dan-wieden-quiet-titan/1801269
+subtype: writing
 ---
-
 # Dan Wieden: the quiet titan
 
 **Publication:** Campaign

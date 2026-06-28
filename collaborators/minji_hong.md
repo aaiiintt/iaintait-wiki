@@ -1,3 +1,11 @@
+---
+title: "Minji Hong"
+type: collaborator
+tags: [google_creative_lab, designer]
+aliases: []
+source_urls: []
+---
+
 # Minji Hong
 
 **Role Focus:** Design & Creative

@@ -2,8 +2,9 @@
 title: Publications & Articles
 section: Industry Contributions
 scope: Written Thought Leadership
+subtype: overview
+type: industry
 ---
-
 # Publications
 
 Iain Tait's influence extends deeply into trade press and industry journalism. Over the decades, his written opinions, agency profiles, and tech predictions have been extensively featured.

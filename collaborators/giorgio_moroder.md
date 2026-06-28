@@ -1,4 +1,5 @@
 ---
+type: collaborator
 primary_role: 'Composer, Producer, Electronic Music Pioneer'
 ---
 # Giorgio Moroder

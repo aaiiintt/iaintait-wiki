@@ -1,14 +1,23 @@
 ---
-title: "Cannes Lions Cyber Jury President Speech (2012)"
-type: talk
-tags: [Cannes-Lions, Cyber-Lions, jury-president, Nike-FuelBand, Curators-of-Sweden, Google-Creative-Lab, W+K]
-aliases: [Cannes Cyber 2012, Cyber Lions Jury President]
+title: Cannes Lions Cyber Jury President Speech (2012)
+type: industry
+tags:
+- Cannes-Lions
+- Cyber-Lions
+- jury-president
+- Nike-FuelBand
+- Curators-of-Sweden
+- Google-Creative-Lab
+- W+K
+aliases:
+- Cannes Cyber 2012
+- Cyber Lions Jury President
 source_urls:
-  - https://www.fastcompany.com/1680967/nike-fuelband-and-curators-of-sweden-take-top-cyber-lions-at-cannes
-  - https://www.adhugger.net/2012/02/03/david-jones-iain-tait-and-mainardo-de-nardis-to-head-juries-at-cannes-lions-2012/
-  - https://lbbonline.com/news/cannes-lions-announces-three-further-juries
+- https://www.fastcompany.com/1680967/nike-fuelband-and-curators-of-sweden-take-top-cyber-lions-at-cannes
+- https://www.adhugger.net/2012/02/03/david-jones-iain-tait-and-mainardo-de-nardis-to-head-juries-at-cannes-lions-2012/
+- https://lbbonline.com/news/cannes-lions-announces-three-further-juries
+subtype: talk
 ---
-
 # Cannes Lions Cyber Jury President — Grand Prix Speech (2012)
 
 **Event:** 59th Cannes Lions International Festival of Creativity

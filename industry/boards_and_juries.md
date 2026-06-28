@@ -2,8 +2,9 @@
 title: Boards and Juries
 section: Industry Contributions
 scope: Professional Service
+subtype: overview
+type: industry
 ---
-
 # Boards & Juries
 
 A forensic record of Iain Tait's jury service and board membership across major creative industry institutions — spanning two decades from Poke to FOOD.

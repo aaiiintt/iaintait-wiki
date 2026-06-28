@@ -1,3 +1,11 @@
+---
+title: "Dallas Clayton"
+type: collaborator
+tags: [author, illustrator, google_creative_lab]
+aliases: []
+source_urls: []
+---
+
 # Dallas Clayton
 
 **Role Focus:** Author & Illustrator

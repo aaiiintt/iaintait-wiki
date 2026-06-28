@@ -1,11 +1,17 @@
 ---
 title: "Boards Magazine: Iain Tait Joins Wieden+Kennedy"
-type: interview
-tags: [Boards, W+K-Portland, POKE, career-move, interview]
-aliases: [Boards interview]
+type: industry
+tags:
+  - Boards
+  - POKE
+  - career-move
+  - interview
+  - wieden_kennedy_portland
+aliases:
+  - Boards interview
 source_urls: []
+subtype: interview
 ---
-
 # Boards Magazine: Joining Wieden+Kennedy
 
 **Publication:** Boards Magazine

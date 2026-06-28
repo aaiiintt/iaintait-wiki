@@ -62,81 +62,26 @@ The `/raw/` tree is immutable source data — LLMs read from it, never modify it
 
 | Directory | Contents |
 |---|---|
-| `raw/research/` | Research dumps, one per investigation: `<slug>_<YYYY-MM-DD>.md`. Required audit trail before any synthesis. |
-| `raw/media/<project_slug>/` | Video thumbnails, stills, extracted frames per project. Download target for yt-dlp and curl. |
-| `raw/assets/` | Generic/shared non-project assets. |
-| `raw/clippings/` | Web articles captured via Obsidian Web Clipper (markdown + images). |
-| `raw/archive/` | Historical archives (scraped blog posts, dead microsites recovered via Wayback, etc.). |
+| `raw/media/<project_slug>/` | Video case studies, loop clips, and images per project. |
+| `raw/assets/` | Shared non-project assets. |
 
 ---
 
 ## The Ingest Pipeline
 
-The pipeline has **five explicit stages**. Research and synthesis are separate operations. The `/research`, `/ingest`, and `/lint` slash commands each correspond to a phase of this pipeline.
+The pipeline is used when adding or updating career entries in the wiki.
 
 ### Stage 1 — Capture
-Any new input (URL, PDF, screenshot, transcript, image) lands in `/raw/` first. Never edit wiki pages directly from a browser tab.
+Any new media (images, loops, case-study clips) lands in `raw/media/<project_slug>/` first.
 
-### Stage 2 — Research (write raw dump)
-All web research is written to `raw/research/<slug>_<YYYY-MM-DD>.md` using the template below. This file is the audit trail — append-only, never deleted, even after ingest. This is what `/research` produces. The research skills MUST NOT touch `/projects/`, `/collaborators/`, `/agencies/`, `/industry/`, `index.md`, or `log.md` during this stage.
+### Stage 2 — Synthesise (ingest into wiki)
+Add or update markdown profiles inside `projects/`, `collaborators/`, `agencies/`, or `industry/` matching the required schemas.
 
-### Stage 3 — Synthesise (ingest into wiki)
-Only after a raw dump exists does the LLM touch the synthesised layer. Every claim in `/projects/*.md` or `/collaborators/*.md` must trace to a URL that appears in the matching raw dump (or in an older raw dump already in the tree). This is what `/ingest` does.
+### Stage 3 — Cross-link
+Update indices (`collaborators_index.md`, `index.md`) and connect adjacent collaborator profiles or projects using relative markdown links (e.g. `[Stewart Smith](../collaborators/stewart_smith.md)`).
 
-### Stage 4 — Cross-link
-Update `collaborators_index.md`, `index.md`, and any affected agency/industry files. Create missing collaborator stubs. Wrap plain-text names as markdown links wherever they appear.
-
-### Stage 5 — Log
-Append to `log.md`:
-
-```markdown
-## [YYYY-MM-DD] <action> | <target>
-<2–3 line summary>
-**Sources consulted:** <top 3–5 domains that produced evidence>
-```
-
-The `Sources consulted:` line is mandatory — it feeds back into the Fruitful Sources Appendix over time.
-
----
-
-## Raw Research File Template
-
-Every file in `raw/research/` follows this template:
-
-```markdown
-# <Subject> — Research Findings
-
-**Target type:** project | collaborator | industry | agency
-**Slug:** <snake_case_slug>
-**Research date:** YYYY-MM-DD
-**Researcher:** <research | collaborator-research>
-**Trigger:** <what the user asked for>
-
----
-
-## Internal evidence (grep sweep)
-- <file>:<line> — <role / quote / context>
-
-## External sources
-
-### <Source title>
-- **URL:** <url>
-- **Published:** <date if findable>
-- **Tier:** 1 | 2 | 3 | 4 | 5 (see Fruitful Sources Appendix below)
-- **Relevance:** press | award | talk | writing | profile | patent | portfolio | credits | video
-- **Key quotes / facts:** <verbatim where possible>
-
-## Media candidates for archival
-- <url> → proposed filename `YYYY_<slug>_<desc>.<ext>`
-
-## Gaps & open questions
-- <what could not be confirmed>
-
-## Summary
-- Well-evidenced: ...
-- Thin: ...
-- Not found: ...
-```
+### Stage 4 — Database Sync
+Trigger a manual database synchronization via the Admin Dashboard `/system` sync page or run `npm run db:sync` in your terminal. This parses the updated markdown files and populates the SQLite graph database (`local.db`).
 
 ---
 
@@ -197,26 +142,11 @@ Use the right fetcher for the job — `WebFetch` frequently 503s on trade-press 
 
 ---
 
-## Linting Protocol
+## Diagnostics & Linting
 
-`/lint [scope]` runs the five-pass lint described in `~/.claude/commands/lint.md`:
+Diagnostics are run dynamically in the web application. Navigate to `/system` (or `/admin`) and select the **Diagnostics** tab to scan the SQLite database for orphaned nodes or broken link references.
 
-1. Schema compliance (`npx markdownlint-cli "**/*.md"` + frontmatter + mandatory sections)
-2. Cross-link integrity (dead links, orphan collaborators, plain-text names needing upgrade)
-3. Asset integrity (local files exist, projects have at least one asset)
-4. Raw→wiki provenance (every recently-edited synthesised file has a matching `raw/research/*.md`)
-5. Content drift (scope `all` only — contradictions across pages)
-
-`raw/` is excluded from markdownlint via `.markdownlintignore`. Multi-H1 and duplicate-heading warnings are ignored.
-
----
-
-## Compilation
-
-`python compress.py` produces a portable concatenated copy of the wiki.
-
----
-
-## Logging & Tracking (`log.md`)
-
-`log.md` is the chronological append-only record. Every ingest or significant update adds a section starting with `## [YYYY-MM-DD] <action> | <target>` followed by a short summary and a mandatory `**Sources consulted:**` line.
+Unit tests are written in Vitest and can be run using:
+```bash
+npm run test
+```

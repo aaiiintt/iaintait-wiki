@@ -33,3 +33,15 @@ raw/media/**/*.mp3
 raw/media/**/*.m4a
 raw/media/**/*.part
 raw/media/**/*.ytdl
+
+# Local Databases (SQLite)
+local.db*
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Editor / Tool Caches
+.claude/
+.vscode/
+.idea/

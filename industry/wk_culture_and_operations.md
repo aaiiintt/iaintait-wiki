@@ -1,10 +1,15 @@
 ---
-title: W+K London Operations & Culture 
+title: W+K London Operations & Culture
 category: Industry & Operations
-date: "2016"
-tags: [Operations, Talent, Wellbeing, Innovation]
+date: '2016'
+tags:
+- Operations
+- Talent
+- Wellbeing
+- Innovation
+subtype: overview
+type: industry
 ---
-
 # Wieden+Kennedy Operations & Culture Initiatives
 
 While serving as Executive Creative Director at [Wieden+Kennedy London](../agencies/wieden_and_kennedy_london.md), Iain Tait paired with Deputy MD Helen Andrews to launch massive operational experiments and talent initiatives designed to fundamentally alter how the agency operated.

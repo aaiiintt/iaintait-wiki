@@ -1,11 +1,17 @@
 ---
-title: "D&AD: I Wish I'd Done That"
-type: talk
-tags: [D&AD, film, Dan-Wieden, Jessica-Walsh, interview]
-aliases: [I Wish I'd Done That]
+title: 'D&AD: I Wish I''d Done That'
+type: industry
+tags:
+- D&AD
+- film
+- Dan-Wieden
+- Jessica-Walsh
+- interview
+aliases:
+- I Wish I'd Done That
 source_urls: []
+subtype: talk
 ---
-
 # D&AD: I Wish I'd Done That
 
 **Event:** D&AD

@@ -1,13 +1,17 @@
 ---
 title: Crackunit Blog
 category: Thought Leadership
-date: "2000s"
-tags: [Thought Leadership, Digital Marketing, Writing]
+date: 2000s
+tags:
+- Thought Leadership
+- Digital Marketing
+- Writing
+subtype: overview
+type: industry
 ---
-
 # Crackunit & Crackunit2
 
-Long before "thought leadership" became ubiquitous on platforms like LinkedIn, Iain Tait authored **Crackunit** (and its successor, **Crackunit2**).
+Long before "thought leadership" became ubiquitous on platforms like LinkedIn, [Iain Tait](../collaborators/iain_tait.md) authored **Crackunit** (and its successor, **Crackunit2**).
 
 This highly regarded industry blog ran throughout the late 2000s and was frequently cited alongside seminal digital publications like BBH Labs and Adliterate. It served as one of the premier digital marketing and planning blogs in the UK.
 

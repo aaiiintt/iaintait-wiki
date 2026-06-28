@@ -1,8 +1,18 @@
 ---
 title: "Ingress Prime: ADA vs. JARVIS"
 type: project
-tags: [W+K-London, Niantic, Ingress-Prime, AI, ARG, Tool-of-North-America, Private-Island, 2018]
-aliases: [ADA vs JARVIS, Ingress Prime campaign, Meet the AIs]
+tags:
+  - Niantic
+  - Ingress-Prime
+  - AI
+  - ARG
+  - Tool-of-North-America
+  - Private-Island
+  - wieden_kennedy_london
+aliases:
+  - ADA vs JARVIS
+  - Ingress Prime campaign
+  - Meet the AIs
 source_urls:
   - https://toolofna.com/work/ai/ingress-prime-ada-vs-jarvis/
   - https://chrisboyle.co.uk/Ingress-Prime
