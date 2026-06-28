@@ -222,7 +222,6 @@ a:hover, .prose a:hover {
 @media (max-width: 640px) {
   [cmdk-dialog] {
     width: 95%;
-    max-height: 80vh;
   }
 }
 
@@ -285,10 +284,9 @@ a:hover, .prose a:hover {
 }
 
 [cmdk-list] {
-  max-height: 300px;
-  overflow-y: auto;
+  max-height: none;
+  overflow-y: visible;
   padding: 0;
-  overscroll-behavior: contain;
 }
 
 [cmdk-group-heading] {
