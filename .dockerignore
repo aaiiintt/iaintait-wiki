@@ -6,3 +6,8 @@ dist
 local.db*
 *.log
 npm-debug.log*
+postcss.config.js
+tailwind.config.ts
+next.config.js
+app/
+
