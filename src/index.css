@@ -169,18 +169,18 @@ a:hover, .prose a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 50;
-  animation: fadeIn 0.15s ease-out;
+  animation: fadeIn 0.2s ease-out;
 }
 
 [cmdk-dialog] {
   position: fixed;
-  top: 50%;
+  top: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   width: 90%;
   max-width: 600px;
   background: #ffffff;
@@ -188,24 +188,16 @@ a:hover, .prose a:hover {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   z-index: 51;
   font-family: var(--font-mono);
-  animation: dialogIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
 }
 
-/* Mobile-first positioning: anchor to bottom */
+/* On mobile, float the dialog at the top as well, but scale it to cover more horizontal space */
 @media (max-width: 640px) {
   [cmdk-dialog] {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    max-height: 85vh;
+    width: 95%;
+    max-height: 80vh;
   }
 }
 
@@ -220,15 +212,14 @@ a:hover, .prose a:hover {
   to { opacity: 1; }
 }
 
-@keyframes dialogIn {
-  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-
-@media (max-width: 640px) {
-  @keyframes dialogIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
   }
 }
 
