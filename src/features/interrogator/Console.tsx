@@ -52,6 +52,7 @@ interface Message {
   suggestedQuestions?: string[];
   nodeId?: string;
   nodeTitle?: string;
+  query?: string;
 }
 
 interface ConsoleProps {
@@ -128,6 +129,16 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
   const [loading, setLoading] = useState(false);
   const [activeLogs, setActiveLogs] = useState<ExecutionLogs | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  
+  // Inline editing state
+  const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState("");
+  const [savingEdit, setSavingEdit] = useState(false);
+  
+  // Prompt input state
+  const [promptingMessageId, setPromptingMessageId] = useState<string | null>(null);
+  const [regenPrompt, setRegenPrompt] = useState("");
+
   const [sessionStats, setSessionStats] = useState({
     input: 0,
     output: 0,
@@ -229,14 +240,13 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
     }
   }, [messages, loading]);
 
-  async function handleSearch(q: string, displayText?: string) {
+  async function handleSearch(q: string, displayText?: string, instruction?: string) {
     if (!q.trim() || loading) return;
 
-    // 1. Add User Message (use displayText for clean rendering if provided, e.g. from links)
     const userMsg: Message = {
       id: `user-${Date.now()}`,
       sender: "user",
-      text: displayText || q,
+      text: instruction ? (displayText ? `${displayText} (Prompt: ${instruction})` : `${q} (Prompt: ${instruction})`) : (displayText || q),
       timestamp: new Date()
     };
     setMessages((prev) => [...prev, userMsg]);
@@ -245,7 +255,10 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
     setActiveLogs(null);
 
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+      const url = instruction 
+        ? `/api/search?q=${encodeURIComponent(q)}&instruction=${encodeURIComponent(instruction)}` 
+        : `/api/search?q=${encodeURIComponent(q)}`;
+      const res = await fetch(url);
       if (res.ok) {
         const data: SearchResponse = await res.json();
         
@@ -274,7 +287,8 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
           tokenUsage: usage,
           suggestedQuestions: data.suggestedQuestions,
           nodeId: data.targetNodeId,
-          nodeTitle: data.targetNodeTitle
+          nodeTitle: data.targetNodeTitle,
+          query: data.query
         };
         
         const isCached = (data as any).cached === true;
@@ -341,6 +355,40 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
     }
   };
 
+  const handleInlineSave = async (m: Message) => {
+    if (!m.query) return;
+    setSavingEdit(true);
+    try {
+      const res = await fetch("/api/search/admin/seed-cache", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ logId: m.query, customResponseText: editContent })
+      });
+      if (res.ok) {
+        setMessages(prev => prev.map(msg => msg.id === m.id ? { ...msg, text: editContent } : msg));
+        setEditingMessageId(null);
+      }
+    } catch (err) {
+      console.error("Failed to save curated response:", err);
+    } finally {
+      setSavingEdit(false);
+    }
+  };
+
+  const handleRegenerate = async (m: Message, withPrompt: boolean = false, instruction?: string) => {
+    if (!m.query) return;
+    
+    // Clear cache first
+    try {
+      await fetch(`/api/search/admin/log/${encodeURIComponent(m.query)}`, { method: "DELETE" });
+    } catch (err) {
+      console.error("Failed to clear cache for regeneration", err);
+    }
+    
+    // Trigger fresh search
+    handleSearch(m.query, `Regenerating: ${m.query}...`, instruction);
+  };
+
   // Configure marked custom renderer for the inline agent outputs
   const renderer = new marked.Renderer();
   
@@ -358,7 +406,14 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
   renderer.image = ({ href, title, text }) => {
     let cleanHref = href;
     // Route local media paths relative to the Hono static media server
-    if (cleanHref.includes("raw/media/")) {
+    // By splitting on the directory name, we elegantly strip any hallucinated prefixes (like file:////)
+    if (cleanHref.includes("wiki-media/")) {
+      const parts = cleanHref.split("wiki-media/");
+      cleanHref = `http://localhost:8787/wiki-media/${parts[parts.length - 1]}`;
+    } else if (cleanHref.includes("wiki-assets/")) {
+      const parts = cleanHref.split("wiki-assets/");
+      cleanHref = `http://localhost:8787/wiki-assets/${parts[parts.length - 1]}`;
+    } else if (cleanHref.includes("raw/media/")) {
       const parts = cleanHref.split("raw/media/");
       cleanHref = `http://localhost:8787/wiki-media/${parts[parts.length - 1]}`;
     } else if (cleanHref.includes("raw/assets/")) {
@@ -507,7 +562,7 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
             >
             {/* Bubble Content */}
             <div 
-              className={`max-w-[90%] prose max-w-none font-mono leading-relaxed ${
+              className={`w-full max-w-[90%] prose max-w-none font-mono leading-relaxed ${
                 m.sender === "user" 
                   ? "bg-gray-100 text-gray-900 px-4 py-2.5 rounded-none border border-gray-200" 
                   : "bg-white text-gray-800"
@@ -515,6 +570,25 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
             >
               {m.sender === "user" ? (
                 <p className="whitespace-pre-wrap">{m.text}</p>
+              ) : editingMessageId === m.id ? (
+                <div className="flex flex-col gap-2 w-full animate-in fade-in">
+                  <textarea 
+                    value={editContent}
+                    onChange={(e) => setEditContent(e.target.value)}
+                    rows={20}
+                    autoFocus
+                    className="w-full text-gray-800 font-mono bg-transparent outline-none border-none resize-y p-0 leading-relaxed shadow-none focus:ring-0"
+                    style={{ minHeight: '400px' }}
+                  />
+                  <div className="flex gap-4 items-center mt-2 text-[10px] text-gray-400 font-mono uppercase border-t border-gray-100 pt-3">
+                    <button onClick={() => handleInlineSave(m)} disabled={savingEdit} className="hover:text-black transition-colors disabled:opacity-50 font-bold">
+                      {savingEdit ? "[Saving...]" : "[Save Cache]"}
+                    </button>
+                    <button onClick={() => setEditingMessageId(null)} disabled={savingEdit} className="hover:text-black transition-colors disabled:opacity-50">
+                      [Cancel]
+                    </button>
+                  </div>
+                </div>
               ) : (
                 <div 
                   dangerouslySetInnerHTML={{ __html: marked.parse(m.text, { renderer }) }}
@@ -522,16 +596,85 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
               )}
             </div>
 
-            {/* Action Bar (Download) */}
-            {m.sender === "agent" && m.nodeId && (
-              <div className="flex items-center gap-3 mt-2 pt-2 border-t border-gray-100 text-[10px] text-gray-400 select-none font-mono">
-                <a 
-                  href={`/api/nodes/${m.nodeId}/download`} 
-                  download 
-                  className="hover:text-gray-900 underline"
-                >
-                  Download raw (.md)
-                </a>
+            {/* Action Bar */}
+            {m.sender === "agent" && m.id !== "welcome" && !editingMessageId && (
+              <div className="flex items-center gap-4 mt-2 pt-2 border-t border-gray-100 text-[10px] text-gray-400 select-none font-mono min-h-[24px]">
+                {promptingMessageId === m.id ? (
+                  <div className="flex items-center gap-3 w-full animate-in fade-in slide-in-from-bottom-2 duration-200">
+                    <span className="uppercase">Instruction:</span>
+                    <input 
+                      type="text" 
+                      value={regenPrompt}
+                      onChange={(e) => setRegenPrompt(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          setPromptingMessageId(null);
+                          if (regenPrompt.trim()) handleRegenerate(m, true, regenPrompt.trim());
+                        } else if (e.key === 'Escape') {
+                          setPromptingMessageId(null);
+                        }
+                      }}
+                      placeholder="e.g. Please highlight digital projects..."
+                      className="flex-1 bg-transparent border-b border-gray-300 focus:border-black outline-none text-gray-900 py-1"
+                      autoFocus
+                    />
+                    <button 
+                      onClick={() => {
+                        setPromptingMessageId(null);
+                        if (regenPrompt.trim()) handleRegenerate(m, true, regenPrompt.trim());
+                      }}
+                      className="hover:text-black transition-colors uppercase"
+                    >
+                      [Go]
+                    </button>
+                    <button 
+                      onClick={() => setPromptingMessageId(null)}
+                      className="hover:text-black transition-colors uppercase"
+                    >
+                      [Cancel]
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    {m.nodeId && (
+                      <a 
+                        href={`/api/nodes/${m.nodeId}/download`} 
+                        download 
+                        className="hover:text-gray-900 underline border-r border-gray-200 pr-4"
+                      >
+                        Download raw (.md)
+                      </a>
+                    )}
+                    {m.query && (
+                      <>
+                        <button 
+                          onClick={() => {
+                            setEditContent(m.text);
+                            setEditingMessageId(m.id);
+                          }} 
+                          className="hover:text-gray-900 transition-colors uppercase"
+                        >
+                          [Edit Response]
+                        </button>
+                        <button 
+                          onClick={() => handleRegenerate(m, false)} 
+                          className="hover:text-blue-600 transition-colors uppercase"
+                        >
+                          [Regenerate]
+                        </button>
+                        <button 
+                          onClick={() => {
+                            setRegenPrompt("");
+                            setPromptingMessageId(m.id);
+                          }} 
+                          className="hover:text-purple-600 transition-colors uppercase"
+                        >
+                          [Regenerate + Prompt]
+                        </button>
+                      </>
+                    )}
+                  </>
+                )}
               </div>
             )}
           </div>

@@ -1,19 +1,3 @@
----
-title: Wieden+Kennedy Portland
-type: agency
-tags:
-  - agency
-  - advertising
-  - portland
-  - interactive
-  - wieden_kennedy_portland
-  - wieden_kennedy
-aliases:
-  - Wieden+Kennedy Portland
-  - W+K Portland
-source_urls: []
----
-
 # Wieden+Kennedy Portland
 
 ## Agency Overview
@@ -29,10 +13,6 @@ Iain Tait joined Wieden+Kennedy Portland as Global Interactive Executive Creativ
 - [Old Spice "Responses"](../projects/wk_old_spice_responses.md)
 - [Nike Better World](../projects/wk_nike_better_world.md)
 - [Dodge Tent Event (Chimp Removal)](../projects/wk_dodge_tent_event.md)
-
-## Leadership & Founders
-
-- **[Dan Wieden](../collaborators/dan_wieden.md)** — Co-founder & Long-time Creative Leader
 
 ## Source Files
 

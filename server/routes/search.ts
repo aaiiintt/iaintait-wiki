@@ -1,37 +1,72 @@
 import { Hono } from "hono";
 import { db } from "../db";
-import { nodes, agentRoutes, queryCache, queryLogs } from "../db/schema";
+import { nodes, agentRoutes, queryCache, queryLogs, suggestedQuestions } from "../db/schema";
 import { eq, sql, and, desc } from "drizzle-orm";
 import { ai, searchArchiveTool, getNodeDetailsTool, getTimelineErasTool } from "../ai/engine";
 import { getSemanticIntentKeyphrase } from "./intentClassifier";
 import { translateMediaUrls } from "../utils/media";
 import { vertexAI } from "@genkit-ai/google-genai";
+import fs from "node:fs";
+import path from "node:path";
 
 export const searchRoute = new Hono();
 
-// GET /api/search - Live LLM Agent Interrogation Endpoint
-searchRoute.get("/", async (c) => {
-  const query = c.req.query("q")?.trim() || "";
-
-  if (!query) {
-    return c.json({ error: "Empty query" }, 400);
+async function getDynamicSuggestions(queryVector: number[] | null): Promise<string[]> {
+  let questions: string[] = [];
+  if (queryVector) {
+    const sqEntries = await db.select().from(suggestedQuestions);
+    const scoredSq = sqEntries.map(entry => {
+      const cachedVec: number[] = JSON.parse(entry.embeddingJson);
+      let dot = 0;
+      if (cachedVec.length === queryVector.length) {
+        for (let i = 0; i < queryVector.length; i++) {
+          dot += queryVector[i]! * cachedVec[i]!;
+        }
+      }
+      return { text: entry.text, score: dot };
+    });
+    
+    scoredSq.sort((a, b) => b.score - a.score);
+    questions = scoredSq.slice(0, 3).map(sq => sq.text);
   }
 
+  if (questions.length < 3) {
+    questions = [
+      "Tell me about the most awarded project in the archive.",
+      "What is FOOD's philosophy on emerging technology and AI?",
+      "Write a limerick about Iain's Shoreditch basement era."
+    ];
+  }
+  return questions;
+}
+
+// GET /api/search - Live LLM Agent Interrogation Endpoint
+searchRoute.get("/", async (c) => {
+  const query = c.req.query("q");
+  const instruction = c.req.query("instruction");
+  if (!query) {
+    return c.json({ error: "Missing query" }, 400);
+  }
   const cleanQuery = query.toLowerCase().trim();
 
   // 1. Exact string match cache lookup
-  const [cachedMatch] = await db
+  const [cacheEntry] = await db
     .select()
     .from(queryCache)
     .where(eq(queryCache.queryText, cleanQuery))
     .limit(1);
 
-  if (cachedMatch) {
-    await db
-      .update(queryCache)
-      .set({ hitCount: cachedMatch.hitCount + 1, updatedAt: Date.now() })
+  // Only use cache if no custom instruction is provided
+  if (cacheEntry && !instruction) {
+    await db.update(queryCache)
+      .set({ hitCount: (cacheEntry.hitCount || 0) + 1, updatedAt: Date.now() })
       .where(eq(queryCache.queryText, cleanQuery));
-    const payload = JSON.parse(cachedMatch.responseJson);
+    const payload = JSON.parse(cacheEntry.responseJson);
+    
+    // Inject dynamic suggestions based on cached query vector
+    const cachedVector = cacheEntry.queryVectorJson ? JSON.parse(cacheEntry.queryVectorJson) : null;
+    payload.suggestedQuestions = await getDynamicSuggestions(cachedVector);
+
     return c.json({
       ...payload,
       cached: true,
@@ -94,6 +129,9 @@ searchRoute.get("/", async (c) => {
         .set({ hitCount: bestMatch.hitCount + 1, updatedAt: Date.now() })
         .where(eq(queryCache.queryText, bestMatch.queryText));
       const payload = JSON.parse(bestMatch.responseJson);
+      
+      payload.suggestedQuestions = await getDynamicSuggestions(queryVector);
+
       return c.json({
         ...payload,
         cached: true,
@@ -141,20 +179,25 @@ searchRoute.get("/", async (c) => {
 
   let dbResults = exactMatch;
   
-  if (dbResults.length === 0) {
+  if (dbResults.length === 0 || exactMatch.length > 0) {
+    // If there is an exact match, we still want to run the keyword search using its title to find related context!
+    const searchString = exactMatch.length > 0 && exactMatch[0] ? exactMatch[0].title : query;
+    
     // Split query into keywords to run token-based search rather than raw contiguous string LIKE matches
-    const keywords = query
+    const keywords = searchString
       .toLowerCase()
       .split(/[^a-z0-9]+/)
-      .filter(k => (k.length > 2 || ["ai", "ar", "vr"].includes(k)) && !["the", "and", "for", "that", "with", "this", "from", "iain", "tait", "search", "query", "nonexistent", "how", "has", "who", "what", "where", "why", "when", "does", "most", "about", "project", "projects", "worked", "work"].includes(k));
+      .filter(k => (k.length > 2 || ["ai", "ar", "vr"].includes(k)) && !["the", "and", "for", "that", "with", "this", "from", "iain", "tait", "search", "query", "nonexistent", "how", "has", "who", "what", "where", "why", "when", "does", "most", "about", "project", "projects", "worked", "work", "london", "new", "york", "portland", "agency"].includes(k));
     
+    let keywordResults: any[] = [];
     if (keywords.length > 0) {
       const conditions = keywords.map(kw => {
         if (kw.length <= 3) {
-          return sql`(${nodes.title} LIKE ${`% ${kw} %`} OR ${nodes.title} LIKE ${`${kw} %`} OR ${nodes.title} LIKE ${`% ${kw}`} OR ${nodes.title} = ${kw}
-                      OR ${nodes.body} LIKE ${`% ${kw} %`} OR ${nodes.body} LIKE ${`${kw} %`} OR ${nodes.body} LIKE ${`% ${kw}`}
-                      OR ${nodes.client} LIKE ${`% ${kw} %`} OR ${nodes.client} LIKE ${`${kw} %`} OR ${nodes.client} LIKE ${`% ${kw}`}
-                      OR ${nodes.role} LIKE ${`% ${kw} %`} OR ${nodes.role} LIKE ${`${kw} %`} OR ${nodes.role} LIKE ${`% ${kw}`})`;
+          return sql`(${nodes.title} LIKE ${`% ${kw} %`} OR ${nodes.title} LIKE ${`${kw} %`} OR ${nodes.title} LIKE ${`% ${kw}`} OR ${nodes.title} = ${kw} OR ${nodes.title} LIKE ${`%${kw}:%`} OR ${nodes.title} LIKE ${`%${kw}-%`}
+                      OR ${nodes.body} LIKE ${`% ${kw} %`} OR ${nodes.body} LIKE ${`${kw} %`} OR ${nodes.body} LIKE ${`% ${kw}`} OR ${nodes.body} LIKE ${`%${kw}.%`} OR ${nodes.body} LIKE ${`%${kw},%`} OR ${nodes.body} LIKE ${`%${kw}:%`}
+                      OR ${nodes.client} LIKE ${`% ${kw} %`} OR ${nodes.client} LIKE ${`${kw} %`} OR ${nodes.client} LIKE ${`% ${kw}`} OR ${nodes.client} = ${kw}
+                      OR ${nodes.role} LIKE ${`% ${kw} %`} OR ${nodes.role} LIKE ${`${kw} %`} OR ${nodes.role} LIKE ${`% ${kw}`} OR ${nodes.role} = ${kw}
+                      OR ${nodes.id} LIKE ${`%_${kw}_%`} OR ${nodes.id} LIKE ${`%:${kw}_%`})`;
         }
         const pattern = `%${kw}%`;
         return sql`(${nodes.title} LIKE ${pattern} 
@@ -163,7 +206,7 @@ searchRoute.get("/", async (c) => {
                    OR ${nodes.role} LIKE ${pattern})`;
       });
 
-      dbResults = await db
+      keywordResults = await db
         .select({
           id: nodes.id,
           title: nodes.title,
@@ -178,8 +221,8 @@ searchRoute.get("/", async (c) => {
         .where(sql`${sql.join(conditions, sql` OR `)}`)
         .limit(30);
     } else {
-      const matchTerm = `%${query}%`;
-      dbResults = await db
+      const matchTerm = `%${searchString}%`;
+      keywordResults = await db
         .select({
           id: nodes.id,
           title: nodes.title,
@@ -199,13 +242,21 @@ searchRoute.get("/", async (c) => {
         )
         .limit(30);
     }
+    
+    // Combine exact matches with keyword results, avoiding duplicates
+    const exactIds = new Set(exactMatch.map(n => n.id));
+    const newResults = keywordResults.filter(n => !exactIds.has(n.id));
+    dbResults = [...exactMatch, ...newResults];
   }
 
   // Score and sort results by keyword matching relevance
   const scoredResults = dbResults
     .map((node) => {
       let score = 0;
-      const lowerQuery = query.toLowerCase();
+      
+      // Use searchString for scoring instead of raw query which might just be an ID string
+      const searchString = exactMatch.length > 0 && exactMatch[0] ? exactMatch[0].title : query;
+      const lowerQuery = searchString.toLowerCase();
       
       const titleLower = node.title.toLowerCase();
       const descLower = (node.desc || "").toLowerCase();
@@ -329,7 +380,7 @@ searchRoute.get("/", async (c) => {
   let targetNodeTitle: string | undefined;
   let curatedContext = "";
 
-  if (exactMatch.length > 0 && exactMatch[0]) {
+  if (exactMatch.length === 1 && exactMatch[0]) {
     const node = exactMatch[0];
     curatedContext += `[FULL CONTENT OF THE REQUESTED FILE "${node.id}":]\nTitle: ${node.title}\nKind: ${node.kind}\n\n${node.body}\n\n`;
     if (node.kind === "project") {
@@ -394,33 +445,25 @@ Your goal is to traverse the knowledge base, synthesize facts, and deliver brill
 Tone and Persona:
 - Professional, objective, insightful, and clear.
 - Do NOT act as a witty, protective, or sarcastic agent. Be a super-efficient knowledge person.
-- Highlight Iain's unique creative signature: a rare blend of creative technology that's always been ahead of the curve, combined with being incredibly human, accessible, and humble.
-- Always begin your response by briefly outlining the research strategy or search techniques you are using to fetch the information (e.g. "I am scanning the database for 'AI' projects and retrieving their direct markdown files to analyze the technical and creative execution..."). EXCEPTION: If the user explicitly requests a creative format—such as a poem, a limerick, a song, a haiku, a fictional story, or ASCII art—you MUST bypass this research outline entirely and deliver the creative content immediately with no introductory agent dialogue.
+- If the project documentation is brief, do not invent or add fluff. State only what is explicitly in the file.
+- Be conversational, engaging, and summarize the details in a readable way rather than just dumping raw markdown headers. However, if the project has image, GIF, or video media assets, you MUST preserve and embed those media files in your response.
 
 Rules:
 1. Base all claims strictly on facts returned by the tools. Never hallucinate, invent, or mention any project, agency, brand, campaign, or collaborator that does not exist in the database or the provided context. Even when asked creative, fictional, or metaphorical questions (such as a horoscope, poem, or analogy), you MUST limit your references and examples strictly to the actual projects and agencies returned by the tools (like POKE London, Baker Tweet, Google Racer, or W+K London).
 2. Output all responses in clean, structured Markdown.
 3. When mentioning projects, agencies, or collaborators, always create clickable file-path links (e.g. [Wearing Gillian](file:///projects/wk_gillian_wearing_deepfake.md) or [Chris Boyle](file:///collaborators/chris_boyle.md)). Only link to entities that actually exist in the database or provided context.
 4. You can embed images and loops directly in the markdown using their raw file paths if returned by getNodeDetails.
-5. When the user asks for a timeline or overview, use getTimelineEras to map out his hops.
+5. When the user asks for a timeline, overview, or superlative temporal questions like "most recent", "latest", "oldest", or "first", ALWAYS use the getTimelineEras tool to get a full chronological list. You must use this list to correctly determine the answer instead of guessing.
 6. Absolute Grounding: If the user asks you to write a story, poem, or horoscope, translate the requested structure using real, database-verified events and projects.
 7. Confidential Projects: If a project node is flagged as confidential, you should still include it in relevant overviews, timelines, and lists, explaining that only limited details (such as title, year, client) are available.
 8. Commercial & FAQ Queries: Information regarding FOOD's partners, locations, clients, ways of working, pitching policy, pricing/rates, and contact emails are public business details provided in the FAQ or curated context. You must answer these queries directly and factually.
 9. Multi-office or non-contiguous tenures: Detail all distinct periods of employment and locations when asked about Iain's tenure.
-10. Full Content Representation: When provided with "[FULL CONTENT OF THE REQUESTED FILE]", render the complete file content, connection details, and instructions exactly as written.
-11. Suggestions Requirement: At the very end of your response, you MUST output exactly three suggested follow-up queries that the user can ask next based on the content of your response.
-The three questions MUST follow this exact structure:
-- Question 1 MUST be a specific plain text follow-up about a related project, talk, or agency mentioned in your response (e.g., "Tell me more about the project Google Racer" or "What did Iain do at POKE London?").
-- Question 2 MUST be a broader plain text question about a related category or theme (e.g. AI projects, creative technology, spatial anchors, or D&AD awards).
-- Question 3 MUST be a fun, creative, or novel plain text query (e.g. asking for a limerick, a haiku, or a pirate rewrite).
+10. Full Content Representation: When provided with "[FULL CONTENT OF THE REQUESTED FILE]", your primary focus must be that specific file. You MUST render the complete file content, preserving ALL original markdown links (e.g., [Name](file:///...)), formatting, and lists EXACTLY as provided. Only use additional matching records if they are directly relevant. Ignore records that merely share a location name.
+11. Strict Tool Usage: Always execute 'searchArchive' and 'getNodeDetails' to verify facts rather than relying on pre-trained memory.`;
 
-Do NOT include any Markdown links, file path links, brackets, or formatting inside the suggested questions. They must be raw, plain text strings. Format them exactly like this:
-
-SUGGESTIONS:
-- [Question 1]
-- [Question 2]
-- [Question 3]
-12. Strict Tool Usage: Always execute 'searchArchive' and 'getNodeDetails' to verify facts rather than relying on pre-trained memory.`;
+    if (instruction) {
+      systemPrompt += `\n\nCRITICAL CUSTOMER INSTRUCTION FOR THIS QUERY:\n${instruction}`;
+    }
 
     // Generate conversational response from Vertex AI Gemini Flash grounded in our tools
     const response = await ai.generate({
@@ -479,37 +522,10 @@ SUGGESTIONS:
 
     const usage = response.usage || { inputTokens: 0, outputTokens: 0, totalTokens: 0 };
     
-    // Parse out suggestions from model response text
     const rawText = response.text || "";
-    const suggestionsMatch = rawText.match(/SUGGESTIONS:\s*([\s\S]*)$/i);
     let cleanResponse = rawText;
-    let suggestedQuestions: string[] = [];
-    
-    if (suggestionsMatch && suggestionsMatch[1]) {
-      cleanResponse = rawText.replace(/SUGGESTIONS:[\s\S]*$/i, "").trim();
-      suggestedQuestions = suggestionsMatch[1]
-        .split("\n")
-        .map(line => {
-          let cleanLine = line
-            .replace(/^-\s*/, "")
-            .replace(/^\[|\]$/g, "")
-            .replace(/^\*|^\d+\.\s*/, "")
-            .trim();
-          // Strip any markdown link syntax e.g. [Google Racer](file:///...) -> Google Racer
-          cleanLine = cleanLine.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
-          return cleanLine;
-        })
-        .filter(line => line.length > 0)
-        .slice(0, 3);
-    }
 
-    if (suggestedQuestions.length < 3) {
-      suggestedQuestions = [
-        "Tell me about the most awarded project in the archive.",
-        "What is FOOD's philosophy on emerging technology and AI?",
-        "Write a limerick about Iain's Shoreditch basement era."
-      ];
-    }
+    const suggestedQuestions = await getDynamicSuggestions(queryVector);
 
     const responseData = {
       query,
@@ -584,18 +600,25 @@ SUGGESTIONS:
   }
 });
 
-// GET /api/search/admin/query-logs - Get all logged user queries
+// GET /api/search/admin/query-logs - Get all cached queries (both auto and curated)
 searchRoute.get("/admin/query-logs", async (c) => {
   try {
-    const logs = await db
+    const cacheEntries = await db
       .select()
-      .from(queryLogs)
-      .orderBy(desc(queryLogs.createdAt));
+      .from(queryCache)
+      .orderBy(desc(queryCache.updatedAt));
 
-    // Also get cache hit statistics to display on the dashboard
-    const cacheEntries = await db.select().from(queryCache);
-    const totalQueries = logs.reduce((sum, l) => sum + l.hitCount, 0) + cacheEntries.reduce((sum, c) => sum + c.hitCount - 1, 0);
-    const cacheHits = cacheEntries.reduce((sum, c) => sum + c.hitCount - 1, 0);
+    const totalQueries = cacheEntries.reduce((sum, c) => sum + c.hitCount, 0);
+    const cacheHits = cacheEntries.reduce((sum, c) => sum + Math.max(0, c.hitCount - 1), 0);
+
+    const logs = cacheEntries.map(entry => ({
+      id: entry.queryText,
+      queryText: entry.queryText,
+      responseJson: entry.responseJson,
+      hitCount: entry.hitCount,
+      status: entry.curated === 1 ? "seeded" : "pending",
+      createdAt: entry.updatedAt
+    }));
 
     return c.json({
       logs,
@@ -610,71 +633,47 @@ searchRoute.get("/admin/query-logs", async (c) => {
   }
 });
 
-// POST /api/search/admin/seed-cache - Seed an edited query response into query_cache
+// POST /api/search/admin/seed-cache - Save curated query response to SQLite query_cache
 searchRoute.post("/admin/seed-cache", async (c) => {
   try {
-    const { logId, customResponseText } = await c.req.json();
-    if (!logId || !customResponseText) {
-      return c.json({ error: "Missing logId or customResponseText" }, 400);
+    const { logId: queryText, customResponseText } = await c.req.json();
+    if (!queryText || !customResponseText) {
+      return c.json({ error: "Missing queryText or customResponseText" }, 400);
     }
 
-    const [log] = await db.select().from(queryLogs).where(eq(queryLogs.id, logId)).limit(1);
-    if (!log) {
-      return c.json({ error: "Log entry not found" }, 404);
+    const [cacheEntry] = await db.select().from(queryCache).where(eq(queryCache.queryText, queryText)).limit(1);
+    if (!cacheEntry) {
+      return c.json({ error: "Cache entry not found" }, 404);
     }
 
-    // Parse existing response payload and update the agentResponse text
-    const payload = JSON.parse(log.responseJson);
+    const payload = JSON.parse(cacheEntry.responseJson);
     payload.agentResponse = customResponseText;
 
-    const cleanQuery = log.queryText.toLowerCase().trim();
-
-    // Look up query vector if exists
-    let queryVectorJson: string | null = null;
-    try {
-      const embedResponse = await ai.embed({
-        embedder: vertexAI.embedder("text-embedding-004"),
-        content: log.queryText
-      });
-      const rawEmbed = embedResponse[0]?.embedding;
-      if (rawEmbed && Array.isArray(rawEmbed)) {
-        let sumSq = 0;
-        for (const val of rawEmbed) sumSq += val * val;
-        const norm = Math.sqrt(sumSq);
-        const queryVector = norm > 0 ? rawEmbed.map(v => v / norm) : rawEmbed;
-        queryVectorJson = JSON.stringify(queryVector);
-      }
-    } catch (e) {
-      console.error("Embedding generation failed for seeding:", e);
-    }
-
-    // Save/update in the cache as curated (curated = 1)
     await db
-      .insert(queryCache)
-      .values({
-        queryText: cleanQuery,
+      .update(queryCache)
+      .set({
         responseJson: JSON.stringify(payload),
-        hitCount: log.hitCount,
-        updatedAt: Date.now(),
         curated: 1,
-        queryVectorJson
+        updatedAt: Date.now()
       })
-      .onConflictDoUpdate({
-        target: queryCache.queryText,
-        set: {
-          responseJson: JSON.stringify(payload),
-          updatedAt: Date.now(),
-          curated: 1,
-          queryVectorJson
-        }
-      });
+      .where(eq(queryCache.queryText, queryText));
 
-    // Update log status to seeded
-    await db
-      .update(queryLogs)
-      .set({ status: "seeded", responseJson: JSON.stringify(payload) })
-      .where(eq(queryLogs.id, logId));
+    return c.json({ success: true });
+  } catch (err: any) {
+    return c.json({ error: err.message }, 500);
+  }
+});
 
+// DELETE /api/search/admin/log/:id - Delete a cache entry completely
+searchRoute.delete("/admin/log/:id", async (c) => {
+  try {
+    const queryText = c.req.param("id");
+    
+    await db.delete(queryCache).where(eq(queryCache.queryText, queryText));
+    
+    // Best-effort cleanup of legacy logs table just in case
+    await db.delete(queryLogs).where(eq(queryLogs.queryText, queryText));
+    
     return c.json({ success: true });
   } catch (err: any) {
     return c.json({ error: err.message }, 500);

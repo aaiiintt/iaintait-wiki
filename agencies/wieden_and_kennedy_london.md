@@ -1,11 +1,3 @@
----
-title: "Wieden+Kennedy London"
-type: agency
-tags: [agency, advertising, london, creative]
-aliases: ["Wieden+Kennedy London", "W+K London"]
-source_urls: []
----
-
 # Wieden+Kennedy London
 
 ## Agency Overview
