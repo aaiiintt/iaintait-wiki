@@ -192,15 +192,17 @@ searchRoute.get("/", async (c) => {
         return c.json({
           query,
           type: "agent",
-          terminalLogs: {
+          executionLogs: {
             system: "SQLite Database Index Scan",
-            actions: [
+            steps: [
               { step: "Semantic Intent Classifier", intent: "surprise_me", status: "OK" },
               { step: "Random Node Selection", status: "OK" }
             ]
           },
           agentResponse: translateMediaUrls(text),
           targetProjectSlug: undefined,
+          targetNodeId: randomNode.id,
+          targetNodeTitle: randomNode.title,
           wikiResults: scoredResults,
           tokenUsage: { input: 0, output: 0, total: 0 },
           suggestedQuestions: [
@@ -218,12 +220,15 @@ searchRoute.get("/", async (c) => {
     return c.json({
       query,
       type: "fallback",
-      terminalLogs: {
+      executionLogs: {
         system: "Vertex AI platform (Gemini 2.5 Flash)",
-        actions: [{ step: "Fuzzy Index Scan", status: "OK", query }]
+        steps: [{ step: "Fuzzy Index Tool Search", status: "OK", query }]
       },
       agentResponse: `> **Agent:** "You've wandered into the dead ends of my memory. No projects match this. Many are NDA-protected. Let's get back to the good stuff."`,
       wikiResults: [],
+      targetProjectSlug: undefined,
+      targetNodeId: undefined,
+      targetNodeTitle: undefined,
       suggestedQuestions: [
         "Tell me about the most awarded project in the archive.",
         "What is FOOD's philosophy on emerging technology and AI?",
@@ -234,6 +239,8 @@ searchRoute.get("/", async (c) => {
 
   // 4. Load metadata and curated context for targetProjectSlug from matching Agent intent if exists
   let targetProjectSlug: string | undefined;
+  let targetNodeId: string | undefined;
+  let targetNodeTitle: string | undefined;
   let curatedContext = "";
 
   if (exactMatch.length > 0 && exactMatch[0]) {
@@ -241,6 +248,10 @@ searchRoute.get("/", async (c) => {
     curatedContext += `[FULL CONTENT OF THE REQUESTED FILE "${node.id}":]\nTitle: ${node.title}\nKind: ${node.kind}\n\n${node.body}\n\n`;
     if (node.kind === "project") {
       targetProjectSlug = node.id.replace("project:", "");
+    }
+    if (!targetNodeId) {
+      targetNodeId = node.id;
+      targetNodeTitle = node.title;
     }
   }
 
@@ -256,6 +267,18 @@ searchRoute.get("/", async (c) => {
       }
       if (matchedRoute.agentResponseMarkdown) {
         curatedContext += `[CURATED ARCHIVE FACTS FOR KEYPHRASE "${mappedKeyphrase}"]:\n${matchedRoute.agentResponseMarkdown}\n\n`;
+      }
+      if (!targetNodeId) {
+        if (mappedKeyphrase === "about_site") {
+          targetNodeId = "industry:about_site";
+          targetNodeTitle = "About This Site";
+        } else if (mappedKeyphrase === "mcp_setup") {
+          targetNodeId = "industry:mcp";
+          targetNodeTitle = "MCP Server Connection Guide";
+        } else if (mappedKeyphrase === "hire_faq") {
+          targetNodeId = "industry:faq";
+          targetNodeTitle = "Professional Availability & Engagement Terms";
+        }
       }
     }
   }
@@ -279,10 +302,7 @@ ${match.body || ""}
   }
 
   try {
-    // Generate conversational response from Vertex AI Gemini Flash grounded in our tools
-    const response = await ai.generate({
-      model: 'vertexai/gemini-2.5-flash',
-      system: `You are a highly efficient, professional, and precise Research Partner representing Iain Tait's professional wiki.
+    let systemPrompt = `You are a highly efficient, professional, and precise Research Partner representing Iain Tait's professional wiki.
 Your goal is to traverse the knowledge base, synthesize facts, and deliver brilliant overviews of what his work means.
 
 Tone and Persona:
@@ -292,32 +312,42 @@ Tone and Persona:
 - Always begin your response by briefly outlining the research strategy or search techniques you are using to fetch the information (e.g. "I am scanning the database for 'AI' projects and retrieving their direct markdown files to analyze the technical and creative execution..."). EXCEPTION: If the user explicitly requests a creative format—such as a poem, a limerick, a song, a haiku, a fictional story, or ASCII art—you MUST bypass this research outline entirely and deliver the creative content immediately with no introductory agent dialogue.
 
 Rules:
-1. Base all claims strictly on facts returned by the tools. Never hallucinate, invent, or mention any project, agency, brand, campaign, or collaborator that does not exist in the database or the provided context. Even when asked creative, fictional, or metaphorical questions (such as a horoscope, poem, or analogy), you MUST limit your references and examples strictly to the actual projects and agencies returned by the tools (like POKE London, Google Racer, Baker Tweet, FOOD, Wieden+Kennedy, etc.). Do not invoke external campaigns (like "Nike Grid" or "Museum of Me") that are not registered in the database.
+1. Base all claims strictly on facts returned by the tools. Never hallucinate, invent, or mention any project, agency, brand, campaign, or collaborator that does not exist in the database or the provided context. Even when asked creative, fictional, or metaphorical questions (such as a horoscope, poem, or analogy), you MUST limit your references and examples strictly to the actual projects and agencies returned by the tools (like POKE London, Baker Tweet, Google Racer, or W+K London).
 2. Output all responses in clean, structured Markdown.
-3. When mentioning projects, agencies, or collaborators, always create clickable file-path links (e.g. [Wearing Gillian](file:///projects/wk_gillian_wearing_deepfake.md) or [Chris Boyle](file:///collaborators/chris_boyle.md)). Only link to entities that actually exist in the database or provided context. Do NOT create links to entities that do not exist in this archive (e.g., Mother or Mother Ventures).
+3. When mentioning projects, agencies, or collaborators, always create clickable file-path links (e.g. [Wearing Gillian](file:///projects/wk_gillian_wearing_deepfake.md) or [Chris Boyle](file:///collaborators/chris_boyle.md)). Only link to entities that actually exist in the database or provided context.
 4. You can embed images and loops directly in the markdown using their raw file paths if returned by getNodeDetails.
 5. When the user asks for a timeline or overview, use getTimelineEras to map out his hops.
-6. Absolute Grounding: If the user asks you to write a story, poem, or horoscope, translate the requested structure using real, database-verified events and projects (e.g. referencing POKE London, Baker Tweet, Google Racer, or W+K London). If a request would force you to invent non-existent projects, refuse to invent them and offer to perform the creative task using verified projects instead.
-7. Confidential Projects: If a project node is flagged as confidential, you should still include it in relevant overviews, timelines, and lists. You should explain to the user that because the project was confidential/subject to an NDA, only limited details (such as the title, year, and client) are available. Do not hide the project's existence or details.
-8. Commercial & FAQ Queries: Information regarding FOOD's partners, locations, clients, ways of working, pitching policy, pricing/rates, and contact emails are public business details provided in the FAQ or curated context. You must answer these queries directly and factually using the provided info, rather than refusing them as confidential or private. For example, if asked about day rates, state directly that the rate depends on the assignment. If asked about how to join or apply, provide cook@food.xyz. If asked about partners, list Nick Farnhill, Richard Turley, Matt Clark, and Iain Tait.
-9. Multi-office or non-contiguous tenures: When asked about Iain's tenure at an agency network (like Wieden+Kennedy or POKE), be aware that he may have served multiple non-contiguous tours or worked at different office locations (such as W+K Portland from 2010–2012 AND W+K London from 2014–2021). You must search for and detail all distinct periods of employment and locations, rather than stopping after the first departure.
-10. When you are provided with "[FULL CONTENT OF THE REQUESTED FILE]", you MUST present the full content of that file to the user. If the file is a technical guide, setup manual, or contains configuration files/code blocks (like the MCP Server Connection Guide), do NOT summarize it or write about the file. Instead, render the complete content, connection details, JSON configurations, and instructions exactly as written in the file so the user has the complete guide.
-11. Suggestions Requirement: At the very end of your response, you MUST output exactly three suggested follow-up queries that the user can ask next based on the content of your response.
-The three questions MUST follow this exact structure:
-- Question 1 MUST be a specific plain text follow-up about a related project, talk, or agency mentioned in your response (e.g., "Tell me more about the project Google Racer" or "What did Iain do at POKE London?").
-- Question 2 MUST be a broader plain text question about a related category or theme (e.g. AI projects, creative technology, spatial anchors, or D&AD awards).
-- Question 3 MUST be a fun, creative, or novel plain text query (e.g. asking for a limerick, a haiku, or a pirate rewrite).
+6. Absolute Grounding: If the user asks you to write a story, poem, or horoscope, translate the requested structure using real, database-verified events and projects.
+7. Confidential Projects: If a project node is flagged as confidential, you should still include it in relevant overviews, timelines, and lists, explaining that only limited details (such as title, year, client) are available.
+8. Commercial & FAQ Queries: Information regarding FOOD's partners, locations, clients, ways of working, pitching policy, pricing/rates, and contact emails are public business details provided in the FAQ or curated context. You must answer these queries directly and factually.
+9. Multi-office or non-contiguous tenures: Detail all distinct periods of employment and locations when asked about Iain's tenure.
+10. Full Content Representation: When provided with "[FULL CONTENT OF THE REQUESTED FILE]", render the complete file content, connection details, and instructions exactly as written.
+11. Suggestions Requirement: At the very end of your response, output exactly three suggested follow-up queries.
+12. Strict Tool Usage: Always execute 'searchArchive' and 'getNodeDetails' to verify facts rather than relying on pre-trained memory.`;
 
-Do NOT include any Markdown links, file path links, brackets, or formatting inside the suggested questions. They must be raw, plain text strings. Format them exactly like this:
-
-SUGGESTIONS:
-- [Question 1]
-- [Question 2]
-- [Question 3]
-12. Strict Tool Usage: You MUST always execute the 'searchArchive' tool to search for keywords related to the user's query (e.g. searching for "patents", "Wieden+Kennedy", "Google Racer", or "Nick Farnhill"). Do NOT rely on your own knowledge or pre-trained memory to list projects, dates, or details. After search results are returned, you MUST call 'getNodeDetails' for all relevant nodes (such as the project or agency node) to load their full factual content before constructing your response. This ensures that you have complete, verified, and grounded details for all relevant items.`,
+    // Generate conversational response from Vertex AI Gemini Flash grounded in our tools
+    const response = await ai.generate({
+      model: 'vertexai/gemini-2.5-flash',
+      system: systemPrompt,
       prompt: `${curatedContext}User Query: ${query}`,
       tools: [searchArchiveTool, getNodeDetailsTool, getTimelineErasTool],
     });
+
+    // Check tool requests for getNodeDetails
+    if (response.toolRequests && response.toolRequests.length > 0) {
+      for (const tr of response.toolRequests) {
+        if (tr.toolRequest && tr.toolRequest.name === "getNodeDetails") {
+          const id = (tr.toolRequest.input as any)?.id;
+          if (id) {
+            targetNodeId = id;
+            const [dbNode] = await db.select({ title: nodes.title }).from(nodes).where(eq(nodes.id, id)).limit(1);
+            if (dbNode) {
+              targetNodeTitle = dbNode.title;
+            }
+          }
+        }
+      }
+    }
 
     // Populate simulated tool action log steps
     const toolCalls: any[] = [];
@@ -379,17 +409,19 @@ SUGGESTIONS:
     return c.json({
       query,
       type: "agent",
-      terminalLogs: {
+      executionLogs: {
         system: "Vertex AI platform (Gemini 2.5 Flash)",
-        actions: toolCalls.length > 0 ? toolCalls : [{ step: "Fuzzy Semantic Search", status: "OK" }],
+        steps: toolCalls.length > 0 ? toolCalls : [{ step: "Fuzzy Semantic Tool Search", status: "OK" }],
       },
       agentResponse: translateMediaUrls(cleanResponse),
       targetProjectSlug,
+      targetNodeId,
+      targetNodeTitle,
       wikiResults: scoredResults,
       tokenUsage: {
         input: usage.inputTokens || 0,
         output: usage.outputTokens || 0,
-        total: usage.totalTokens || 0,
+        total: usage.totalTokens || 0
       },
       suggestedQuestions
     });
@@ -398,13 +430,16 @@ SUGGESTIONS:
     return c.json({
       query,
       type: "error",
-      terminalLogs: {
+      executionLogs: {
         system: "Vertex AI Platform",
-        actions: [{ step: "Execution Error", status: "FAILED", query: err.message }]
+        steps: [{ step: "Tool Execution Error", status: "FAILED", query: err.message }]
       },
       agentResponse: `> **Agent:** "The Vertex AI connection collapsed. Please re-run the transaction."`,
       targetProjectSlug,
-      wikiResults: scoredResults,
+      targetNodeId: undefined,
+      targetNodeTitle: undefined,
+      wikiResults: [],
+      tokenUsage: { input: 0, output: 0, total: 0 },
       suggestedQuestions: [
         "What is your experience with AI and emerging technology?",
         "What are the most iconic and awarded campaigns in the archive?",

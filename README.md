@@ -1,6 +1,8 @@
-# Iain Tait — Career Archive & Remote MCP Server
+# mcp-personal: Agent-Grounded Professional Archive & Remote MCP Server
 
-This repository is a forensic career archive mapping 25 years of work at the intersection of technology, culture, and creativity (incorporating [POKE London](agencies/poke_london.md), [Wieden+Kennedy Portland](agencies/wieden_and_kennedy_portland.md) & [London](agencies/wieden_and_kennedy_london.md), [Google Creative Lab](agencies/google_creative_lab.md), and [FOOD](agencies/food.md)). 
+This repository is an open-source template for building a forensic, agent-grounded professional archive and Model Context Protocol (MCP) server. 
+
+This template is deployed personally by **aaiiintt** at **[mcp.aaiiintt.xyz](https://mcp.aaiiintt.xyz)**, mapping 25 years of work at the intersection of technology, culture, and creativity (incorporating [POKE London](agencies/poke_london.md), [Wieden+Kennedy Portland](agencies/wieden_and_kennedy_portland.md) & [London](agencies/wieden_and_kennedy_london.md), [Google Creative Lab](agencies/google_creative_lab.md), and [FOOD](agencies/food.md)). 
 
 It is built as an **open knowledge engine** designed for the Smart Web. It exposes Iain's complete project history, collaborations, and patent records via a **hosted remote Model Context Protocol (MCP) Server** over HTTP, wrapped in a fastidious, minimalist typographic web interface.
 
@@ -12,7 +14,7 @@ It is built as an **open knowledge engine** designed for the Smart Web. It expos
 * **Database**: [SQLite](https://sqlite.org/) accessed via [Drizzle ORM](https://orm.drizzle.team/) for lightweight, sub-millisecond graph query matching.
 * **Frontend**: React 19 + [Vite](https://vite.dev/) compiled cleanly with [Tailwind CSS v4](https://tailwindcss.com/).
 * **Visual Design**: Pure-white canvas (`#FFFFFF`), hairline borders (`1px solid #EAEAEA`), and geometric system-native typography (**SF Pro Display** + JetBrains Mono) representing a grid-aligned "direct interaction with the machine."
-* **Primary Source of Truth**: Preserves your local Markdown files (projects, collaborators, agencies, industry logs) formatted in the Open Knowledge Format, syncing changes to SQLite on command.
+* **Primary Source of Truth**: Preserves your local Markdown files (projects, collaborators, agencies, industry logs) formatted in the Open Knowledge Format, syncing changes to SQLite on command. For a deep dive into how compilation-phase builds structure the database schema, check the [Site Architecture Guide](industry/about_site.md).
 
 ---
 
@@ -78,7 +80,7 @@ Your SQLite database is generated dynamically from your markdown files. The inge
 ### 1. The Interrogation Console
 Located in the left panel, it simulates an interactive MCP server interrogation.
 * Type questions directly, or tap suggested chips (e.g., *US Patents*, *MoMA Collections*, *Swearing Analytics*).
-* **Intent Override**: If a keyword matches a pre-seeded agent route, a terminal emulator prints a realistic, green-and-white typewriter log showing database queries and tool steps before showing the agent's professional research response.
+* **Intent Override**: If a keyword matches a pre-seeded agent route, a typewriter log prints the simulated tool calls showing database queries and tool execution steps before showing the agent's professional research response.
 * **Fuzzy Fallback**: Other queries fall back to a SQLite database search. If records are found, it lists them. If no records are found, the agent objectively steers the user away from "dead ends" and back toward high-value project credentials.
 
 ### 2. The ASCII Timeline
@@ -104,7 +106,7 @@ The right panel parses your Open Knowledge markdown into clean, grid-aligned typ
 
 ## Hosted Remote MCP Server
 
-The server exposes a Model Context Protocol endpoint at `GET /api/mcp` using the Server-Sent Events (SSE) transport protocol.
+The server exposes a Model Context Protocol endpoint at `GET /api/mcp` using the Server-Sent Events (SSE) transport protocol. For step-by-step instructions on setting up connections in local IDEs or CLI clients, see the [MCP Connection Guide](industry/mcp.md).
 
 ### Exposing Media to External AIs
 When an external LLM client (like Claude Desktop) queries a project description, the Hono backend automatically translates relative media references (`../raw/media/`) in the markdown into **fully qualified public URLs** (e.g. `https://iaintait.com/wiki-media/...`). This enables modern AI clients that render markdown images to show your case study loop clips and images directly inside the user's chat window!
@@ -127,8 +129,8 @@ Access the admin dashboard by clicking the `[ system login ]` link in the footer
 2. **Diagnostics**: Checks for **orphan nodes** (nodes disconnected from the graph) and **dead links** (markdown files referencing files that do not exist), outputting a list of issues to fix in your markdown files.
 3. **Agent Tone Playground**:
    * Select a curated agent intent route.
-   * Edit the trigger keyphrase, simulated terminal logs, or witty agent response markdown.
-   * **Live Preview**: A side-by-side panel shows exactly how the terminal logs and response will render, letting you preview typewriter animations and markdown spacing before saving.
+   * Edit the trigger keyphrase, simulated tool calls, or witty agent response markdown.
+   * **Live Preview**: A side-by-side panel shows exactly how the tool execution logs and response will render, letting you preview typewriter animations and markdown spacing before saving.
    * Click **Commit Tone Update** to save changes back to `local.db`.
 
 ---

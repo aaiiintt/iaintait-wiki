@@ -142,4 +142,6 @@ This is the curated index of all major entities and projects in the wiki, archiv
 
 ## Knowledge Administration
 
+- [Site Architecture Guide](industry/about_site.md) - Details on how the compilation-phase database and command bar work.
+- [MCP Connection Guide](industry/mcp.md) - Configuration settings for connecting Claude Code, Antigravity, and Cursor.
 - `raw/` - Directory housing all scraped raw intel, webby archives, and temporal constraints.

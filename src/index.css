@@ -201,9 +201,10 @@ a:hover, .prose a:hover {
 }
 
 [cmdk-root] [cmdk-list] {
+  box-sizing: border-box !important;
   position: absolute;
   left: -1px;
-  right: -1px;
+  width: calc(100% + 2px);
   top: 100%;
   background: #ffffff;
   border: 1px solid #111111;
@@ -212,6 +213,19 @@ a:hover, .prose a:hover {
   z-index: 40;
   max-height: none;
   overflow-y: visible;
+}
+
+.cmdk-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 10;
+  animation: fadeIn 0.15s ease-out;
 }
 
 [cmdk-overlay] {

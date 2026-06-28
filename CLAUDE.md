@@ -56,6 +56,14 @@ Every project file MUST end with `## References & Media` listing verified URLs a
 
 ---
 
+## Nomenclature Rules
+
+* **Command Bar**: The control/search bar at the top of the interface is called the **Command Bar** (never Omnibar, Omnibox, or Command Palette).
+* **Tool Calls**: Under-the-hood agent database operations are referred to as **Tool Calls** (never System Calls, System Actions, or Terminal Actions).
+* **Execution Logs**: Detailed diagnostic steps displaying program executions are called **Execution Logs** or **Tool Execution Logs** (never Terminal Logs or Interrogation Logs).
+
+---
+
 ## Raw Directories
 
 The `/raw/` tree is immutable source data — LLMs read from it, never modify it (except to append new files).

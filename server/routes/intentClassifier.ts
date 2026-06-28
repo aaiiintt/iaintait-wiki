@@ -133,5 +133,34 @@ export function getSemanticIntentKeyphrase(query: string): string | null {
     return "talks";
   }
 
+  // 8. About this site
+  if (
+    hasPhrase("how does this site work") ||
+    hasPhrase("how this site works") ||
+    hasPhrase("about this site") ||
+    hasPhrase("about the site") ||
+    hasPhrase("technology behind this site") ||
+    hasPhrase("why is this site interesting") ||
+    hasPhrase("how was this site built") ||
+    hasWord("architecture")
+  ) {
+    return "about_site";
+  }
+
+  // 9. MCP Server Connection Setup
+  if (
+    hasWord("mcp") ||
+    hasPhrase("connect to mcp") ||
+    hasPhrase("mcp setup") ||
+    hasPhrase("mcp integration") ||
+    hasPhrase("model context protocol") ||
+    hasPhrase("claude code mcp") ||
+    hasPhrase("cursor mcp") ||
+    hasPhrase("antigravity mcp") ||
+    hasPhrase("how to connect my tools")
+  ) {
+    return "mcp_setup";
+  }
+
   return null;
 }

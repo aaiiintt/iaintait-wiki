@@ -90,7 +90,7 @@ describe("Hono API Endpoints", () => {
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(data.type).toBe("agent");
-    expect(data.terminalLogs).toHaveProperty("actions");
+    expect(data.executionLogs).toHaveProperty("steps");
     expect(data.agentResponse).toContain("Patent");
   });
 
@@ -174,7 +174,7 @@ describe("Hono API Endpoints", () => {
     const data = await res.json();
     expect(data.type).toBe("agent");
     expect(data.agentResponse).toContain("Key Collaborators & Co-founders");
-    expect(data.terminalLogs.actions[0].step).toBe("Semantic Intent Classifier");
-    expect(data.terminalLogs.actions[0].intent).toBe("collaborators");
+    expect(data.executionLogs.steps[0].step).toBe("Semantic Intent Classifier");
+    expect(data.executionLogs.steps[0].intent).toBe("collaborators");
   });
 });

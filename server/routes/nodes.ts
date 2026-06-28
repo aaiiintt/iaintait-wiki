@@ -3,6 +3,8 @@ import { db } from "../db";
 import { nodes, edges } from "../db/schema";
 import { eq, sql, inArray } from "drizzle-orm";
 import { translateMediaUrls } from "../utils/media";
+import fs from "node:fs";
+import path from "node:path";
 
 export const nodesRoute = new Hono();
 
@@ -48,6 +50,39 @@ nodesRoute.get("/:id", async (c) => {
     body: translatedBody,
     chips,
   });
+});
+
+// GET /api/nodes/:id/download - Serve raw markdown file as download
+nodesRoute.get("/:id/download", async (c) => {
+  const id = c.req.param("id");
+  const [node] = await db.select().from(nodes).where(eq(nodes.id, id)).limit(1);
+
+  if (!node) {
+    return c.text("Node not found", 404);
+  }
+
+  let filePath = "";
+  if (node.kind === "project") {
+    filePath = path.join(process.cwd(), "projects", `${node.slug}.md`);
+  } else if (node.kind === "person") {
+    filePath = path.join(process.cwd(), "collaborators", `${node.slug}.md`);
+  } else if (node.kind === "agency") {
+    filePath = path.join(process.cwd(), "agencies", `${node.slug}.md`);
+  } else if (node.kind === "industry") {
+    filePath = path.join(process.cwd(), "industry", `${node.slug}.md`);
+  } else if (node.kind === "about") {
+    filePath = path.join(process.cwd(), "README.md");
+  }
+
+  if (!filePath || !fs.existsSync(filePath)) {
+    return c.text("Raw markdown file not found on disk", 404);
+  }
+
+  const content = fs.readFileSync(filePath, "utf8");
+  
+  c.header("Content-Disposition", `attachment; filename="${node.slug || "document"}.md"`);
+  c.header("Content-Type", "text/markdown");
+  return c.text(content);
 });
 
 // GET /api/nodes - List all nodes (useful for diagnostics or dynamic indexes)

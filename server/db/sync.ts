@@ -473,8 +473,8 @@ async function seedAgentRoutes() {
     {
       keyphrase: "hire_faq",
       simulatedStepsJson: JSON.stringify({
-        system: "Interrogation Console v1.0.5",
-        actions: [
+        system: "Tool Execution Console v1.0.5",
+        steps: [
           { step: "Intercept Hiring Intent", matched_keywords: ["hire", "cv", "salary", "availability", "pricing", "cost"] },
           { step: "Read FAQ Database File", path: "industry/faq.md" }
         ]
@@ -500,8 +500,8 @@ Here is a summary of the consultancy's commercial parameters:
     {
       keyphrase: "collaborators",
       simulatedStepsJson: JSON.stringify({
-        system: "Interrogation Console v1.0.5",
-        actions: [
+        system: "Tool Execution Console v1.0.5",
+        steps: [
           { step: "Identify Collaborator Relations", subject: "Tait, Iain" },
           { step: "Score Connections", relations: ["Nick Farnhill", "Nik Roope", "Richard Turley", "Matt Clark"] }
         ]
@@ -525,8 +525,8 @@ Select a collaborator link to examine their profile, or query another term.`,
     {
       keyphrase: "key_campaigns",
       simulatedStepsJson: JSON.stringify({
-        system: "Interrogation Console v1.0.5",
-        actions: [
+        system: "Tool Execution Console v1.0.5",
+        steps: [
           { step: "Query Iconic Projects", filter: "Cannes Grand Prix OR HTML5 Parallax" },
           { step: "Compile Portfolio Highlights", items: ["Old Spice Responses", "Nike Better World", "Baker Tweet", "Google Racer"] }
         ]
@@ -550,8 +550,8 @@ Select one of the project links to view their full details, or click a suggested
     {
       keyphrase: "creative_philosophy",
       simulatedStepsJson: JSON.stringify({
-        system: "Interrogation Console v1.0.5",
-        actions: [
+        system: "Tool Execution Console v1.0.5",
+        steps: [
           { step: "Query Core Beliefs", filter: "AI OR emerging tech OR views" },
           { step: "Synthesize Philosophy", concepts: ["Human-centric tech", "Playfulness", "Emergent Media"] }
         ]
@@ -568,8 +568,8 @@ Iain's work is driven by a unique philosophy: that technology should be human, a
     {
       keyphrase: "career_overview",
       simulatedStepsJson: JSON.stringify({
-        system: "Interrogation Console v1.0.5",
-        actions: [
+        system: "Tool Execution Console v1.0.5",
+        steps: [
           { step: "Query Agency Graph", query: "SELECT title, location, duration FROM agencies ORDER BY start_date;" },
           { step: "Map Location Hops", locations: ["Edinburgh", "London", "Portland", "New York"] }
         ]
@@ -595,8 +595,8 @@ Select one of the agency links to view their projects, or click one of the sugge
     {
       keyphrase: "talks",
       simulatedStepsJson: JSON.stringify({
-        system: "Interrogation Console v1.0.5",
-        actions: [
+        system: "Tool Execution Console v1.0.5",
+        steps: [
           { step: "Scan Transcripts", query: "SELECT title, location, year FROM talks ORDER BY year;" },
           { step: "Status", records_found: 8 }
         ]
@@ -616,6 +616,49 @@ Iain has keynoted at major creative and technology festivals globally, focusing 
 
 For an overview of panels and podcasts, see **[Podcasts & Speaking](file:///industry/podcasts_and_speaking.md)**.`,
       targetProjectSlug: "podcasts_and_speaking"
+    },
+    {
+      keyphrase: "about_site",
+      simulatedStepsJson: JSON.stringify({
+        system: "Tool Execution Console v1.0.5",
+        steps: [
+          { step: "Query Site Architecture", filter: "SQLite OR MCP OR Node" },
+          { step: "Load System Specs", path: "industry/about_site.md" }
+        ]
+      }),
+      agentResponseMarkdown: `### About This Site & Tech Stack
+
+This site is an experimental **Open Knowledge Archive** documenting Iain Tait's career, built using a minimal, agent-friendly architecture:
+
+* **The Database**: A compilation-phase SQLite database built directly from raw markdown files (nodes and edges), serving queries in sub-milliseconds.
+* **The Command Bar**: An inline command bar driven by a local search index and an LLM grounded in real-time database tool calls.
+* **Model Context Protocol (MCP)**: The site exposes its underlying SQLite archive via a public HTTP MCP server, letting external AI models (like Claude or Cursor) read and navigate this data.
+
+For a detailed technical breakdown, please see the **[Site Architecture Guide](file:///industry/about_site.md)** or read the full **[Technical README](file:///README.md)**.`,
+      targetProjectSlug: undefined
+    },
+    {
+      keyphrase: "mcp_setup",
+      simulatedStepsJson: JSON.stringify({
+        system: "Tool Execution Console v1.0.5",
+        steps: [
+          { step: "Scan Network Configurations", port: 8787 },
+          { step: "Read Connection Specs", path: "industry/mcp.md" }
+        ]
+      }),
+      agentResponseMarkdown: `### Connect to MCP Server
+
+The career archive exposes its SQLite database as a Model Context Protocol (MCP) server. You can connect your local AI development tools directly to this endpoint:
+
+* **SSE Endpoint**: \`http://localhost:8787/api/mcp\`
+
+You can integrate this server into:
+1. **Claude Code**: Run \`claude mcp add mcp-aaiiintt npx -y @modelcontextprotocol/client-sse http://localhost:8787/api/mcp\`
+2. **Antigravity**: Add the entry inside the \`mcpServers\` object of your \`settings.json\` config file.
+3. **Cursor**: Add a new SSE server in settings.
+
+For step-by-step instructions and the complete client configurations, please view the **[MCP Server Connection Guide](file:///industry/mcp.md)**.`,
+      targetProjectSlug: undefined
     }
   ];
 

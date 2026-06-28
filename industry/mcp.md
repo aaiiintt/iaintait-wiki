@@ -25,18 +25,23 @@ The server implements the Model Context Protocol over the **Server-Sent Events (
 
 ## Client Integration Configurations
 
-### 1. Claude Desktop
-To connect Claude Desktop to the archive, add the following configuration to your `claude_desktop_config.json` file.
+### 1. Claude Code
+To connect Claude Code (CLI agent) to the archive, mount the SSE client wrapper directly by running the following command:
 
-* **Mac path**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-* **Windows path**: `%APPDATA%\Claude\claude_desktop_config.json`
+```bash
+claude mcp add mcp-aaiiintt npx -y @modelcontextprotocol/client-sse http://localhost:8787/api/mcp
+```
 
-Add the `iaintait-wiki` entry inside the `mcpServers` object:
+### 2. Antigravity (anti-gravity)
+To connect the Google Antigravity developer environment, open your global settings file:
+* **Settings Path**: `~/.gemini/config/settings.json`
+
+Add the `mcp-aaiiintt` server definition inside the `mcpServers` object:
 
 ```json
 {
   "mcpServers": {
-    "iaintait-wiki": {
+    "mcp-aaiiintt": {
       "command": "npx",
       "args": [
         "-y",
@@ -48,14 +53,12 @@ Add the `iaintait-wiki` entry inside the `mcpServers` object:
 }
 ```
 
-Restart Claude Desktop after saving the configuration file. You will see a plug icon indicating the tools are successfully mounted.
-
-### 2. Cursor
+### 3. Cursor
 To connect the Cursor editor:
 1. Navigate to **Settings** > **Features** > **MCP**.
 2. Click **+ Add New MCP Server**.
 3. Fill in the configuration details:
-   * **Name**: `iaintait-wiki`
+   * **Name**: `mcp-aaiiintt`
    * **Type**: `SSE`
    * **URL**: `http://localhost:8787/api/mcp`
 4. Click **Save**.

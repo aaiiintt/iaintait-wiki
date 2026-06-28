@@ -253,7 +253,7 @@ export default function AdminDashboard() {
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="font-mono text-[10px] text-gray-500 uppercase">Simulated Terminal Actions (JSON Array)</label>
+                    <label className="font-mono text-[10px] text-gray-500 uppercase">Simulated Tool Calls (JSON Array)</label>
                     <textarea
                       value={stepsJson}
                       onChange={(e) => setStepsJson(e.target.value)}
@@ -297,13 +297,13 @@ export default function AdminDashboard() {
                 // Live UI Presentation Preview
               </h3>
 
-              {/* Mock Terminal Output */}
+              {/* Mock Tool Call Output */}
               <div className="border border-[#111111] bg-[#111111] text-[#A6E22E] p-4 font-mono text-xs select-none">
-                <div className="text-gray-500 border-b border-gray-800 pb-1 mb-2">CONSOLE: Interrogation Logs</div>
+                <div className="text-gray-500 border-b border-gray-800 pb-1 mb-2">CONSOLE: Tool Execution Logs</div>
                 {(() => {
                   try {
                     const stepsObj = JSON.parse(stepsJson);
-                    const acts = Array.isArray(stepsObj) ? stepsObj : stepsObj.actions || [];
+                    const acts = Array.isArray(stepsObj) ? stepsObj : (stepsObj.steps || stepsObj.actions || []);
                     return acts.map((s: any, idx: number) => (
                       <div key={idx} className="mb-1 flex flex-col gap-0.5">
                         <div className="flex items-center gap-2">
