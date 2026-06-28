@@ -127,6 +127,25 @@ To get started, run a command, ask a question, or select a topic below.`,
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [autocompleteResults, setAutocompleteResults] = useState<any[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!open) return;
+
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [open]);
 
   // Toggle the menu when ⌘K or / is pressed
   useEffect(() => {
@@ -357,95 +376,105 @@ To get started, run a command, ask a question, or select a topic below.`,
 
   return (
     <div className="flex-1 flex flex-col justify-between min-h-[70vh] font-mono relative">
-      {/* Anchored Header Unit (Sticky Top) */}
-      <div className="sticky top-0 bg-white z-10 pb-4 border-b border-gray-200 mb-6 pt-2">
+      {/* Anchored Header Unit (Sticky Top, relative when open to allow mobile page scrolling) */}
+      <div className={`${open ? "relative" : "sticky top-0"} bg-white z-20 pb-4 border-b border-gray-200 mb-6 pt-2`}>
         {/* 0. Session Resource usage banner */}
         <div className="text-[10px] text-gray-400 pb-2 mb-3 flex justify-between select-none">
           <span>TOKENS: {sessionStats.total.toLocaleString()} <span className="hidden sm:inline">({sessionStats.input.toLocaleString()} IN | {sessionStats.output.toLocaleString()} OUT)</span></span>
           <span>COST: ${sessionStats.cost.toFixed(6)}</span>
         </div>
 
-        {/* 3. Global Command Palette Trigger */}
-        <button
-          onClick={() => setOpen(true)}
-          disabled={loading}
-          className="mcp-trigger flex items-center gap-3 w-full text-left cursor-text disabled:opacity-50"
-        >
-          <span className="text-[11px] font-bold text-gray-900 select-none">IAINTAIT_MCP:</span>
-          <span className="flex-1 text-[11px] text-gray-400 truncate flex items-center font-mono">
-            {loading ? (
-              "Waiting for response…"
-            ) : (
-              <>
-                Ask me anything...
-                <span className="mcp-cursor ml-1 text-gray-400">▊</span>
-              </>
-            )}
-          </span>
-          <span className="text-[10px] text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
-            ⌘&nbsp;K
-          </span>
-        </button>
+        {/* 3. Global Command Palette Trigger or Inline Input */}
+        {open ? (
+          <div ref={containerRef} className="relative w-full z-30">
+            <Command 
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  setOpen(false);
+                }
+              }}
+              label="Global Command Menu"
+              loop
+            >
+              <div className="cmdk-input-wrapper">
+                <span className="cmdk-input-prefix">IAINTAIT_MCP:</span>
+                <Command.Input 
+                  value={search} 
+                  onValueChange={setSearch} 
+                  placeholder="Ask me anything..." 
+                  autoComplete="off"
+                  spellCheck={false}
+                  autoFocus
+                />
+                <span className="text-[10px] text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
+                  ESC
+                </span>
+              </div>
+              <Command.List>
+                <Command.Empty>No results found.</Command.Empty>
 
-        {/* CMD K Palette Modal */}
-        <Command.Dialog 
-          open={open} 
-          onOpenChange={setOpen} 
-          label="Global Command Menu"
-          loop
-        >
-          <div className="cmdk-input-wrapper">
-            <span className="cmdk-input-prefix">IAINTAIT_MCP:</span>
-            <Command.Input 
-              value={search} 
-              onValueChange={setSearch} 
-              placeholder="Ask me anything..." 
-              autoComplete="off"
-              spellCheck={false}
-            />
+                {!search.trim() && (
+                  <>
+                    <Command.Group heading="NAVIGATE">
+                      <Command.Item onSelect={() => executeCommand("Connect to MCP")}>Connect to MCP <span className="cmd-meta">Execute ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("About")}>About <span className="cmd-meta">Jump to ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("Agencies & Eras")}>Agencies & Eras <span className="cmd-meta">Jump to ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("Projects & Campaigns")}>Projects & Campaigns <span className="cmd-meta">Jump to ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("Talks & Podcasts")}>Talks & Podcasts <span className="cmd-meta">Jump to ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("Collaborators")}>Collaborators <span className="cmd-meta">Jump to ↵</span></Command.Item>
+                    </Command.Group>
+                    
+                    <Command.Group heading="QUICK ACTIONS">
+                      <Command.Item onSelect={() => executeCommand("surprise_me", "I'm feeling lucky")}>I'm feeling lucky <span className="cmd-meta">Execute ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("Working with Iain")}>Working with Iain <span className="cmd-meta">Execute ↵</span></Command.Item>
+                      <Command.Item onSelect={() => executeCommand("Clear Conversation")}>Clear Conversation <span className="cmd-meta">Clear ↵</span></Command.Item>
+                    </Command.Group>
+                  </>
+                )}
+
+                {search.trim() && autocompleteResults.length > 0 && (
+                  <Command.Group heading="ARCHIVE NODES">
+                    {autocompleteResults.map(node => (
+                      <Command.Item key={node.id} onSelect={() => executeCommand(node.id, node.title)}>
+                        {node.title} <span className="text-gray-400 capitalize text-[10px] ml-2">({node.kind})</span>
+                        <span className="cmd-meta">Jump to ↵</span>
+                      </Command.Item>
+                    ))}
+                  </Command.Group>
+                )}
+
+                {search.trim() && (
+                  <Command.Group heading="CONVERSATIONAL SEARCH">
+                    <Command.Item onSelect={() => executeCommand(search)}>
+                      Ask AI: "{search}" <span className="cmd-meta">Execute ↵</span>
+                    </Command.Item>
+                  </Command.Group>
+                )}
+              </Command.List>
+            </Command>
           </div>
-          <Command.List>
-            <Command.Empty>No results found.</Command.Empty>
-
-            {!search.trim() && (
-              <>
-                <Command.Group heading="NAVIGATE">
-                  <Command.Item onSelect={() => executeCommand("Connect to MCP")}>Connect to MCP <span className="cmd-meta">Execute ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("About")}>About <span className="cmd-meta">Jump to ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("Agencies & Eras")}>Agencies & Eras <span className="cmd-meta">Jump to ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("Projects & Campaigns")}>Projects & Campaigns <span className="cmd-meta">Jump to ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("Talks & Podcasts")}>Talks & Podcasts <span className="cmd-meta">Jump to ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("Collaborators")}>Collaborators <span className="cmd-meta">Jump to ↵</span></Command.Item>
-                </Command.Group>
-                
-                <Command.Group heading="QUICK ACTIONS">
-                  <Command.Item onSelect={() => executeCommand("surprise_me", "I'm feeling lucky")}>I'm feeling lucky <span className="cmd-meta">Execute ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("Working with Iain")}>Working with Iain <span className="cmd-meta">Execute ↵</span></Command.Item>
-                  <Command.Item onSelect={() => executeCommand("Clear Conversation")}>Clear Conversation <span className="cmd-meta">Clear ↵</span></Command.Item>
-                </Command.Group>
-              </>
-            )}
-
-            {search.trim() && autocompleteResults.length > 0 && (
-              <Command.Group heading="ARCHIVE NODES">
-                {autocompleteResults.map(node => (
-                  <Command.Item key={node.id} onSelect={() => executeCommand(node.id, node.title)}>
-                    {node.title} <span className="text-gray-400 capitalize text-[10px] ml-2">({node.kind})</span>
-                    <span className="cmd-meta">Jump to ↵</span>
-                  </Command.Item>
-                ))}
-              </Command.Group>
-            )}
-
-            {search.trim() && (
-              <Command.Group heading="CONVERSATIONAL SEARCH">
-                <Command.Item onSelect={() => executeCommand(search)}>
-                  Ask AI: "{search}" <span className="cmd-meta">Execute ↵</span>
-                </Command.Item>
-              </Command.Group>
-            )}
-          </Command.List>
-        </Command.Dialog>
+        ) : (
+          <button
+            onClick={() => setOpen(true)}
+            disabled={loading}
+            className="mcp-trigger flex items-center gap-3 w-full text-left cursor-text disabled:opacity-50"
+          >
+            <span className="text-[11px] font-bold text-gray-900 select-none">IAINTAIT_MCP:</span>
+            <span className="flex-1 text-[11px] text-gray-400 truncate flex items-center font-mono">
+              {loading ? (
+                "Waiting for response…"
+              ) : (
+                <>
+                  Ask me anything...
+                  <span className="mcp-cursor ml-1 text-gray-400">▊</span>
+                </>
+              )}
+            </span>
+            <span className="text-[10px] text-gray-400 bg-gray-100 border border-gray-200 px-1.5 py-0.5 font-mono select-none hidden sm:inline-block">
+              ⌘&nbsp;K
+            </span>
+          </button>
+        )}
       </div>
 
       {/* 1. Chat Message History Thread */}
