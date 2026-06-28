@@ -83,6 +83,9 @@ html, body {
   margin-bottom: 1rem;
   color: #2b2b2b;
 }
+.prose p:last-child {
+  margin-bottom: 0 !important;
+}
 .prose ul {
   font-family: var(--font-mono) !important;
   font-size: calc(13px * var(--base-text-scale)) !important;
@@ -301,7 +304,7 @@ a:hover, .prose a:hover {
 }
 
 .cmdk-input-prefix {
-  font-size: calc(11px * var(--base-text-scale));
+  font-size: calc(13px * var(--base-text-scale));
   font-weight: 700;
   color: #111111;
   font-family: var(--font-mono);
@@ -311,7 +314,7 @@ a:hover, .prose a:hover {
 
 [cmdk-input] {
   width: 100%;
-  font-size: calc(11px * var(--base-text-scale));
+  font-size: calc(13px * var(--base-text-scale));
   padding: 0;
   border: none;
   background: transparent;
@@ -336,7 +339,7 @@ a:hover, .prose a:hover {
 }
 
 [cmdk-group-heading] {
-  font-size: calc(9px * var(--base-text-scale));
+  font-size: calc(11px * var(--base-text-scale));
   color: #a3a3a3;
   padding: 8px 16px;
   margin-top: 8px;
@@ -349,7 +352,7 @@ a:hover, .prose a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(11px * var(--base-text-scale));
+  font-size: calc(13px * var(--base-text-scale));
   padding: 0 16px;
   min-height: 36px;
   cursor: pointer;
@@ -367,12 +370,12 @@ a:hover, .prose a:hover {
 [cmdk-empty] {
   padding: 16px;
   text-align: left;
-  font-size: calc(11px * var(--base-text-scale));
+  font-size: calc(13px * var(--base-text-scale));
   color: #a3a3a3;
 }
 
 .cmd-meta {
-  font-size: calc(9px * var(--base-text-scale));
+  font-size: calc(11px * var(--base-text-scale));
   color: #a3a3a3;
 }
 [cmdk-item][aria-selected="true"] .cmd-meta {
