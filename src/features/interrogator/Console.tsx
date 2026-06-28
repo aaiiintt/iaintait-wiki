@@ -506,13 +506,13 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
               className={`flex flex-col gap-1.5 scroll-mt-36 ${m.sender === "user" ? "items-end" : "items-start"}`}
             >
             {/* Sender Identifier */}
-            <span className="text-xs text-gray-400 select-none font-mono">
+            <span className="text-[10px] uppercase tracking-wider text-gray-400 select-none font-mono">
               {m.sender === "user" ? "user" : "aaiiintt"}
             </span>
 
             {/* Bubble Content */}
             <div 
-              className={`max-w-[90%] text-sm leading-relaxed ${
+              className={`max-w-[90%] prose max-w-none font-mono leading-relaxed ${
                 m.sender === "user" 
                   ? "bg-gray-100 text-gray-900 px-4 py-2.5 rounded-none border border-gray-200" 
                   : "bg-white text-gray-800"
@@ -522,7 +522,6 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
                 <p className="whitespace-pre-wrap">{m.text}</p>
               ) : (
                 <div 
-                  className="prose max-w-none font-mono"
                   dangerouslySetInnerHTML={{ __html: marked.parse(m.text, { renderer }) }}
                 />
               )}
@@ -547,7 +546,7 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
         {/* Thinking Indicator / Loading state */}
         {loading && (
           <div ref={scrollRef} className="flex flex-col gap-1.5 items-start scroll-mt-36">
-            <span className="text-xs text-gray-400 select-none font-mono">aaiiintt</span>
+            <span className="text-[10px] uppercase tracking-wider text-gray-400 select-none font-mono">aaiiintt</span>
             <div className="flex flex-col gap-1">
               <div className="text-gray-400 animate-pulse text-xs">
                 ▒ Thinking...
