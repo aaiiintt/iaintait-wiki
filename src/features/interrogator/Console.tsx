@@ -351,13 +351,8 @@ To get started, run a command (hit cmd-k), ask a question, or select a topic bel
     processedText = processedText.replace(linkRegex, (match, linkText, href) => {
       return `<a href="${href}" class="underline hover:text-gray-600 font-bold">${linkText}</a>`;
     });
-    let prefix = "// ";
-    if (depth === 1) prefix = "::: ";
-    else if (depth === 2) prefix = "// ";
-    else if (depth === 3) prefix = ":: ";
-    else if (depth >= 4) prefix = "- ";
 
-    return `<h${depth} class="font-mono text-sm font-bold text-gray-900 mt-4 mb-2 select-none">${prefix}${processedText}</h${depth}>`;
+    return `<h${depth} class="font-mono text-sm font-bold text-gray-900 mt-4 mb-2 select-none">// ${processedText}</h${depth}>`;
   };
 
   renderer.image = ({ href, title, text }) => {
